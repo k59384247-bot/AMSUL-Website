@@ -1,0 +1,12 @@
+.form-field{display:flex;flex-direction:column;gap:8px;font-size:18px;line-height:24px;min-width:0}
+.form-field input,.form-field .custom-select-trigger,.form-field textarea{width:100%;min-width:0;padding:4px 20px;border:1px solid #cfcfcf;border-radius:100px;background:transparent;color:#171717;font:inherit;font-size:16px;line-height:24px}
+.form-field input,.form-field .custom-select-trigger{height:56px}
+.form-field input::placeholder,.form-field textarea::placeholder{color:#808080;opacity:1}
+.form-field textarea{height:120px;min-height:120px;padding-block:12px;border-radius:24px;resize:vertical}
+.form-field .custom-select{height:56px}
+.form-field .custom-select-invalid{height:auto}
+.form-field .custom-select-trigger{padding-right:52px;cursor:pointer}
+.form-field .custom-select-placeholder{color:#808080}
+.form-field .custom-select-trigger>.icon{position:absolute;right:20px;top:16px}
+.form-field .custom-select-trigger[aria-invalid=true]{border-color:var(--wine)}
+.form-field input:focus-visible,.form-field textarea:focus-visible{box-shadow:0 0 0 2px var(--wine)}

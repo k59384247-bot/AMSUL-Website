@@ -1,0 +1,49 @@
+.programs-events-page .section-heading-row{width:100%}
+.programs-events-page .section-heading{max-width:100%;width:100%}
+.programs-events-page .section-heading h2{text-transform:none;color:var(--body)}
+.featured-listing-event .featured-content-image{width:604px}
+.featured-listing-event .featured-content-tags{left:652px}
+.featured-listing-event h2{text-transform:none}
+.upcoming-programmes,.upcoming-events{display:flex;flex-direction:column;align-items:center;gap:40px}
+.programme-carousel .carousel-track{margin-right:0;padding-right:0}
+.programme-carousel .carousel-controls{justify-content:center}
+.programme-carousel .carousel-arrows{display:contents}
+.programme-carousel .carousel-dots{order:2}
+.programme-carousel .round-button:first-child{order:1}
+.programme-carousel .round-button:last-child{order:3}
+.programme-card .featured-copy{width:691px;display:flex;flex-direction:column;gap:8px}
+.programme-card .programme-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.programme-card .programme-title h3{margin:0;text-transform:none}
+.programme-title>span{width:6px;height:6px;background:white;border-radius:50%;flex-shrink:0}
+.programme-card .programme-title>p{font:400 20px/32px Thurkle,sans-serif;color:var(--text)}
+.programme-card .programme-date{display:flex;gap:4px;align-items:center;font-size:14px;line-height:20px;color:var(--text)}
+.event-listing-controls{display:flex;width:100%;align-items:flex-start;justify-content:space-between;gap:24px}
+.event-type-filters{display:flex;gap:8px;align-items:center;padding:4px;height:56px;background:#262626;border-radius:100px;flex-shrink:0}
+.event-type-filters button{display:flex;height:48px;align-items:center;justify-content:center;border:0;border-radius:48px;padding:8px 16px;font-weight:500;letter-spacing:-.48px;white-space:nowrap;color:var(--body);background:transparent}
+.event-type-filters button[aria-pressed="true"]{background:var(--wine);color:var(--text)}
+.event-search-controls{display:flex;align-items:center;gap:24px}
+.event-listing-grid{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;scroll-margin-top:24px}
+.event-listing-grid>.event-card{width:100%;height:384px}
+.event-meta-details{display:flex;align-items:center;gap:16px}
+.event-meta-details>span{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.event-meta-details>span:first-child{white-space:pre}
+.event-listing-grid .event-meta>span .timer-icon{margin-inline:2.58px}
+.past-event-highlights{display:flex;flex-direction:column;align-items:center;gap:40px}
+.past-event-highlights>h2{color:var(--body);text-transform:none}
+.event-highlights-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:24px}
+.event-listing-empty{grid-column:1/-1;padding:64px 24px;text-align:center;background:var(--surface);border-radius:16px}
+.event-listing-empty h2{margin-bottom:16px}.event-listing-empty p{color:var(--body);margin-bottom:24px}
+@media(max-width:1250px){.featured-listing-event .featured-content-image{width:48%}.featured-listing-event .featured-content-tags{left:calc(48% + 36px)}.event-search-controls .listing-search{width:360px}.event-listing-grid .event-meta{flex-wrap:wrap;gap:8px}.event-meta-details{flex-wrap:wrap;gap:8px 12px}}
+@media(max-width:1000px){.event-listing-controls{flex-wrap:wrap}.event-search-controls{width:100%;flex-wrap:wrap;gap:16px}.event-search-controls .listing-search{flex:1;max-width:500px}.featured-listing-event .featured-content-tags{left:calc(48% + 28px)}.event-highlights-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.event-listing-grid{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .featured-listing-event .featured-content-image{width:100%}.featured-listing-event .featured-content-tags{left:20px;right:20px}
+  .upcoming-programmes,.upcoming-events,.past-event-highlights{gap:32px}
+  .programme-card .featured-copy{left:20px;bottom:20px;max-width:calc(100% - 40px)}
+  .programme-card .programme-title{gap:8px}.programme-title>span{display:none}.programme-card .programme-title>p{font-size:18px;line-height:28px}
+  .programme-card .programme-date{font-size:12px;flex-wrap:wrap}.programme-card .featured-copy>p:last-child{font-size:14px;line-height:22px}
+  .programme-carousel .carousel-controls{margin-top:32px}
+  .event-search-controls .listing-search{flex-basis:100%;width:100%;max-width:100%}
+  .event-type-filters{max-width:100%}.event-type-filters button{font-size:14px;padding-inline:14px}
+  .event-listing-grid{gap:20px}.event-meta-details{flex-basis:100%;gap:8px 12px}
+  .event-highlights-grid{grid-template-columns:1fr;gap:20px}.event-highlight-card{height:auto;min-height:424px}
+}

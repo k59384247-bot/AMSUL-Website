@@ -1,0 +1,55 @@
+.editorial-content{width:824px;max-width:100%;margin-inline:auto;display:flex;flex-direction:column;gap:32px}
+.detail-header{position:sticky;top:0;background:#111;backdrop-filter:blur(10px);width:calc(100% - 8px);margin-left:auto}
+.detail-header .header-inner{width:calc(100% - (var(--gutter) - 4px)*2)}
+.detail-back-link{background:transparent;color:var(--body);gap:8px;border-radius:48px}
+.detail-back-link:hover{background:rgba(244,201,93,.08)}
+.detail-cover{width:100%;height:560px;background:var(--surface);border-radius:24px}
+.attachment-download{max-width:100%}
+.attachment-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#480000;border-radius:100px;padding:8px 8px 8px 12px}
+.attachment-name{display:flex;align-items:center;gap:3px;min-width:0;font-size:18px;line-height:24px;font-weight:600}
+.file-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;flex-shrink:0;background:var(--text);border-radius:50%}
+.download-button{gap:4px;min-height:40px;height:40px;width:140px;padding:8px 20px;border-radius:48px;color:#000}
+.primary-download .attachment-row{gap:4px}
+.primary-download .download-button{width:auto;height:56px;min-height:56px;padding:16px 24px}
+.download-status{max-width:612px;margin:12px auto 0;font-size:14px;line-height:20px;color:var(--button)}
+.editorial-text-block{display:flex;flex-direction:column;gap:12px}
+.editorial-text-block h2,.editorial-text-block h3,.editorial-text-block h4{font-family:Thurkle,sans-serif;font-weight:400;text-transform:none;margin:0}
+.editorial-text-24{gap:16px}
+.editorial-text-24 h2{font-size:24px;line-height:32px}
+.editorial-text-20 h3{font-size:20px;line-height:32px}
+.editorial-text-18 h4{font-size:18px;line-height:24px}
+.editorial-text-block p{white-space:pre-wrap;line-height:28px;color:var(--body)}
+.editorial-attachments{display:flex;flex-direction:column;gap:16px}
+.editorial-attachments>h2{font-size:20px;line-height:32px;text-transform:none}
+.attachment-list{display:flex;flex-direction:column;gap:4px;width:612px;max-width:100%}
+@media(max-width:1000px){
+.detail-cover{height:auto;aspect-ratio:1248/560}
+}
+@media(max-width:700px){
+.detail-header{width:100%}
+.detail-header .header-inner{width:calc(100% - var(--gutter)*2)}
+.detail-cover{border-radius:20px;min-height:200px}
+.detail-back-link{min-height:48px}
+.attachment-row{border-radius:24px;gap:12px;align-items:flex-start;flex-wrap:wrap;padding:12px}
+.attachment-name{font-size:16px;text-align:left}
+.attachment-name>span:last-child{min-width:0;overflow-wrap:anywhere}
+.attachment-list .download-button{margin-left:35px;width:auto;min-height:44px;height:44px;padding-inline:20px}
+.primary-download .attachment-row{align-items:center;flex-wrap:nowrap;border-radius:100px;padding:8px 8px 8px 12px}
+.primary-download .download-button{font-size:14px;padding-inline:20px}
+}
+
+.detail-action-card{display:flex;flex-direction:column;gap:24px;width:100%;border-top:1px solid #f1f1f1;border-radius:24px;background:var(--text);color:#171717;padding:39px 40px 24px;color-scheme:light}
+.detail-action-heading{display:flex;flex-direction:column;gap:8px}
+.detail-action-heading h2{font-size:32px;line-height:40px;color:#2b2b2b;text-transform:none}
+.detail-action-card :focus-visible{outline-color:var(--wine)}
+.detail-action-button{height:64px;min-height:64px;width:100%;font-size:20px;letter-spacing:0;color:#000}
+.detail-action-out-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;transform:scaleX(-1)}
+.detail-action-status{font-size:14px;line-height:20px;color:#780000}
+.event-sponsors{display:flex;flex-direction:column;gap:12px}
+.event-sponsors h2{font-size:18px;line-height:24px;text-transform:none}
+.event-sponsor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.event-sponsor{display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;min-height:120px;background:rgba(23,23,23,.4);text-align:center;padding:12px 4px}
+.event-sponsor img{border-radius:28px;object-fit:cover;mix-blend-mode:luminosity}
+.event-sponsor p{font-size:14px;line-height:20px;color:var(--body)}
+@media(max-width:1000px){.detail-action-card{padding-inline:24px}}
+@media(max-width:700px){.detail-action-card{padding:31px 24px 24px}.event-sponsor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

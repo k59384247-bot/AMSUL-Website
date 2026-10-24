@@ -1,0 +1,52 @@
+.partnerships-page .hero{height:640px}
+.partnerships-page .hero-image{height:792px;top:50%;bottom:auto;transform:translateY(-50%)}
+.partnerships-page .hero-heading{left:4px;width:824px;max-width:100%}
+.partnerships-page .hero h1{font-size:48px;line-height:64px;letter-spacing:0}
+.partnerships-page .hero-badge{gap:8px;color:#8a0401}
+.partnerships-page .hero-introduction{bottom:64px}
+.brochure-download{position:relative}
+.brochure-download>p{position:absolute;top:calc(100% + 8px);left:0;right:0;font-size:14px;line-height:20px;color:var(--button)}
+.partnerships-page .impact-section>h2{text-transform:none;color:var(--body)}
+.partnerships-page .impact-stat>p{font-size:88px;line-height:84px;letter-spacing:.88px}
+.partnerships-page .impact-stat>h3{font-size:20px;line-height:32px}
+.partnerships-page .tone-wine>h3{color:var(--body)}
+.partnership-benefits{display:flex;flex-direction:column;gap:8px}
+.partnership-benefits-top{display:flex;align-items:center;justify-content:space-between;gap:48px}
+.partnership-benefits-copy{width:718px;max-width:60%;display:flex;flex-direction:column;gap:40px}
+.partnership-benefits-copy h2,.partnerships-page .partners-section h2,.partnership-testimonials h2{text-transform:none;color:var(--body)}
+.partnership-benefits-side{width:400px;display:flex;flex-direction:column;gap:8px}
+.partnership-benefits-bottom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.partnership-benefits .benefit h3{white-space:nowrap}
+.partnership-benefits-copy>.button{align-self:flex-start}
+.partnership-testimonials{padding:80px max(24px,calc((100vw - 1280px)/2));display:flex;flex-direction:column;align-items:center;gap:40px}
+.partnership-testimonials>.section-heading-row{width:100%}
+.testimonial-grid{display:grid;grid-template-columns:minmax(0,531fr) minmax(0,218fr) minmax(0,531fr);width:100%;max-width:1280px;border-radius:16px;overflow:hidden}
+.testimonial-card{display:flex;flex-direction:column;gap:24px;min-width:0;height:360px;padding:24px;background:#000;color:#fff}
+.testimonial-panel-0{grid-column:span 2}.testimonial-panel-1{grid-column:span 1;background:#c2130f;padding-block:32px}.testimonial-panel-2{grid-column:span 1;background:#6a0e11}.testimonial-panel-3{grid-column:span 2;background:#ed9a00;padding-block:32px}
+.testimonial-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.testimonial-tag{font-weight:500;letter-spacing:-.48px;background:rgba(255,255,255,.3);padding:6px 16px;border-radius:100px;white-space:nowrap}
+.testimonial-panel-1 .testimonial-tag,.testimonial-panel-2 .testimonial-tag{background:rgba(255,255,255,.7);color:#000}
+.testimonial-panel-3 .testimonial-tag{color:#2b2b2b}
+.testimonial-dots{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.testimonial-dots button{position:relative;width:10px;height:10px;padding:0;border:0;border-radius:100px;background:#d5d5d5}
+.testimonial-dots button::after{content:"";position:absolute;inset:-12px 0}
+.testimonial-dots .is-active{width:24px;height:16px;background:#fff}
+.testimonial-panel-0 .testimonial-dots .is-active,.testimonial-panel-3 .testimonial-dots .is-active{background:#c2130f}
+.testimonial-content{display:flex;flex:1;flex-direction:column;justify-content:space-between;gap:12px;min-height:0}
+.testimonial-content blockquote{margin:0;font-size:18px;line-height:24px;font-weight:500}
+.testimonial-content blockquote p+p{margin-top:24px}
+.testimonial-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.testimonial-person{display:flex;align-items:center;gap:12px;min-width:0}
+.testimonial-person>div:last-child{white-space:nowrap}
+.testimonial-person p:first-child{font-size:18px;font-weight:500}
+.testimonial-portrait{width:56px;height:56px;border-radius:140px;position:relative;overflow:hidden;flex-shrink:0}
+.testimonial-portrait img{position:absolute;width:128.872px;height:161px;top:-63px;left:-36.0366px;object-fit:cover}
+.testimonial-mark{width:144px;height:50.4px;flex-shrink:0;position:relative}
+.testimonial-mark>div{position:absolute;width:144px;height:24.9796px;top:12.5992px;left:0;overflow:hidden}
+.testimonial-mark img{position:absolute;width:146.94%;height:847.06%;left:-23.98%;top:-378.24%;max-width:none}
+.testimonial-mark-founder>div{height:24.5817px;left:.5px;top:12.9082px}
+.testimonial-mark-founder img{width:151.74%;height:888.89%;left:-26.03%;top:-394.44%}
+@media(max-width:1250px){.partnership-benefits-copy{max-width:55%}.partnership-benefits-side{width:40%}.partnership-benefits .benefit h3{white-space:normal}.partnership-testimonials{padding-inline:24px}.testimonial-footer{flex-wrap:wrap}.testimonial-card{height:auto;min-height:400px}.testimonial-content{gap:24px}.partnerships-page .impact-stat>p{font-size:68px;line-height:76px}.partnerships-page .impact-stat>h3{font-size:18px;line-height:28px}}
+@media(max-width:1000px){.partnership-benefits-top{gap:32px}.partnership-benefits-copy{max-width:53%}.partnership-benefits-side{width:43%}.testimonial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.testimonial-card{grid-column:auto}.testimonial-top{flex-wrap:wrap;gap:16px}.partnerships-page .impact-stat>p{font-size:56px;line-height:64px}.partnerships-page .impact-stat>h3{font-size:16px;line-height:24px}}
+@media(max-width:700px){.partnerships-page .hero{height:auto;min-height:760px}.partnerships-page .hero-heading{left:0}.partnerships-page .hero-image{height:100%;top:0;transform:none}.partnerships-page .hero h1{font-size:40px;line-height:50px}.partnerships-page .hero-introduction{bottom:auto;max-width:100%}.partnerships-page .hero-introduction .button-row{gap:12px}.partnerships-page .hero-introduction .button{padding-inline:16px}.brochure-download>p{position:static;margin-top:8px}.partnerships-page .impact-stat>p{font-size:54px;line-height:60px}.partnerships-page .impact-stat>h3{font-size:16px;line-height:24px;max-width:100%;text-align:center}.partnership-benefits-top{flex-direction:column;align-items:stretch}.partnership-benefits-copy{max-width:100%;width:100%;gap:32px}.partnership-benefits-side{width:100%}.partnership-benefits-bottom{grid-template-columns:1fr}.partnerships-page .partners-section .section-heading-row{width:100%}.partnership-testimonials{padding-block:48px;gap:32px}.testimonial-grid{grid-template-columns:1fr}.testimonial-card{min-height:440px}.testimonial-footer{gap:16px}.partnership-testimonials h2{font-size:28px;line-height:36px}}
+@media(max-width:360px){.partnerships-page .hero h1{font-size:36px;line-height:44px}.partnerships-page .impact-stat>p{font-size:48px}.partnerships-page .impact-stat>h3{font-size:14px}.testimonial-card{padding-inline:20px}.testimonial-tag{padding-inline:12px}.testimonial-top{gap:12px}}

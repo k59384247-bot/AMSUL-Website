@@ -1,0 +1,37 @@
+.leadership-section{display:flex;flex-direction:column;gap:40px;align-items:center}
+.leadership-featured{width:calc(100% - var(--gutter)*2);max-width:1248px;display:flex;flex-direction:column;align-items:center;gap:40px}
+.leadership-section .section-heading-row{width:100%;min-width:0}
+.leadership-section .section-heading{gap:8px;width:824px;max-width:100%}
+.leadership-section .section-heading h2{text-transform:none}
+.leadership-section .section-description{margin:0;width:100%}
+.leadership-featured-cards,.leadership-additional{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:24px;width:100%}
+.leadership-executive .leadership-featured{flex-direction:row;align-items:center;gap:24px}
+.leadership-executive .section-heading-row{width:400px;flex-shrink:0}
+.leadership-executive .leadership-featured-cards{flex-wrap:nowrap}
+.leadership-patrons .leadership-featured{width:calc(100% - 160px);max-width:1280px}
+.leadership-patrons .leadership-featured-cards{gap:40px}
+.leadership-patrons .section-heading-row,.leadership-committees .section-heading-row{min-height:96px}
+.profile-card{width:294px;min-height:384px;padding:8px 8px 16px;background:var(--card);border-radius:36px;display:flex;flex-direction:column;gap:12px;align-items:center;flex-shrink:0;min-width:0}
+.profile-portrait{width:100%;height:256px;background:var(--card-wine);border-radius:28px;overflow:hidden;flex-shrink:0}
+.profile-portrait img{width:100%;height:100%;object-fit:cover}
+.profile-card-information{display:flex;flex-direction:column;align-items:center;gap:16px;padding-inline:12px;max-width:100%;text-align:center}
+.profile-card-information h3{font:400 20px/32px Thurkle,sans-serif;text-transform:lowercase;overflow-wrap:anywhere}
+.profile-card-information p{color:var(--body);overflow-wrap:anywhere}
+.profile-button{border:0;padding:0;border-radius:48px;background:transparent;color:var(--gold);font-size:14px;line-height:20px;font-weight:500}
+.profile-card-large{width:400px;min-height:480px;border-radius:68px}
+.profile-card-large .profile-portrait{height:360px;border-radius:64px}
+.profile-card-large .profile-card-information{gap:8px}
+.leadership-patrons .profile-card-large{min-height:452px}
+.leadership-patrons .profile-card:not(.profile-card-large) .profile-portrait{height:292px}
+.leadership-view-all{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:8px 24px;border:0;border-radius:48px;background:transparent;color:var(--gold);font-weight:500;letter-spacing:-.48px;line-height:24px}
+.leadership-view-all:hover,.profile-button:hover{background:rgba(244,201,93,.08)}
+.leadership-chevron{display:flex;align-items:center;justify-content:center;width:16px;height:16px}
+.leadership-chevron.expanded{transform:rotate(180deg)}
+.leadership-additional{max-width:1248px;width:calc(100% - var(--gutter)*2)}
+.leadership-additional[hidden]{display:none}
+.profile-bio{color:var(--body);font-size:14px;line-height:20px;padding:8px 12px;text-align:center;overflow-wrap:anywhere}
+.leadership-status{padding-inline:24px;text-align:center;color:var(--body)}
+@media(max-width:1399px){.leadership-executive .section-heading-row{width:30%}.leadership-executive .leadership-featured-cards{flex:1;min-width:0}.leadership-executive .profile-card-large{width:calc((100% - 24px)/2)}.leadership-patrons .leadership-featured{width:calc(100% - var(--gutter)*2)}.leadership-patrons .leadership-featured-cards{gap:24px}.leadership-patrons .profile-card-large{width:calc((100% - 48px)/3)}.leadership-patrons .profile-card-large .profile-portrait,.leadership-executive .profile-card-large .profile-portrait{height:auto;aspect-ratio:384/360}.leadership-executive .profile-card-large,.leadership-patrons .profile-card-large{min-height:0}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 72px)/4)}}
+@media(max-width:1000px){.leadership-executive .leadership-featured{flex-direction:column;gap:32px}.leadership-executive .section-heading-row{width:100%;justify-content:center;text-align:center}.leadership-executive .section-heading{align-items:center}.leadership-executive .leadership-featured-cards{width:100%;max-width:824px}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 48px)/3)}.leadership-patrons .profile-card-large{border-radius:36px}.leadership-patrons .profile-card-large .profile-portrait{border-radius:28px}.leadership-patrons .section-heading-row,.leadership-committees .section-heading-row{min-height:0}}
+@media(max-width:700px){.leadership-section{gap:32px}.leadership-featured{gap:32px}.leadership-executive .leadership-featured-cards,.leadership-patrons .leadership-featured-cards{flex-direction:column;align-items:center}.leadership-executive .profile-card-large,.leadership-patrons .profile-card-large{width:100%;max-width:400px;border-radius:68px}.leadership-executive .profile-card-large .profile-portrait,.leadership-patrons .profile-card-large .profile-portrait{border-radius:64px}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 24px)/2)}.profile-card:not(.profile-card-large){min-height:0}.profile-card:not(.profile-card-large) .profile-portrait,.leadership-patrons .profile-card:not(.profile-card-large) .profile-portrait{height:auto;aspect-ratio:278/256}.profile-card:not(.profile-card-large) .profile-card-information{padding-inline:0}.leadership-section .section-heading h2{font-size:28px;line-height:36px}.leadership-page .hero-inner{min-height:600px}.leadership-page .hero h1{font-size:34px;line-height:44px}}
+@media(max-width:420px){.leadership-committees .profile-card,.leadership-additional .profile-card{width:100%;max-width:294px}.leadership-page .hero-inner{min-height:640px}.leadership-page .hero h1{font-size:30px;line-height:40px}}
