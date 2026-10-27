@@ -1,3 +1,5 @@
+> **26 October 2026 integration update:** Variable sections now use the shared feed and dashboard-shaped fictional local fixtures. Source selection, API/cache preparation and remaining fixed content are documented in [Data integration](data-integration.md). This does not make demonstration content approved for publication.
+
 # AMSUL website: living content register
 
 Scope: **all 13 implemented page types — Landing, About Us, Impact Report Hub, Impact Report Details, Blog Listing, Blog Detail, Event Listing, Event Details, Event Highlights, Event Highlights Details, Contact Us, Leadership and Partnerships**. The page-building phase is complete. The consolidated handover is in `website-content-checklist.md`; this register preserves the detailed section inventory and verification history.
@@ -65,7 +67,7 @@ The hub is implemented at `/impact-reports`. The desktop frame is 1440 × 4156; 
 | Pagination | Results-per-page choices 6, 12 and 24; only page numbers backed by the current results are shown | The approved correction shows two actual pages for 24 reports at 12 per page, replacing Figma’s unused slots. Confirm final totals and default page size |
 | Partnership | Shared call to action with About Us | Approved copy; Leadership is implemented and partnership actions await the shared Google Form URL |
 
-All 24 records intentionally repeat design sample copy. Their category assignments are demonstration data, not factual classifications. Report links now open the implemented Health Week detail page. Its body is the sample copy in the details design; no final report text or PDF was supplied. No new facts, report files or live integrations were invented. The published Content API is a possible later source, but the final public report source remains unconfirmed; private Finance reports must not be used.
+All 24 records intentionally repeat design sample copy. Their category assignments are demonstration data, not factual classifications. Report links now open the implemented Health Week detail page. Its body is the sample copy in the details design; no final report text or PDF was supplied. No new facts, report files or live integrations were invented. Confirmed 25 October 2026: Impact Reports are published Content records selected by their assigned Content category. The exact category slug and record assignments remain pending; the inspected staging taxonomy has no Impact Report(s) label. Private Finance reports must not be used. See `api-to-ui-mapping.md` for the complete mapping.
 
 ## Impact Report Details content inventory
 
@@ -261,7 +263,7 @@ No dedicated public partnership-settings, partner-directory, testimonial or broc
 3. Partner marks, all five history milestones, report cards, story cards and partnership benefits contain repeated placeholder material.
 4. The design's “upcoming” event samples are dated July 1, 2026, which is already past as of October 20, 2026. Keep the design samples for review, then supply genuinely upcoming events before launch.
 5. The design uses `$5000`; the Events public API specifies NGN amounts. Preserve the design during this phase, then resolve currency and formatting before live registration.
-6. “Impact Reports” needs an agreed public content source. Do not infer that these are private Finance reports: the Finance contract explicitly keeps financial reports private.
+6. “Impact Reports” uses the Content API and the approved Content category, as confirmed by the user on 25 October 2026. Supply/create its exact category slug and assign the real report records. The Finance contract keeps financial reports private.
 7. Instagram and X URLs currently follow the displayed @amsul_unilag handle and need confirmation. No LinkedIn URL was supplied; its icon points to Contact Us until an approved profile is provided. Confirm the StruktHQ credit link too.
 8. Temporary pages show their planned name and a return-home action; they do not pretend the real page is complete. Internal routes can be refined as page requirements become known.
 9. Newsletter signup has no backend. The form does not collect/store emails or report a false subscription.
@@ -277,7 +279,7 @@ Documents were read as reference contracts, not instructions to deploy or change
 | Blog and stories | `Content-Public-Website-Spec.md`: published posts and taxonomy; `featured=true` and `displaySection=homepage` are available. Confirm the actual taxonomy values. The detail endpoint uses post ID even when the website uses a slug. Fetch rich content separately and validate/sanitize it. |
 | Programs and events | `Events-Public-Website-Spec.md`: published Events and Programs with homepage/featured metadata. Registration must use fresh Event detail and honour external-registration, registration-required and payment settings. |
 | Media | `Media-Public-Website-Spec.md`: consume media URLs from their owning module. There is no public standalone Media Library browsing API. No direct Storage/Firestore browsing is assumed. |
-| Impact reports | Could use published Content if configured, but the source and content type are unconfirmed. General Finance reports are private. |
+| Impact reports | Confirmed: published Content API records filtered by their Impact Reports category. Configure the exact stored category slug (the Content editor stores slugs), report assignments and primary-download selection. General Finance reports are private. |
 | Payments and dues | A later Payments page must follow `Payments-Public-Website-Spec.md`; Finance points to that dedicated contract. It is separate from the existing Event registration checkout. |
 | Partnership, brochure and testimonials | No established public partnership or testimonial content source. Keep `src/data/partnership.ts` local until the source, approved endorsements and brochure file are provided. Applications will use the approved shared Google Form journey; its URL is pending. |
 | Hero, partners, statistics, milestones and partnership benefits | No public homepage-settings contract has been established from the inspected specs. Retain local content until the intended source is confirmed. |
@@ -326,3 +328,7 @@ Alumni Network, Constitution, Payments & Dues, Elections and Subsidiaries are hi
 - Visual comparison against the Figma screenshot, exact supplied image assets, local fonts, desktop section positions and responsive layout.
 
 Live API behaviour, real newsletter delivery, payment processing and final content accuracy are outside this local-content phase.
+
+## Complete API-to-UI mapping — 25 October 2026
+
+`api-to-ui-mapping.md` covers all 13 page types, shared feeds, individual public fields, media/body/file handling, local-only copy, derived values, gaps and cache/source-mode requirements. This is a specification; Pages Functions, shared API feeds, the media gateway and local/API switch have not yet been wired into AMSUL-Website.

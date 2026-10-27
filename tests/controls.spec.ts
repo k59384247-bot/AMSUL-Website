@@ -63,7 +63,7 @@ test("custom dropdown keyboard, dismissal and mobile menu placement work", async
     await combo.press("n");
     await combo.press("Enter");
     await expect(combo).toHaveText("News");
-    await expect(page.locator(".blog-grid .story-card")).toHaveCount(2);
+    await expect(page.locator(".blog-grid .story-card")).toHaveCount(6);
     await combo.click();
     const bounds = await page.getByRole("listbox").boundingBox();
     expect(bounds).not.toBeNull();

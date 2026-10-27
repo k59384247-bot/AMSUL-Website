@@ -2,12 +2,18 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import assets from "@/data/highlights-assets.json";
-import { eventHighlights, highlightCategories, highlightContentTypes } from "@/data/event-highlights";
+
 import { StoryCard } from "./content-cards";
 import { CategoryFilters, ListingSearch, ListingSelect } from "./listing-controls";
 import { Pagination } from "./pagination";
+import { useWebsiteData, DataStatus } from "./website-data";
+import { postsOf, postCard, eventCard, programCard, upcomingEvents } from "@/lib/website/selectors";
 
 export function HighlightsListing() {
+  const { feed, loading, error } = useWebsiteData();
+  const eventHighlights = postsOf(feed, 'highlights').map(post => postCard(post, feed, 'highlights'));
+  const highlightCategories = feed.categories.filter(category => eventHighlights.some(post => post.categoryIds.includes(category.slug))).map(category => ({ id: category.slug, name: category.name }));
+  const highlightContentTypes = [...new Set(eventHighlights.map(post => post.contentType).filter(Boolean))];
   const [category, setCategory] = useState("all");
   const categories = [{ id: "all", name: "All categories" }, ...highlightCategories];
   const [contentType, setContentType] = useState("all");
@@ -17,7 +23,8 @@ export function HighlightsListing() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(15);
   const grid = useRef<HTMLDivElement>(null);
-  const filtered = eventHighlights.filter(highlight => (category === "all" || highlight.categoryId === category) && (contentType === "all" || highlight.contentType === contentType) && `${highlight.title} ${highlight.excerpt} ${highlight.location} ${highlight.date} ${highlight.tags.join(" ")}`.toLowerCase().includes(query.toLowerCase()));
+  if (loading || (error && !eventHighlights.length)) return <DataStatus />;
+  const filtered = eventHighlights.filter(highlight => (category === "all" || highlight.categoryIds.includes(category)) && (contentType === "all" || highlight.contentType === contentType) && `${highlight.title} ${highlight.excerpt} ${highlight.location} ${highlight.date} ${highlight.tags.join(" ")}`.toLowerCase().includes(query.toLowerCase()));
   const sorted = [...filtered].sort((a, b) => sort === "latest" ? b.publishedAt.localeCompare(a.publishedAt) : a.publishedAt.localeCompare(b.publishedAt));
   const visible = sorted.slice((page - 1) * pageSize, page * pageSize);
   const pageCount = Math.ceil(sorted.length / pageSize);

@@ -1,24 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-test("landing page fits desktop, tablet and narrow phones with all assets loaded", async ({ page }) => {
-  const errors: string[] = [];
-  page.on("pageerror", error => errors.push(error.message));
-  for (const width of [1440, 1024, 768, 390, 320]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
-    await page.evaluate(() => document.fonts.ready);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Shaping Medical Leaders");
-    const geometry = await page.evaluate(() => ({
-      width: document.documentElement.clientWidth,
-      scroll: document.documentElement.scrollWidth,
-      broken: Array.from(document.images).filter(image => !image.complete || !image.naturalWidth).map(image => image.src),
-    }));
-    expect(geometry.scroll, `Horizontal overflow at ${width}px`).toBeLessThanOrEqual(geometry.width);
-    expect(geometry.broken).toEqual([]);
-    if (width === 1440 || width === 390) await page.screenshot({ path: `test-results/landing-${width}.png`, fullPage: true });
-  }
-  expect(errors).toEqual([]);
-});
+import { responsivePage } from './responsive-page';
+test('landing page fits desktop, tablet and narrow phones with feed media', async ({ page }) => { await responsivePage(page, '/', 'Shaping Medical Leaders', 'landing'); });
 
 test("mobile menu opens the About page and closes with Escape", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });

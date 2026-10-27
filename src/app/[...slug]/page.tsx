@@ -8,7 +8,7 @@ type Props = { params: Promise<{ slug: string[] }> };
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return routes.filter(route => !["/partnerships", "/leadership", "/about", "/impact-reports", "/blog", "/programs-events", "/event-highlights", "/contact", ...reportDetails.map(report => `/impact-reports/${report.slug}`)].includes(route.href) && !route.href.startsWith("/blog/") && !route.href.startsWith("/programs-events/") && !route.href.startsWith("/event-highlights/")).map(route => ({ slug: route.href.slice(1).split("/") }));
+  return routes.filter(route => !["/partnerships", "/leadership", "/about", "/impact-reports", "/blog", "/programs-events", "/event-highlights", "/contact", ...reportDetails.map(report => `/impact-reports/${report.slug}`)].includes(route.href) && !route.href.startsWith("/impact-reports/") && !route.href.startsWith("/blog/") && !route.href.startsWith("/programs-events/") && !route.href.startsWith("/event-highlights/")).map(route => ({ slug: route.href.slice(1).split("/") }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

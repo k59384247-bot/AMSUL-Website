@@ -2,13 +2,20 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import assets from "@/data/blog-assets.json";
-import { blog, blogCategories, blogContentTypes, blogPosts } from "@/data/blog";
+
 import { Carousel } from "./carousel";
 import { StoryCard } from "./content-cards";
 import { CategoryFilters, ListingSearch, ListingSelect } from "./listing-controls";
 import { Pagination } from "./pagination";
+import { useWebsiteData, DataStatus } from "./website-data";
+import { postsOf, postCard, eventCard, programCard, upcomingEvents } from "@/lib/website/selectors";
 
 export function BlogListing() {
+  const { feed, loading, error } = useWebsiteData();
+  const blogPosts = postsOf(feed, 'blog').map(post => postCard(post, feed));
+  const blogCategories = feed.categories.filter(category => blogPosts.some(post => post.categoryIds.includes(category.slug))).map(category => ({ id: category.slug, name: category.name }));
+  const blogContentTypes = [...new Set(blogPosts.map(post => post.contentType).filter(Boolean))];
+  const featured = postsOf(feed, 'blog').filter(post => post.featured).map(post => postCard(post, feed));
   const [category, setCategory] = useState("all");
   const categories = [{ id: "all", name: "All categories" }, ...blogCategories];
   const [contentType, setContentType] = useState("all");
@@ -18,7 +25,8 @@ export function BlogListing() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(15);
   const grid = useRef<HTMLDivElement>(null);
-  const filtered = blogPosts.filter(post => (category === "all" || post.categoryId === category) && (contentType === "all" || post.tags[0] === contentType) && `${post.title} ${post.excerpt} ${post.author} ${post.tags.join(" ")}`.toLowerCase().includes(query.toLowerCase()));
+  if (loading || (error && !blogPosts.length)) return <DataStatus />;
+  const filtered = blogPosts.filter(post => (category === "all" || post.categoryIds.includes(category)) && (contentType === "all" || post.contentType === contentType) && `${post.title} ${post.excerpt} ${post.author} ${post.tags.join(" ")}`.toLowerCase().includes(query.toLowerCase()));
   const sorted = [...filtered].sort((a, b) => sort === "latest" ? b.publishedAt.localeCompare(a.publishedAt) : a.publishedAt.localeCompare(b.publishedAt));
   const visible = sorted.slice((page - 1) * pageSize, page * pageSize);
   const pageCount = Math.ceil(sorted.length / pageSize);
@@ -27,7 +35,7 @@ export function BlogListing() {
   function reset() { setDraft(""); setQuery(""); setCategory("all"); setContentType("all"); setPage(1); }
   function changePage(next: number) { setPage(next); grid.current?.focus({ preventScroll: true }); grid.current?.scrollIntoView({ block: "start", behavior: "instant" }); }
   return <section className="blog-listing-content section container" data-node-id="246:3248">
-    <Carousel label="Featured articles" controls dots arrowSrc={assets.imgPajamasArrowRight1} className="featured-carousel featured-blog-carousel">{blog.featured.map(story => <StoryCard key={story.id} story={story} featured={{ tags: story.tags, arrowSrc: assets.imgPajamasArrowRight, starSrc: assets.imgPhStarFourFill }} />)}</Carousel>
+    <Carousel label="Featured articles" controls dots arrowSrc={assets.imgPajamasArrowRight1} className="featured-carousel featured-blog-carousel">{featured.map(story => <StoryCard key={story.id} story={story} featured={{ tags: story.tags, arrowSrc: assets.imgPajamasArrowRight, starSrc: assets.imgPhStarFourFill }} />)}</Carousel>
     <div className="blog-filters listing-filter-controls"><CategoryFilters id="blog-category-label" items={categories} value={category} onChange={changeCategory} />
       <div className="blog-search-row listing-filter-search-row"><ListingSearch id="blog-search" label="Search articles" placeholder="Search Report" value={draft} onChange={setDraft} onSubmit={search} icon={assets.imgSiSearchFill} /><CategoryFilters mobile id="blog-category-label-mobile" items={categories} value={category} onChange={changeCategory} />
         <ListingSelect label="Content Type:" value={contentType} onChange={value => { setContentType(value); setPage(1); }} options={[{ value: "all", label: "All Types" }, ...blogContentTypes.map(type => ({ value: type, label: type }))]} icon={assets.imgOcticonChevronDown12} className={contentType !== "all" ? "has-selected-type" : ""} />

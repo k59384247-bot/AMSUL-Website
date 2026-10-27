@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.cloudflare/
+out/
 playwright-report/
 test-results/
 *.tsbuildinfo

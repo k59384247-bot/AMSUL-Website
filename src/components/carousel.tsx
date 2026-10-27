@@ -26,6 +26,7 @@ export function Carousel({ children, label, controls = false, className = "", ar
     node.scrollBy({ left: direction * step, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
 
+  if (Children.count(children) === 0) return null;
   return <div className={`carousel ${className}`} role="region" aria-label={label} aria-roledescription="carousel">
     <div ref={track} className="carousel-track" tabIndex={0} aria-label={`${label}. Use left and right arrow keys to scroll.`}
       onScroll={event => {
@@ -40,7 +41,7 @@ export function Carousel({ children, label, controls = false, className = "", ar
       }}>
       {Children.toArray(children)}
     </div>
-    {controls && <div className="carousel-controls">
+    {controls && Children.count(children) > 1 && <div className="carousel-controls">
       {dots ? <div className="carousel-dots">{Children.toArray(children).map((_, index) => <button key={index} className={`carousel-dot ${index === activeSlide ? "is-active" : ""}`} aria-label={`Show ${label.toLowerCase()} slide ${index + 1}`} aria-pressed={index === activeSlide} onClick={() => goToSlide(index)} />)}</div> : <div className="carousel-progress" aria-hidden="true"><span style={{ transform: `translateX(${position * 100}%)` }} /></div>}
       <div className="carousel-arrows">
         <button type="button" className="round-button" aria-label={`Previous ${label.toLowerCase()}`} disabled={position <= 0.001} onClick={() => move(-1)}><Icon className="arrow-back" src={arrowSrc} /></button>

@@ -1,0 +1,4109 @@
+{
+  "feed": {
+    "success": true,
+    "data": {
+      "posts": [
+        {
+          "id": "post-1",
+          "title": "Dear Future Doctor: It Is Okay to Be Undecided",
+          "slug": "dear-future-doctor-it-is-okay-to-be-undecided",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about academic, student life and service.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "article",
+            "name": "Article"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "academic"
+          ],
+          "tags": [
+            "academic"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-24T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-2",
+          "title": "AMSUL Hosts National Medical Conference",
+          "slug": "amsul-hosts-national-medical-conference",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about academic, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Tunde Okafor",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "news",
+            "name": "News"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "academic"
+          ],
+          "tags": [
+            "academic"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-23T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-3",
+          "title": "Understanding Neonatal Health in Nigeria",
+          "slug": "neonatal-mortality-nigeria",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about editorial board, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Zainab Adeyemi",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "publication",
+            "name": "Publication"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "editorial-board"
+          ],
+          "tags": [
+            "editorial-board"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-22T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-4",
+          "title": "Learning Beyond the Classroom: Student Story 4",
+          "slug": "campus-story-4",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about election, student life and service.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "news",
+            "name": "News"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "election"
+          ],
+          "tags": [
+            "election"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-21T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-5",
+          "title": "Learning Beyond the Classroom: Student Story 5",
+          "slug": "campus-story-5",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about editorial board, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Tunde Okafor",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "article",
+            "name": "Article"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "editorial-board"
+          ],
+          "tags": [
+            "editorial-board"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-20T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-6",
+          "title": "Learning Beyond the Classroom: Student Story 6",
+          "slug": "campus-story-6",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about election, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Zainab Adeyemi",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "news",
+            "name": "News"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "election"
+          ],
+          "tags": [
+            "election"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-19T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-7",
+          "title": "Learning Beyond the Classroom: Student Story 7",
+          "slug": "campus-story-7",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about editorial board, student life and service.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "article",
+            "name": "Article"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "editorial-board"
+          ],
+          "tags": [
+            "editorial-board"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-18T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-8",
+          "title": "Learning Beyond the Classroom: Student Story 8",
+          "slug": "campus-story-8",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about election, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Tunde Okafor",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "news",
+            "name": "News"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "election"
+          ],
+          "tags": [
+            "election"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-17T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-9",
+          "title": "Learning Beyond the Classroom: Student Story 9",
+          "slug": "campus-story-9",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about editorial board, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Zainab Adeyemi",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "article",
+            "name": "Article"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "editorial-board"
+          ],
+          "tags": [
+            "editorial-board"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-16T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-10",
+          "title": "Learning Beyond the Classroom: Student Story 10",
+          "slug": "campus-story-10",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about election, student life and service.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "news",
+            "name": "News"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "election"
+          ],
+          "tags": [
+            "election"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-15T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-11",
+          "title": "Learning Beyond the Classroom: Student Story 11",
+          "slug": "campus-story-11",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about editorial board, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Tunde Okafor",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "article",
+            "name": "Article"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "editorial-board"
+          ],
+          "tags": [
+            "editorial-board"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-14T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "post-12",
+          "title": "Learning Beyond the Classroom: Student Story 12",
+          "slug": "campus-story-12",
+          "subtitle": null,
+          "excerpt": "A fictional AMSUL story about election, student life and service.",
+          "coverImageUrl": null,
+          "featuredImageUrl": null,
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Zainab Adeyemi",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "news",
+            "name": "News"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "election"
+          ],
+          "tags": [
+            "election"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-10-13T09:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-1",
+          "title": "Health Week Impact Report 2025",
+          "slug": "amsul-health-week-2025",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 1.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [
+            {
+              "name": "Demonstration impact report 1.pdf",
+              "url": "/fixtures/demo-report.pdf",
+              "fileType": "pdf"
+            }
+          ],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-27T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-2",
+          "title": "Community Impact Report 2",
+          "slug": "community-impact-report-2",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 2.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-26T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-3",
+          "title": "Community Impact Report 3",
+          "slug": "community-impact-report-3",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 3.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": true,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-25T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-4",
+          "title": "Community Impact Report 4",
+          "slug": "community-impact-report-4",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 4.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-24T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-5",
+          "title": "Community Impact Report 5",
+          "slug": "community-impact-report-5",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 5.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-23T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-6",
+          "title": "Community Impact Report 6",
+          "slug": "community-impact-report-6",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 6.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-22T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-7",
+          "title": "Community Impact Report 7",
+          "slug": "community-impact-report-7",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 7.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-21T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-8",
+          "title": "Community Impact Report 8",
+          "slug": "community-impact-report-8",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 8.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-20T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-9",
+          "title": "Community Impact Report 9",
+          "slug": "community-impact-report-9",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 9.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-19T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-10",
+          "title": "Community Impact Report 10",
+          "slug": "community-impact-report-10",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 10.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-18T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-11",
+          "title": "Community Impact Report 11",
+          "slug": "community-impact-report-11",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 11.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-17T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-12",
+          "title": "Community Impact Report 12",
+          "slug": "community-impact-report-12",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 12.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-16T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-13",
+          "title": "Community Impact Report 13",
+          "slug": "community-impact-report-13",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 13.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "healthweek"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-15T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "report-14",
+          "title": "Community Impact Report 14",
+          "slug": "community-impact-report-14",
+          "subtitle": null,
+          "excerpt": "Fictional outcomes, participation and lessons from demonstration initiative 14.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "impact-reports",
+            "community-outreach"
+          ],
+          "tags": [
+            "Demonstration report"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-09-14T10:00:00Z",
+          "readTime": 3,
+          "eventId": null,
+          "albumUrl": null
+        },
+        {
+          "id": "highlight-1",
+          "title": "Mr & Miss AMSUL 2025",
+          "slug": "mr-miss-amsul-2025",
+          "subtitle": null,
+          "excerpt": "A fictional recap of Mr & Miss AMSUL 2025, with photographs and community partners.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "event-highlights",
+            "social"
+          ],
+          "tags": [
+            "Demo recap"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-08-19T10:00:00Z",
+          "readTime": 3,
+          "eventId": "event-5",
+          "albumUrl": "https://example.org/amsul-demo-album"
+        },
+        {
+          "id": "highlight-2",
+          "title": "Business Summit 2025",
+          "slug": "business-summit-2025",
+          "subtitle": null,
+          "excerpt": "A fictional recap of Business Summit 2025, with photographs and community partners.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "event-highlights",
+            "social"
+          ],
+          "tags": [
+            "Demo recap"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-08-18T10:00:00Z",
+          "readTime": 3,
+          "eventId": "event-6",
+          "albumUrl": null
+        },
+        {
+          "id": "highlight-3",
+          "title": "Campus Highlights: Edition 3",
+          "slug": "campus-highlight-3",
+          "subtitle": null,
+          "excerpt": "A fictional recap of Mr & Miss AMSUL 2025, with photographs and community partners.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "event-highlights",
+            "social"
+          ],
+          "tags": [
+            "Demo recap"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-08-17T10:00:00Z",
+          "readTime": 3,
+          "eventId": "event-5",
+          "albumUrl": null
+        },
+        {
+          "id": "highlight-4",
+          "title": "Campus Highlights: Edition 4",
+          "slug": "campus-highlight-4",
+          "subtitle": null,
+          "excerpt": "A fictional recap of Business Summit 2025, with photographs and community partners.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "event-highlights",
+            "social"
+          ],
+          "tags": [
+            "Demo recap"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-08-16T10:00:00Z",
+          "readTime": 3,
+          "eventId": "event-6",
+          "albumUrl": null
+        },
+        {
+          "id": "highlight-5",
+          "title": "Campus Highlights: Edition 5",
+          "slug": "campus-highlight-5",
+          "subtitle": null,
+          "excerpt": "A fictional recap of Mr & Miss AMSUL 2025, with photographs and community partners.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "event-highlights",
+            "social"
+          ],
+          "tags": [
+            "Demo recap"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-08-15T10:00:00Z",
+          "readTime": 3,
+          "eventId": "event-5",
+          "albumUrl": null
+        },
+        {
+          "id": "highlight-6",
+          "title": "Campus Highlights: Edition 6",
+          "slug": "campus-highlight-6",
+          "subtitle": null,
+          "excerpt": "A fictional recap of Business Summit 2025, with photographs and community partners.",
+          "coverImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "featuredImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "contentUrl": null,
+          "attachments": [],
+          "author": {
+            "id": "demo-author",
+            "name": "Amina Bello",
+            "avatarUrl": null
+          },
+          "contentType": {
+            "id": "event-report",
+            "name": "Event Report"
+          },
+          "contentUnit": {
+            "id": "editorial-board",
+            "name": "Editorial Board"
+          },
+          "categories": [
+            "event-highlights",
+            "social"
+          ],
+          "tags": [
+            "Demo recap"
+          ],
+          "hub": "blog",
+          "featured": false,
+          "displaySection": [
+            "blog"
+          ],
+          "seoTitle": null,
+          "seoDescription": null,
+          "publishedAt": "2026-08-14T10:00:00Z",
+          "readTime": 3,
+          "eventId": "event-6",
+          "albumUrl": null
+        }
+      ],
+      "categories": [
+        {
+          "id": "cat-impact-reports",
+          "name": "Impact Reports",
+          "slug": "impact-reports",
+          "postCount": 0
+        },
+        {
+          "id": "cat-event-highlights",
+          "name": "Event Highlights",
+          "slug": "event-highlights",
+          "postCount": 0
+        },
+        {
+          "id": "cat-healthweek",
+          "name": "HealthWeek",
+          "slug": "healthweek",
+          "postCount": 0
+        },
+        {
+          "id": "cat-academic",
+          "name": "Academic",
+          "slug": "academic",
+          "postCount": 0
+        },
+        {
+          "id": "cat-community-outreach",
+          "name": "Community Outreach",
+          "slug": "community-outreach",
+          "postCount": 0
+        },
+        {
+          "id": "cat-editorial-board",
+          "name": "Editorial Board",
+          "slug": "editorial-board",
+          "postCount": 0
+        },
+        {
+          "id": "cat-election",
+          "name": "Election",
+          "slug": "election",
+          "postCount": 0
+        },
+        {
+          "id": "cat-social",
+          "name": "Social",
+          "slug": "social",
+          "postCount": 0
+        }
+      ],
+      "events": [
+        {
+          "id": "event-1",
+          "slug": "amsul-business-summit-2026",
+          "title": "AMSUL Business Summit 2026",
+          "startDate": "2026-11-02T09:00:00Z",
+          "endDate": null,
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "timezone": "Africa/Lagos",
+          "isMultiDay": false,
+          "location": "Old Great Hall, LUTH",
+          "organizer": "AMSUL",
+          "mapLocation": null,
+          "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "posterImageUrl": null,
+          "eventType": "program_event",
+          "registrationType": "free",
+          "registrationRequired": true,
+          "registrationDeadline": null,
+          "capacity": null,
+          "totalRegistrations": 0,
+          "programId": "program-healthweek",
+          "category": "social",
+          "tags": [
+            "Demo event"
+          ],
+          "featured": true,
+          "featuredType": null,
+          "displaySection": [
+            "homepage",
+            "events"
+          ],
+          "useExternalRegistration": false,
+          "externalRegistrationUrl": null,
+          "isPublic": true
+        },
+        {
+          "id": "event-2",
+          "slug": "mr-miss-amsul-2026",
+          "title": "Mr & Miss AMSUL 2026",
+          "startDate": "2026-11-03T09:00:00Z",
+          "endDate": null,
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "timezone": "Africa/Lagos",
+          "isMultiDay": false,
+          "location": "College of Medicine, Idi-Araba",
+          "organizer": "AMSUL",
+          "mapLocation": null,
+          "bannerImageUrl": null,
+          "posterImageUrl": null,
+          "eventType": "standalone",
+          "registrationType": "free",
+          "registrationRequired": true,
+          "registrationDeadline": null,
+          "capacity": null,
+          "totalRegistrations": 0,
+          "programId": null,
+          "category": "social",
+          "tags": [
+            "Demo event"
+          ],
+          "featured": true,
+          "featuredType": null,
+          "displaySection": [
+            "homepage",
+            "events"
+          ],
+          "useExternalRegistration": false,
+          "externalRegistrationUrl": null,
+          "isPublic": true
+        },
+        {
+          "id": "event-3",
+          "slug": "community-health-outreach",
+          "title": "Community Health Outreach",
+          "startDate": "2026-11-04T09:00:00Z",
+          "endDate": null,
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "timezone": "Africa/Lagos",
+          "isMultiDay": false,
+          "location": "Old Great Hall, LUTH",
+          "organizer": "AMSUL",
+          "mapLocation": null,
+          "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "posterImageUrl": null,
+          "eventType": "program_event",
+          "registrationType": "free",
+          "registrationRequired": true,
+          "registrationDeadline": null,
+          "capacity": null,
+          "totalRegistrations": 0,
+          "programId": "program-healthweek",
+          "category": "outreach",
+          "tags": [
+            "Demo event"
+          ],
+          "featured": true,
+          "featuredType": null,
+          "displaySection": [
+            "homepage",
+            "events"
+          ],
+          "useExternalRegistration": false,
+          "externalRegistrationUrl": null,
+          "isPublic": true
+        },
+        {
+          "id": "event-4",
+          "slug": "clinical-skills-workshop",
+          "title": "Clinical Skills Workshop",
+          "startDate": "2026-11-05T09:00:00Z",
+          "endDate": null,
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "timezone": "Africa/Lagos",
+          "isMultiDay": false,
+          "location": "College of Medicine, Idi-Araba",
+          "organizer": "AMSUL",
+          "mapLocation": null,
+          "bannerImageUrl": null,
+          "posterImageUrl": null,
+          "eventType": "standalone",
+          "registrationType": "free",
+          "registrationRequired": true,
+          "registrationDeadline": null,
+          "capacity": null,
+          "totalRegistrations": 0,
+          "programId": null,
+          "category": "academic",
+          "tags": [
+            "Demo event"
+          ],
+          "featured": false,
+          "featuredType": null,
+          "displaySection": [
+            "homepage",
+            "events"
+          ],
+          "useExternalRegistration": false,
+          "externalRegistrationUrl": null,
+          "isPublic": true
+        },
+        {
+          "id": "event-5",
+          "slug": "mr-miss-amsul-2025",
+          "title": "Mr & Miss AMSUL 2025",
+          "startDate": "2025-07-05T09:00:00Z",
+          "endDate": null,
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "timezone": "Africa/Lagos",
+          "isMultiDay": false,
+          "location": "Old Great Hall, LUTH",
+          "organizer": "AMSUL",
+          "mapLocation": null,
+          "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "posterImageUrl": null,
+          "eventType": "standalone",
+          "registrationType": "free",
+          "registrationRequired": false,
+          "registrationDeadline": null,
+          "capacity": null,
+          "totalRegistrations": 0,
+          "programId": null,
+          "category": "social",
+          "tags": [
+            "Demo event"
+          ],
+          "featured": false,
+          "featuredType": null,
+          "displaySection": [
+            "homepage",
+            "events"
+          ],
+          "useExternalRegistration": false,
+          "externalRegistrationUrl": null,
+          "isPublic": true
+        },
+        {
+          "id": "event-6",
+          "slug": "business-summit-2025",
+          "title": "Business Summit 2025",
+          "startDate": "2025-07-06T09:00:00Z",
+          "endDate": null,
+          "startTime": "10:00",
+          "endTime": "14:00",
+          "timezone": "Africa/Lagos",
+          "isMultiDay": false,
+          "location": "College of Medicine, Idi-Araba",
+          "organizer": "AMSUL",
+          "mapLocation": null,
+          "bannerImageUrl": null,
+          "posterImageUrl": null,
+          "eventType": "standalone",
+          "registrationType": "free",
+          "registrationRequired": false,
+          "registrationDeadline": null,
+          "capacity": null,
+          "totalRegistrations": 0,
+          "programId": null,
+          "category": "social",
+          "tags": [
+            "Demo event"
+          ],
+          "featured": false,
+          "featuredType": null,
+          "displaySection": [
+            "homepage",
+            "events"
+          ],
+          "useExternalRegistration": false,
+          "externalRegistrationUrl": null,
+          "isPublic": true
+        }
+      ],
+      "programs": [
+        {
+          "id": "program-healthweek",
+          "title": "AMSUL HealthWeek 2026",
+          "slug": "amsul-healthweek-2026",
+          "description": "A fictional programme combining health education, outreach and student learning.",
+          "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "year": 2026,
+          "startDate": "2026-11-01T09:00:00Z",
+          "endDate": "2026-11-14T16:00:00Z",
+          "status": "published",
+          "eventCount": 2
+        }
+      ],
+      "executives": [
+        {
+          "id": "executive-1",
+          "name": "Amina Bello (Demo)",
+          "position": "President",
+          "imageUrl": null,
+          "bio": "Fictional president profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 1,
+          "group": "executive",
+          "featured": true
+        },
+        {
+          "id": "executive-2",
+          "name": "Tunde Okafor (Demo)",
+          "position": "Vice President",
+          "imageUrl": null,
+          "bio": "Fictional vice president profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 2,
+          "group": "executive",
+          "featured": true
+        },
+        {
+          "id": "executive-3",
+          "name": "Zainab Adeyemi (Demo)",
+          "position": "General Secretary",
+          "imageUrl": null,
+          "bio": "Fictional general secretary profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 3,
+          "group": "executive",
+          "featured": false
+        },
+        {
+          "id": "executive-4",
+          "name": "Chidi Nwosu (Demo)",
+          "position": "Welfare Secretary",
+          "imageUrl": null,
+          "bio": "Fictional welfare secretary profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 4,
+          "group": "executive",
+          "featured": false
+        },
+        {
+          "id": "patron-1",
+          "name": "Amina Bello (Demo)",
+          "position": "Grand Patron",
+          "imageUrl": null,
+          "bio": "Fictional grand patron profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 1,
+          "group": "patron",
+          "featured": true
+        },
+        {
+          "id": "patron-2",
+          "name": "Tunde Okafor (Demo)",
+          "position": "Patron",
+          "imageUrl": null,
+          "bio": "Fictional patron profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 2,
+          "group": "patron",
+          "featured": true
+        },
+        {
+          "id": "patron-3",
+          "name": "Zainab Adeyemi (Demo)",
+          "position": "Patron",
+          "imageUrl": null,
+          "bio": "Fictional patron profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 3,
+          "group": "patron",
+          "featured": false
+        },
+        {
+          "id": "committee-1",
+          "name": "Amina Bello (Demo)",
+          "position": "Senate President",
+          "imageUrl": null,
+          "bio": "Fictional senate president profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 1,
+          "group": "committee",
+          "featured": true
+        },
+        {
+          "id": "committee-2",
+          "name": "Tunde Okafor (Demo)",
+          "position": "Quiz Club President",
+          "imageUrl": null,
+          "bio": "Fictional quiz club president profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 2,
+          "group": "committee",
+          "featured": true
+        },
+        {
+          "id": "committee-3",
+          "name": "Zainab Adeyemi (Demo)",
+          "position": "Editorial Board President",
+          "imageUrl": null,
+          "bio": "Fictional editorial board president profile for testing. This is not an actual AMSUL appointment.",
+          "tenureStart": "2026-01-01T00:00:00Z",
+          "tenureEnd": null,
+          "order": 3,
+          "group": "committee",
+          "featured": true
+        }
+      ]
+    }
+  },
+  "bodies": {
+    "post-1": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Dear Future Doctor: It Is Okay to Be Undecided"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about academic, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-2": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "AMSUL Hosts National Medical Conference"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about academic, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-3": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Understanding Neonatal Health in Nigeria"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about editorial board, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-4": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 4"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about election, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-5": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 5"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about editorial board, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-6": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 6"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about election, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-7": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 7"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about editorial board, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-8": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 8"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about election, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-9": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 9"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about editorial board, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-10": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 10"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about election, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-11": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 11"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about editorial board, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "post-12": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Learning Beyond the Classroom: Student Story 12"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional AMSUL story about election, student life and service."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-1": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Health Week Impact Report 2025"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 1."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-2": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 2"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 2."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-3": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 3"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 3."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-4": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 4"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 4."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-5": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 5"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 5."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-6": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 6"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 6."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-7": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 7"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 7."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-8": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 8"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 8."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-9": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 9"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 9."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-10": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 10"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 10."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-11": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 11"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 11."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-12": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 12"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 12."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-13": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 13"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 13."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "report-14": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Impact Report 14"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Fictional outcomes, participation and lessons from demonstration initiative 14."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "highlight-1": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Mr & Miss AMSUL 2025"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional recap of Mr & Miss AMSUL 2025, with photographs and community partners."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "highlight-2": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Business Summit 2025"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional recap of Business Summit 2025, with photographs and community partners."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "highlight-3": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Campus Highlights: Edition 3"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional recap of Mr & Miss AMSUL 2025, with photographs and community partners."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "highlight-4": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Campus Highlights: Edition 4"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional recap of Business Summit 2025, with photographs and community partners."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "highlight-5": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Campus Highlights: Edition 5"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional recap of Mr & Miss AMSUL 2025, with photographs and community partners."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "highlight-6": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Campus Highlights: Edition 6"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "A fictional recap of Business Summit 2025, with photographs and community partners."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "event-1": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "AMSUL Business Summit 2026"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Explore the activities and opportunities at this fictional AMSUL event."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "event-2": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Mr & Miss AMSUL 2026"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Explore the activities and opportunities at this fictional AMSUL event."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "event-3": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Community Health Outreach"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Explore the activities and opportunities at this fictional AMSUL event."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "event-4": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Clinical Skills Workshop"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Explore the activities and opportunities at this fictional AMSUL event."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "event-5": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Mr & Miss AMSUL 2025"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Explore the activities and opportunities at this fictional AMSUL event."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    },
+    "event-6": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 2
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Business Summit 2025"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Explore the activities and opportunities at this fictional AMSUL event."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "attrs": {
+            "level": 3
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "What happened next"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "This is fictional demonstration content for testing the AMSUL website. Replace this local fixture with approved editorial content before public launch."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "events": {
+    "event-1": {
+      "success": true,
+      "data": {
+        "id": "event-1",
+        "slug": "amsul-business-summit-2026",
+        "title": "AMSUL Business Summit 2026",
+        "startDate": "2026-11-02T09:00:00Z",
+        "endDate": null,
+        "startTime": "10:00",
+        "endTime": "14:00",
+        "timezone": "Africa/Lagos",
+        "isMultiDay": false,
+        "location": "Old Great Hall, LUTH",
+        "organizer": "AMSUL",
+        "mapLocation": null,
+        "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+        "posterImageUrl": null,
+        "eventType": "program_event",
+        "registrationType": "free",
+        "registrationRequired": true,
+        "registrationDeadline": null,
+        "capacity": null,
+        "totalRegistrations": 0,
+        "programId": "program-healthweek",
+        "category": "social",
+        "tags": [
+          "Demo event"
+        ],
+        "featured": true,
+        "featuredType": null,
+        "displaySection": [
+          "homepage",
+          "events"
+        ],
+        "useExternalRegistration": false,
+        "externalRegistrationUrl": null,
+        "isPublic": true,
+        "descriptionUrl": null,
+        "paymentAmount": null,
+        "paymentCurrency": "NGN"
+      }
+    },
+    "event-2": {
+      "success": true,
+      "data": {
+        "id": "event-2",
+        "slug": "mr-miss-amsul-2026",
+        "title": "Mr & Miss AMSUL 2026",
+        "startDate": "2026-11-03T09:00:00Z",
+        "endDate": null,
+        "startTime": "10:00",
+        "endTime": "14:00",
+        "timezone": "Africa/Lagos",
+        "isMultiDay": false,
+        "location": "College of Medicine, Idi-Araba",
+        "organizer": "AMSUL",
+        "mapLocation": null,
+        "bannerImageUrl": null,
+        "posterImageUrl": null,
+        "eventType": "standalone",
+        "registrationType": "free",
+        "registrationRequired": true,
+        "registrationDeadline": null,
+        "capacity": null,
+        "totalRegistrations": 0,
+        "programId": null,
+        "category": "social",
+        "tags": [
+          "Demo event"
+        ],
+        "featured": true,
+        "featuredType": null,
+        "displaySection": [
+          "homepage",
+          "events"
+        ],
+        "useExternalRegistration": false,
+        "externalRegistrationUrl": null,
+        "isPublic": true,
+        "descriptionUrl": null,
+        "paymentAmount": null,
+        "paymentCurrency": "NGN"
+      }
+    },
+    "event-3": {
+      "success": true,
+      "data": {
+        "id": "event-3",
+        "slug": "community-health-outreach",
+        "title": "Community Health Outreach",
+        "startDate": "2026-11-04T09:00:00Z",
+        "endDate": null,
+        "startTime": "10:00",
+        "endTime": "14:00",
+        "timezone": "Africa/Lagos",
+        "isMultiDay": false,
+        "location": "Old Great Hall, LUTH",
+        "organizer": "AMSUL",
+        "mapLocation": null,
+        "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+        "posterImageUrl": null,
+        "eventType": "program_event",
+        "registrationType": "free",
+        "registrationRequired": true,
+        "registrationDeadline": null,
+        "capacity": null,
+        "totalRegistrations": 0,
+        "programId": "program-healthweek",
+        "category": "outreach",
+        "tags": [
+          "Demo event"
+        ],
+        "featured": true,
+        "featuredType": null,
+        "displaySection": [
+          "homepage",
+          "events"
+        ],
+        "useExternalRegistration": false,
+        "externalRegistrationUrl": null,
+        "isPublic": true,
+        "descriptionUrl": null,
+        "paymentAmount": null,
+        "paymentCurrency": "NGN"
+      }
+    },
+    "event-4": {
+      "success": true,
+      "data": {
+        "id": "event-4",
+        "slug": "clinical-skills-workshop",
+        "title": "Clinical Skills Workshop",
+        "startDate": "2026-11-05T09:00:00Z",
+        "endDate": null,
+        "startTime": "10:00",
+        "endTime": "14:00",
+        "timezone": "Africa/Lagos",
+        "isMultiDay": false,
+        "location": "College of Medicine, Idi-Araba",
+        "organizer": "AMSUL",
+        "mapLocation": null,
+        "bannerImageUrl": null,
+        "posterImageUrl": null,
+        "eventType": "standalone",
+        "registrationType": "free",
+        "registrationRequired": true,
+        "registrationDeadline": null,
+        "capacity": null,
+        "totalRegistrations": 0,
+        "programId": null,
+        "category": "academic",
+        "tags": [
+          "Demo event"
+        ],
+        "featured": false,
+        "featuredType": null,
+        "displaySection": [
+          "homepage",
+          "events"
+        ],
+        "useExternalRegistration": false,
+        "externalRegistrationUrl": null,
+        "isPublic": true,
+        "descriptionUrl": null,
+        "paymentAmount": null,
+        "paymentCurrency": "NGN"
+      }
+    },
+    "event-5": {
+      "success": true,
+      "data": {
+        "id": "event-5",
+        "slug": "mr-miss-amsul-2025",
+        "title": "Mr & Miss AMSUL 2025",
+        "startDate": "2025-07-05T09:00:00Z",
+        "endDate": null,
+        "startTime": "10:00",
+        "endTime": "14:00",
+        "timezone": "Africa/Lagos",
+        "isMultiDay": false,
+        "location": "Old Great Hall, LUTH",
+        "organizer": "AMSUL",
+        "mapLocation": null,
+        "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+        "posterImageUrl": null,
+        "eventType": "standalone",
+        "registrationType": "free",
+        "registrationRequired": false,
+        "registrationDeadline": null,
+        "capacity": null,
+        "totalRegistrations": 0,
+        "programId": null,
+        "category": "social",
+        "tags": [
+          "Demo event"
+        ],
+        "featured": false,
+        "featuredType": null,
+        "displaySection": [
+          "homepage",
+          "events"
+        ],
+        "useExternalRegistration": false,
+        "externalRegistrationUrl": null,
+        "isPublic": true,
+        "descriptionUrl": null,
+        "paymentAmount": null,
+        "paymentCurrency": "NGN"
+      }
+    },
+    "event-6": {
+      "success": true,
+      "data": {
+        "id": "event-6",
+        "slug": "business-summit-2025",
+        "title": "Business Summit 2025",
+        "startDate": "2025-07-06T09:00:00Z",
+        "endDate": null,
+        "startTime": "10:00",
+        "endTime": "14:00",
+        "timezone": "Africa/Lagos",
+        "isMultiDay": false,
+        "location": "College of Medicine, Idi-Araba",
+        "organizer": "AMSUL",
+        "mapLocation": null,
+        "bannerImageUrl": null,
+        "posterImageUrl": null,
+        "eventType": "standalone",
+        "registrationType": "free",
+        "registrationRequired": false,
+        "registrationDeadline": null,
+        "capacity": null,
+        "totalRegistrations": 0,
+        "programId": null,
+        "category": "social",
+        "tags": [
+          "Demo event"
+        ],
+        "featured": false,
+        "featuredType": null,
+        "displaySection": [
+          "homepage",
+          "events"
+        ],
+        "useExternalRegistration": false,
+        "externalRegistrationUrl": null,
+        "isPublic": true,
+        "descriptionUrl": null,
+        "paymentAmount": null,
+        "paymentCurrency": "NGN"
+      }
+    }
+  },
+  "programs": {
+    "program-healthweek": {
+      "success": true,
+      "data": {
+        "id": "program-healthweek",
+        "title": "AMSUL HealthWeek 2026",
+        "slug": "amsul-healthweek-2026",
+        "description": "A fictional programme combining health education, outreach and student learning.",
+        "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+        "year": 2026,
+        "startDate": "2026-11-01T09:00:00Z",
+        "endDate": "2026-11-14T16:00:00Z",
+        "status": "published",
+        "eventCount": 2,
+        "events": [
+          {
+            "id": "event-1",
+            "slug": "amsul-business-summit-2026",
+            "title": "AMSUL Business Summit 2026",
+            "startDate": "2026-11-02T09:00:00Z",
+            "endDate": null,
+            "startTime": "10:00",
+            "endTime": "14:00",
+            "timezone": "Africa/Lagos",
+            "isMultiDay": false,
+            "location": "Old Great Hall, LUTH",
+            "organizer": "AMSUL",
+            "mapLocation": null,
+            "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+            "posterImageUrl": null,
+            "eventType": "program_event",
+            "registrationType": "free",
+            "registrationRequired": true,
+            "registrationDeadline": null,
+            "capacity": null,
+            "totalRegistrations": 0,
+            "programId": "program-healthweek",
+            "category": "social",
+            "tags": [
+              "Demo event"
+            ],
+            "featured": true,
+            "featuredType": null,
+            "displaySection": [
+              "homepage",
+              "events"
+            ],
+            "useExternalRegistration": false,
+            "externalRegistrationUrl": null,
+            "isPublic": true
+          },
+          {
+            "id": "event-3",
+            "slug": "community-health-outreach",
+            "title": "Community Health Outreach",
+            "startDate": "2026-11-04T09:00:00Z",
+            "endDate": null,
+            "startTime": "10:00",
+            "endTime": "14:00",
+            "timezone": "Africa/Lagos",
+            "isMultiDay": false,
+            "location": "Old Great Hall, LUTH",
+            "organizer": "AMSUL",
+            "mapLocation": null,
+            "bannerImageUrl": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+            "posterImageUrl": null,
+            "eventType": "program_event",
+            "registrationType": "free",
+            "registrationRequired": true,
+            "registrationDeadline": null,
+            "capacity": null,
+            "totalRegistrations": 0,
+            "programId": "program-healthweek",
+            "category": "outreach",
+            "tags": [
+              "Demo event"
+            ],
+            "featured": true,
+            "featuredType": null,
+            "displaySection": [
+              "homepage",
+              "events"
+            ],
+            "useExternalRegistration": false,
+            "externalRegistrationUrl": null,
+            "isPublic": true
+          }
+        ]
+      }
+    }
+  },
+  "media": {
+    "event-1": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-1-photo-0",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 1",
+          "order": 0
+        },
+        {
+          "id": "event-1-photo-1",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 2",
+          "order": 1
+        }
+      ]
+    },
+    "event-2": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-2-photo-0",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 1",
+          "order": 0
+        },
+        {
+          "id": "event-2-photo-1",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 2",
+          "order": 1
+        }
+      ]
+    },
+    "event-3": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-3-photo-0",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 1",
+          "order": 0
+        },
+        {
+          "id": "event-3-photo-1",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 2",
+          "order": 1
+        }
+      ]
+    },
+    "event-4": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-4-photo-0",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 1",
+          "order": 0
+        },
+        {
+          "id": "event-4-photo-1",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 2",
+          "order": 1
+        }
+      ]
+    },
+    "event-5": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-5-photo-0",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 1",
+          "order": 0
+        },
+        {
+          "id": "event-5-photo-1",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 2",
+          "order": 1
+        },
+        {
+          "id": "event-5-photo-2",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 3",
+          "order": 2
+        },
+        {
+          "id": "event-5-photo-3",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 4",
+          "order": 3
+        },
+        {
+          "id": "event-5-photo-4",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 5",
+          "order": 4
+        }
+      ]
+    },
+    "event-6": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-6-photo-0",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 1",
+          "order": 0
+        },
+        {
+          "id": "event-6-photo-1",
+          "type": "photo",
+          "url": "/assets/9c86e588-86ca-46ff-ae48-7afc316b134d.png",
+          "caption": "Demonstration photo 2",
+          "order": 1
+        }
+      ]
+    }
+  },
+  "sponsors": {
+    "event-1": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-1-sponsor-0",
+          "name": "Demonstration partner 1",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        }
+      ]
+    },
+    "event-2": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-2-sponsor-0",
+          "name": "Demonstration partner 1",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        }
+      ]
+    },
+    "event-3": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-3-sponsor-0",
+          "name": "Demonstration partner 1",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        }
+      ]
+    },
+    "event-4": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-4-sponsor-0",
+          "name": "Demonstration partner 1",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        }
+      ]
+    },
+    "event-5": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-5-sponsor-0",
+          "name": "Demonstration partner 1",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        },
+        {
+          "id": "event-5-sponsor-1",
+          "name": "Demonstration partner 2",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        },
+        {
+          "id": "event-5-sponsor-2",
+          "name": "Demonstration partner 3",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        }
+      ]
+    },
+    "event-6": {
+      "success": true,
+      "data": [
+        {
+          "id": "event-6-sponsor-0",
+          "name": "Demonstration partner 1",
+          "logoUrl": "/assets/da6d1683-9802-4583-b0c9-76a2b3d46eef.png",
+          "tier": "partner",
+          "websiteUrl": null
+        }
+      ]
+    }
+  }
+}

@@ -17,37 +17,10 @@ function loadComponent<T>(path: string): T {
 const { PictureGallery } = loadComponent<typeof import("../src/components/picture-gallery")>("../src/components/picture-gallery.tsx");
 const { Sponsors } = loadComponent<typeof import("../src/components/sponsors")>("../src/components/sponsors.tsx");
 
+import { responsivePage } from './responsive-page';
 const url = "/event-highlights/mr-miss-amsul-2025";
 
-test("highlight details follow the frame with the agreed shared header/footer and responsive layout", async ({ page }) => {
-  const errors: string[] = [];
-  page.on("pageerror", error => errors.push(error.message));
-  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
-  for (const width of [1440, 1024, 768, 390, 320]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto(url);
-    await page.evaluate(() => document.fonts.ready);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("MR & MISS AMSUL 2025");
-    await expect(page.locator(".hero-thumbnails")).toHaveCount(0);
-    await expect(page.locator(".picture-card")).toHaveCount(5);
-    await expect(page.locator(".event-sponsor")).toHaveCount(6);
-    await expect(page.locator(".highlight-related-grid>.content-card")).toHaveCount(3);
-    const geometry = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth, broken: [...document.images].filter(image => !image.complete || !image.naturalWidth).map(image => image.src) }));
-    expect(geometry.scroll, `Horizontal overflow at ${width}px`).toBeLessThanOrEqual(geometry.width);
-    expect(geometry.broken).toEqual([]);
-    if (width === 1440) {
-      expect(await page.locator("main>section,footer").evaluateAll(nodes => nodes.map(node => ({ top: (node as HTMLElement).offsetTop, height: (node as HTMLElement).offsetHeight })))).toEqual([
-        { top: 112, height: 964 }, { top: 1076, height: 1456 }, { top: 2532, height: 636 }, { top: 3168, height: 440 },
-      ]);
-      expect(await page.locator(".picture-card").evaluateAll(nodes => nodes.map(node => ({ width: node.getBoundingClientRect().width, height: node.getBoundingClientRect().height })))).toEqual([
-        { width: 365, height: 240 }, { width: 365, height: 240 }, { width: 742, height: 320 }, { width: 365, height: 240 }, { width: 365, height: 240 },
-      ]);
-    }
-    if (width === 1440 || width === 390) await page.screenshot({ path: `test-results/highlight-details-${width}.png`, fullPage: true });
-  }
-  expect(errors).toEqual([]);
-});
-
+test('highlight details retain their responsive gallery and shared header/footer', async ({ page }) => { await responsivePage(page, url, 'Mr & Miss AMSUL 2025', 'highlight-details'); });
 test("picture and sponsor lists resize for zero, single, odd and larger counts", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(url);
@@ -84,24 +57,10 @@ test("picture and sponsor lists resize for zero, single, odd and larger counts",
   }
 });
 
-test("highlight listing, back, album feedback and related links work", async ({ page }) => {
-  await page.goto("/event-highlights");
-  await page.locator(".highlights-grid .event-highlight-card").first().click();
-  await expect(page).toHaveURL(new RegExp(`${url}$`));
-  const map = page.getByRole("link", { name: /Find Old Great Hall, LUTH/ });
-  await expect(map).toHaveAttribute("href", "https://www.google.com/maps/search/?api=1&query=Old%20Great%20Hall%2C%20LUTH");
-  await expect(map).toHaveAttribute("target", "_blank");
-  await page.getByRole("button", { name: "View All Pictures", exact: true }).click();
-  await expect(page.locator(".event-pictures-action").getByRole("status")).toHaveText("The event photo album link has not been provided yet. Please check back later.");
-  await expect(page).toHaveURL(new RegExp(`${url}$`));
-  await page.getByRole("link", { name: "Back to Event Highlights", exact: true }).click();
-  await expect(page).toHaveURL(/\/event-highlights$/);
+test('album links are supplied URLs and related highlights open distinct records', async ({ page }) => {
   await page.goto(url);
-  await page.locator(".highlight-related-grid .past-event-card").nth(1).click();
-  await expect(page).toHaveURL(/\/event-highlights\/business-summit-2025$/);
-  await expect(page.getByText("Page coming soon", { exact: true })).toBeVisible();
-  await page.goto(url);
-  await page.locator(".highlight-related-grid .report-card").click();
-  await expect(page).toHaveURL(/\/impact-reports\/amsul-health-week-2025$/);
-  expect((await page.goto("/event-highlights/unknown-highlight"))?.status()).toBe(404);
+  await expect(page.getByRole('link', { name: 'View All Pictures', exact: true })).toHaveAttribute('href', 'https://example.org/amsul-demo-album');
+  const card = page.locator('.highlight-related-grid .past-event-card').first(); const title = await card.locator('h3').innerText(); await card.click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
+  expect((await page.goto('/event-highlights/unknown-highlight'))?.status()).toBe(404);
 });

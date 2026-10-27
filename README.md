@@ -1,3 +1,5 @@
+> **Content integration update:** Local fixtures are active (`NEXT_PUBLIC_WEBSITE_DATA_SOURCE=local`). See [Data integration](docs/data-integration.md) for the fixture file, API switch, Cloudflare Pages Function configuration, cache behavior and remaining submission work. Earlier sample-data descriptions below document the original Figma build; the rendered variable records now come from the shared feed.
+
 # AMSUL Website
 
 The public AMSUL website, with the landing, About Us, Impact Report Hub, Impact Report Details, Blog Listing, Blog Detail, Event Listing, Event Details, Event Highlights, Event Highlights Details, Contact Us, Leadership and Partnership pages supplied in Figma.
@@ -26,7 +28,7 @@ Browser checks use Playwright Chromium. On a new machine, run `npx playwright in
 - Reproduce the Figma designs; adapt layout for mobile because no mobile frame was supplied.
 - Build one page at a time. Other destinations currently show explicit temporary pages.
 - Reuse the shared components below before adding any new component.
-- Keep page content in `src/data/`, separate from markup. No dashboard connection is active.
+- Keep fixed institutional copy in `src/data/`. Variable content comes from the shared data layer; local dashboard-shaped fixtures are active by default.
 - Keep the reserved landing-page and About Us sections empty until their content is supplied.
 - Do not show hero side-thumbnail strips on any page; the user explicitly removed them.
 
@@ -166,3 +168,5 @@ Pagination renders exactly the actual result page count, recalculates after sear
 ## Content handover
 
 The supplied 13 page types are built. See `docs/website-content-checklist.md` for the consolidated final content/assets checklist, unresolved sample-copy issues, service decisions and integration gaps. `docs/content-register.md` retains the section-by-section inventory. Both Partner With AMSUL and Become A Partner will use the same Google Form URL when supplied; a dedicated application page is not required.
+
+The complete field-level integration specification is in `docs/api-to-ui-mapping.md` (25 October 2026). Impact Reports are mapped as a category-filtered view of the shared Content feed; Pages Functions and cache wiring are still implementation work.

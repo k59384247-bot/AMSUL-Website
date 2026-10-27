@@ -1,0 +1,13 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const ts = require('typescript');
+const { loadEnvConfig } = require('@next/env');
+loadEnvConfig(process.cwd());
+const source = process.env.NEXT_PUBLIC_WEBSITE_DATA_SOURCE || 'local';
+if (!['local', 'api'].includes(source)) throw new Error('NEXT_PUBLIC_WEBSITE_DATA_SOURCE must be local or api.');
+const input = fs.readFileSync(path.join(process.cwd(), 'cloudflare/worker.ts'), 'utf8').replace("'__WEBSITE_SOURCE__'", JSON.stringify(source));
+const output = ts.transpileModule(input, { compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 } }).outputText;
+const folder = process.argv.includes('--dev') ? '.cloudflare' : 'out';
+fs.mkdirSync(folder, { recursive: true });
+fs.writeFileSync(path.join(folder, process.argv.includes('--dev') ? 'worker.mjs' : '_worker.js'), output);
+if (folder === 'out') fs.writeFileSync('out/_routes.json', JSON.stringify({ version: 1, include: ['/api/website/*', '/blog/*', '/impact-reports/*', '/programs-events/*', '/event-highlights/*'], exclude: [] }, null, 2));

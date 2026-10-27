@@ -287,3 +287,17 @@ input:focus-visible,textarea:focus-visible{box-shadow:0 0 0 2px var(--button)}
   .partnership-callout-panel .button-row{gap:8px}
   .partnership-callout-panel .button{font-size:14px;padding-inline:18px}
 }
+
+/* Dashboard media occupies the existing design slots. */
+.card-image, .featured-content-image, .detail-cover { position: relative; isolation: isolate; overflow: hidden; }
+.content-cover-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.card-image:has(.content-cover-image)::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(transparent 25%, rgba(0,0,0,.72)); pointer-events: none; }
+.data-status { padding-block: 2rem; color: var(--text-muted, #ccc); }
+.rich-content img { max-width: 100%; height: auto; }
+.rich-content blockquote { border-left: 3px solid #f5cf64; padding-left: 1rem; }
+.rich-content ul, .rich-content ol { padding-left: 1.5rem; }
+.rich-content a { text-decoration: underline; }
+.rich-content table { display: block; overflow-x: auto; max-width: 100%; }
+
+.author-avatar { overflow: hidden; }
+.author-avatar>img { width: 100%; height: 100%; object-fit: cover; }

@@ -1,3 +1,5 @@
+> **26 October 2026 integration update:** Variable sections now use the shared feed and dashboard-shaped fictional local fixtures. Source selection, API/cache preparation and remaining fixed content are documented in [Data integration](data-integration.md). This does not make demonstration content approved for publication.
+
 # AMSUL website — consolidated content and integration checklist
 
 Prepared 22 October 2026. Covers the 13 implemented page types: Home, About Us, Impact Report Hub, Impact Report Details, Blog Listing, Blog Details, Events Listing, Event Details, Event Highlights, Event Highlights Details, Contact Us, Leadership and Partnerships.
@@ -84,7 +86,7 @@ This is a proposed ownership split, not a completed integration.
 | Blog posts and taxonomy | Published Content API. Map website slugs to the API's post IDs, fetch/render approved rich content and use real categories/tags/featured metadata. |
 | Events and programmes | Events/Programs public API. Read fresh event settings before registration; support its free/paid/external distinctions. |
 | Executives | Executives public read API. Decide how featured cards and executive/patron/committee groups map to records; current contract does not establish all those groupings/sources. |
-| Impact reports | Source still to be agreed, possibly appropriately classified published Content. General Finance reports are private and are not the website's public report source. |
+| Impact reports | Confirmed 25 October 2026: published Content records filtered by the Impact Reports Content category. Its exact category slug/assignments and primary-PDF selection remain pending. General Finance reports are private. |
 | Highlights and galleries | Source still to be agreed: published Content, archived Events with media, or another explicit contract. No dedicated highlights feed was established in the inspected specs. |
 | Partner directory, testimonials, brochure and homepage statistics | Keep structured local data initially unless a supported public settings/module source is agreed. |
 | Partnership applications | The approved external Google Form; only its URL is needed by the website. |
@@ -105,3 +107,7 @@ Live registration/payment requires separate acceptance checks. The Events contra
 6. **Launch:** confirm domain/metadata and approve the final content after replacement. Current layout/local-interaction checks do not establish content accuracy or live-service readiness.
 
 You can supply these in batches. The most useful first batch is the shared Google Form URL, official contact details, verified statistics, and a decision on the three reserved panels. There is no need to supply passwords or administrative credentials in the content handover.
+
+## Mapping clarification — 25 October 2026
+
+Impact Reports are a Content category, not a separate module. See `api-to-ui-mapping.md` for the full field-to-UI specification across all 13 pages, including the approved shared-feed/cache direction and unresolved source fields. The specification does not itself connect the running website.

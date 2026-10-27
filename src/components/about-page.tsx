@@ -1,3 +1,6 @@
+"use client";
+import { useWebsiteData, DataStatus } from "./website-data";
+import { programCard } from "@/lib/website/selectors";
 import assets from "@/data/about-assets.json";
 import { about } from "@/data/about";
 import { Hero } from "./hero";
@@ -8,6 +11,8 @@ import { ReservedSection, SectionHeading } from "./ui";
 import { PartnershipCallout } from "./partnership-callout";
 
 export function AboutPage() {
+  const { feed } = useWebsiteData();
+  const initiatives = feed.programs.map(programCard);
   return <main id="main-content" className="about-page">
     <Hero badge={about.hero.badge} title={<>{about.hero.title}<br />{about.hero.subtitle}</>} centered nodeId="192:2153" />
     <section className="about-introduction section container" data-node-id="192:1304">
@@ -26,7 +31,7 @@ export function AboutPage() {
     </section>
     <section className="history-section about-history section container" data-node-id="192:1401"><SectionHeading {...about.history} centered /><HistoryTimeline milestones={about.history.milestones} twoSided /></section>
     <section className="about-activities section container" data-node-id="195:3720"><div className="activities-top"><SectionHeading eyebrow={about.activities.eyebrow} title={about.activities.title} description={about.activities.description} /><div className="activities-side">{about.activities.items.slice(0, 2).map(item => <BenefitCard key={item.id} {...item} />)}</div></div><div className="activities-bottom">{about.activities.items.slice(2).map(item => <BenefitCard key={item.id} {...item} />)}</div></section>
-    <section className="about-initiatives section container" data-node-id="192:1673"><SectionHeading {...about.initiatives} centered /><InitiativeCard {...about.initiatives.featured} featured /><Carousel label="Flagship initiatives" controls arrowSrc={assets.imgPajamasArrowRight}>{about.initiatives.items.map(item => <InitiativeCard key={item.id} {...item} />)}</Carousel></section>
+    <section className="about-initiatives section container" data-node-id="192:1673"><SectionHeading {...about.initiatives} centered /><DataStatus />{initiatives[0] && <InitiativeCard {...initiatives[0]} featured />}<Carousel label="Flagship initiatives" controls arrowSrc={assets.imgPajamasArrowRight}>{initiatives.slice(1).map(item => <InitiativeCard key={item.id} {...item} />)}</Carousel></section>
     <PartnershipCallout nodeId="210:1594" />
   </main>;
 }
