@@ -31,7 +31,9 @@ test.beforeEach(() => {
   store = new Map(); pending = []; calls = []; fail = false; mediaRedirect = false; registrationOpen = true; firstPageOnly = false;
   fixture = remote(structuredClone(snapshot));
   (globalThis as any).caches = { default: { match: async (key: Request) => store.get(key.url)?.clone(), put: async (key: Request, value: Response) => { store.set(key.url, value.clone()); } } };
-  globalThis.fetch = async (input: any) => {
+  globalThis.fetch = async (input: any, init?: RequestInit) => {
+    // Match workerd: Node accepts this mode, but Cloudflare rejects it before I/O.
+    if (init?.redirect === 'error') throw new TypeError('Invalid redirect value, must be follow or manual');
     const url = new URL(input instanceof Request ? input.url : String(input)); calls.push(url.href);
     if (url.hostname === 'storage.test') {
       if (mediaRedirect) return new Response(null, { status: 302, headers: { Location: 'https://unapproved.test/file.png' } });
@@ -137,4 +139,18 @@ test('external registration checks fresh event state on every click and read gat
 test('a detail-page outage keeps an HTML app shell and a 503 response for the client retry state', async () => {
   fail = true; const app = await worker(); const result = await request(app, '/blog/new-api-only-story');
   expect(result.status).toBe(503); expect(result.headers.get('Content-Type')).toContain('text/html'); expect(await result.text()).toContain('App shell');
+});
+
+
+test('dashboard redirects are rejected without following the destination', async () => {
+  const app = await worker(); const modes: unknown[] = [];
+  globalThis.fetch = async (_input: any, init?: RequestInit) => {
+    modes.push(init?.redirect);
+    return new Response(null, { status: 302, headers: { Location: 'https://unapproved.test/dashboard' } });
+  };
+  const result = await request(app, '/api/website/feed');
+  expect(result.status).toBe(502);
+  expect(await result.json()).toMatchObject({ success: false, error: { code: 'UPSTREAM_REDIRECT' } });
+  expect(modes).toEqual(Array(5).fill('manual'));
+  expect(store.size).toBe(0);
 });

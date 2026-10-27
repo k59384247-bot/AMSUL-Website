@@ -58,7 +58,9 @@ async function upstream<T>(path: string, env: Env, extra: Record<string, string>
   const url = new URL(`${base}/v1/${path}`);
   url.searchParams.set('tenantId', tenant);
   for (const [key, value] of Object.entries(extra)) url.searchParams.set(key, value);
-  const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000), redirect: 'error' });
+  // workerd supports manual/follow only; reject redirects explicitly before reading the body.
+  const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000), redirect: 'manual' });
+  if (response.status >= 300 && response.status < 400) throw new GatewayError(502, 'UPSTREAM_REDIRECT', 'Dashboard API redirects are not allowed. Check the configured API URL.');
   let body: Envelope<T> & { error?: { code?: string; message?: string } };
   try { body = await response.json() as typeof body; } catch { throw new GatewayError(502, 'INVALID_RESPONSE', 'Dashboard returned an invalid response.'); }
   if (!response.ok || !body.success || !('data' in body)) throw new GatewayError(response.ok ? 502 : response.status, body.error?.code || 'UPSTREAM_ERROR', body.error?.message || 'Dashboard content is unavailable.');
