@@ -13,6 +13,7 @@ let mediaRedirect = false;
 let registrationOpen = true;
 let firstPageOnly = false;
 let fixture: any;
+let revision = '0';
 const ctx = { waitUntil: (promise: Promise<unknown>) => pending.push(promise) };
 const env = { AMSUL_API_BASE_URL: 'https://dashboard.test/api', AMSUL_TENANT_ID: 'amsul', AMSUL_MEDIA_SIGNING_SECRET: 'website-integration-test-secret-at-least-32-characters', AMSUL_MEDIA_ORIGINS: 'https://storage.test', ASSETS: { fetch: async () => new Response('<html><head><title>Detail</title><meta name="robots" content="noindex, nofollow"></head><body>App shell</body></html>', { headers: { 'Content-Type': 'text/html' } }) } };
 const response = (data: unknown, meta?: unknown) => Response.json({ success: true, data, ...(meta ? { meta } : {}) });
@@ -29,7 +30,7 @@ function remote(value: any): any {
 }
 test.beforeEach(() => {
   store = new Map(); pending = []; calls = []; fail = false; mediaRedirect = false; registrationOpen = true; firstPageOnly = false;
-  fixture = remote(structuredClone(snapshot));
+  revision = '0'; fixture = remote(structuredClone(snapshot));
   (globalThis as any).caches = { default: { match: async (key: Request) => store.get(key.url)?.clone(), put: async (key: Request, value: Response) => { store.set(key.url, value.clone()); } } };
   globalThis.fetch = async (input: any, init?: RequestInit) => {
     // Match workerd: Node accepts this mode, but Cloudflare rejects it before I/O.
@@ -42,6 +43,7 @@ test.beforeEach(() => {
     }
     if (fail) return Response.json({ success: false, error: { code: 'TEST_OUTAGE', message: 'Dashboard unavailable' } }, { status: 503 });
     const path = url.pathname.replace('/api/v1/', '');
+    if (path === 'website/version') return response({ revision });
     if (path === 'blog/posts') {
       if (firstPageOnly) return response(url.searchParams.get('cursor') ? fixture.feed.data.posts.slice(1) : fixture.feed.data.posts.slice(0, 1), { hasMore: !url.searchParams.get('cursor'), nextCursor: url.searchParams.get('cursor') ? null : 'cursor-2' });
       return response(fixture.feed.data.posts, { hasMore: false });
@@ -151,6 +153,30 @@ test('dashboard redirects are rejected without following the destination', async
   const result = await request(app, '/api/website/feed');
   expect(result.status).toBe(502);
   expect(await result.json()).toMatchObject({ success: false, error: { code: 'UPSTREAM_REDIRECT' } });
-  expect(modes).toEqual(Array(5).fill('manual'));
+  expect(modes).toEqual(['manual']);
   expect(store.size).toBe(0);
+});
+
+
+test('a dashboard revision invalidates feed, details and unchanged media URLs across edge locations', async () => {
+  const app = await worker();
+  const first = await request(app, '/api/website/feed'); const before = await first.json();
+  const image = before.data.posts.find((post: any) => post.coverImageUrl).coverImageUrl;
+  await request(app, image);
+  fixture.feed.data.posts[0].contentUrl = 'https://storage.test/body.json';
+  await request(app, '/api/website/posts/post-1');
+  fixture.feed.data.posts[0].title = 'Updated from the dashboard'; revision = '1';
+  // Expire only the cheap version check; retain old feed/detail/asset cache entries.
+  for (const [key, response] of store) if (key.endsWith('/version')) {
+    response.headers.set('X-Website-Stored-At', String(Date.now() - 16_000));
+  }
+  const next = await request(app, '/api/website/feed'); const after = await next.json();
+  expect(next.headers.get('X-Website-Revision')).toBe('1');
+  expect(after.data.posts[0].title).toBe('Updated from the dashboard');
+  const nextImage = after.data.posts.find((post: any) => post.coverImageUrl).coverImageUrl;
+  expect(nextImage).not.toBe(image);
+  const count = calls.filter(url => url.startsWith('https://storage.test')).length;
+  await request(app, nextImage); expect(calls.filter(url => url.startsWith('https://storage.test'))).toHaveLength(count + 1);
+  const detail = await (await request(app, '/api/website/posts/post-1')).json();
+  expect(detail.data.record.title).toBe('Updated from the dashboard');
 });

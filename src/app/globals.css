@@ -301,3 +301,23 @@ input:focus-visible,textarea:focus-visible{box-shadow:0 0 0 2px var(--button)}
 
 .author-avatar { overflow: hidden; }
 .author-avatar>img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Shared editorial cards keep their image and metadata slots when copy is long. */
+.content-card :is(h2,h3),.content-card .tag{overflow-wrap:anywhere;min-width:0}
+.content-card :is(h2,h3),.content-card .card-body>p,.content-card .report-description>p,.content-card .featured-copy>p,.content-card .featured-content-copy>p{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:2}
+.content-card .card-body>p,.content-card .report-description>p,.content-card .featured-copy>p,.content-card .featured-content-copy>p{-webkit-line-clamp:3}
+.story-card .card-body{flex:0 0 auto;min-width:0}
+.story-card .card-body>h3{height:48px}
+.story-card .card-body>p{height:72px}
+.story-card .story-image{flex:1 0 180px}
+.story-card .story-meta{min-height:24px}
+.story-meta>span{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.content-card .tag{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.content-card .featured-copy p{max-height:72px}
+.content-card .event-title-row h3{min-width:0}
+.event-meta>span{min-width:0;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+.story-card .story-meta{flex-wrap:nowrap;height:24px;min-height:24px}
+.story-card .story-meta>span:first-child{flex:1;min-width:0}
+.story-card .story-meta>span:last-child{flex-shrink:0}
+.story-meta-label{display:block;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}

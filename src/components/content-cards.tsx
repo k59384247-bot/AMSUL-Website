@@ -69,7 +69,7 @@ export function StoryCard({ story, dateIconSrc = assets["80-2407-imgLetsIconsDat
     <div className="card-image story-image"><ContentCover src={story.coverImageUrl} />{!tagsBelowImage && <div className="story-tags">{story.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div>}</div>
     {tagsBelowImage && <div className="story-tags-below">{story.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div>}
     <div className="card-body"><h3>{story.title}</h3><p>{story.excerpt}</p>
-      <div className="story-meta"><span>{location ? <><Icon src={location.icon} />{location.label}</> : <><span className="author-avatar" aria-hidden="true">{story.avatarUrl && <img src={story.avatarUrl} alt="" loading="lazy" />}</span>{story.author}</>}</span><span><Icon src={dateIconSrc} />{story.date}</span></div>
+      <div className="story-meta"><span>{location ? <><Icon src={location.icon} /><span className="story-meta-label">{location.label}</span></> : <><span className="author-avatar" aria-hidden="true">{story.avatarUrl && <img src={story.avatarUrl} alt="" loading="lazy" />}</span><span className="story-meta-label">{story.author}</span></>}</span><span><Icon src={dateIconSrc} />{story.date}</span></div>
     </div>
   </Link>;
 }
