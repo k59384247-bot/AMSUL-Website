@@ -53,7 +53,14 @@ async function upstream<T>(path: string, env: Env, extra: Record<string, string>
   url.searchParams.set('tenantId', tenant);
   for (const [key, value] of Object.entries(extra)) url.searchParams.set(key, value);
   // workerd supports manual/follow only; reject redirects explicitly before reading the body.
-  const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000), redirect: 'manual' });
+  let response: Response;
+  try { response = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000), redirect: 'manual' }); }
+  catch (error) {
+    const name = error instanceof Error ? error.name : 'UnknownError';
+    const cause = (error as { cause?: { code?: unknown } })?.cause?.code;
+    console.error('Dashboard API transport failed', JSON.stringify({ endpoint: path, name, cause: typeof cause === 'string' && /^[A-Z0-9_]{1,64}$/.test(cause) ? cause : undefined }));
+    throw new GatewayError(name === 'TimeoutError' ? 504 : 502, name === 'TimeoutError' ? 'UPSTREAM_TIMEOUT' : 'UPSTREAM_CONNECTION_FAILED', 'The dashboard connection is temporarily unavailable.');
+  }
   if (response.status >= 300 && response.status < 400) throw new GatewayError(502, 'UPSTREAM_REDIRECT', 'Dashboard API redirects are not allowed. Check the configured API URL.');
   let body: Envelope<T> & { error?: { code?: string; message?: string } };
   try { body = await response.json() as typeof body; } catch { throw new GatewayError(502, 'INVALID_RESPONSE', 'Dashboard returned an invalid response.'); }
@@ -248,6 +255,7 @@ export default {
       return await env.ASSETS.fetch(request);
     } catch (error) {
       const known = error instanceof GatewayError;
+      console.error('Website gateway failed', JSON.stringify({ endpoint: url.pathname, code: known ? error.code : 'CONTENT_UNAVAILABLE', name: error instanceof Error ? error.name : 'UnknownError' }));
       const detailRoute = url.pathname.match(/^\/(blog|impact-reports|programs-events|event-highlights)\/[^/]+\/?$/);
       if (!url.pathname.startsWith('/api/website/') && detailRoute) {
         const shell = await env.ASSETS.fetch(new Request(new URL(`/${detailRoute[1]}/__detail`, url)));

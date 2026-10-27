@@ -26,10 +26,13 @@ test('API mode reuses one feed across navigation and resolves an API-only detail
 });
 test('API failure shows a retry state without substituting fixture cards', async ({ page }) => {
   let fail = true;
+  const diagnostics: string[] = [];
+  page.on('console', message => { if (message.type() === 'error') diagnostics.push(message.text()); });
   await page.route('**/api/website/feed', route => fail ? route.fulfill({ status: 503, json: { success: false, error: { code: 'OUTAGE', message: 'Unavailable' } } }) : route.fulfill({ json: { success: true, data: feed } }));
   await page.goto('/blog');
   await expect(page.locator('.data-status[role=alert]')).toContainText('Content is temporarily unavailable');
   await expect(page.locator('.story-card')).toHaveCount(0);
+  expect(diagnostics.some(message => message.includes('Website data request failed') && message.includes('/api/website/feed') && message.includes('OUTAGE') && message.includes('503'))).toBe(true);
   fail = false;
   await page.getByRole('button', { name: 'Try again' }).click();
   await expect(page.locator('.blog-grid .story-card')).toHaveCount(1);

@@ -204,3 +204,13 @@ test('oversized notifications and missing cache configuration cannot fall back t
   const result = await app.default.fetch(new Request('https://website.test/api/website/feed'), { ...env, AMSUL_CACHE_DB: undefined }, ctx);
   expect(result.status).toBe(503); expect(calls).toHaveLength(0);
 });
+
+
+test('transport failures report a distinct cause and do not poison the cache', async () => {
+  const app = await worker();
+  globalThis.fetch = async () => { throw new TypeError('connection failed', { cause: { code: 'ECONNRESET' } }); };
+  const failed = await request(app, '/api/website/feed');
+  expect(failed.status).toBe(502);
+  expect(await failed.json()).toMatchObject({ error: { code: 'UPSTREAM_CONNECTION_FAILED' } });
+  expect(store.size).toBe(0);
+});

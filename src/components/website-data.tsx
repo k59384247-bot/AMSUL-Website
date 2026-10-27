@@ -12,11 +12,26 @@ let knownRevision: string | null = null;
 const details = new Map<string, { data: Detail }>();
 const detailRequests = new Map<string, Promise<Detail>>();
 async function read(url: string) {
-  const response = await fetch(url, { credentials: 'omit', cache: 'no-store' });
-  const value: unknown = await response.json();
-  if (!response.ok) { unwrap(value); throw new Error('Content unavailable.'); }
+  let response: Response;
+  try { response = await fetch(url, { credentials: 'omit', cache: 'no-store' }); }
+  catch (error) {
+    console.error('Website data request failed', JSON.stringify({ endpoint: url, stage: 'network', name: error instanceof Error ? error.name : 'UnknownError' }));
+    throw error;
+  }
+  let value: unknown;
+  try { value = await response.json(); }
+  catch {
+    console.error('Website data request failed', JSON.stringify({ endpoint: url, status: response.status, stage: 'json', contentType: response.headers.get('Content-Type') }));
+    throw new Error('Website data endpoint did not return JSON.');
+  }
+  if (!response.ok) {
+    const code = (value as { error?: { code?: unknown } })?.error?.code;
+    console.error('Website data request failed', JSON.stringify({ endpoint: url, status: response.status, stage: 'response', code: typeof code === 'string' && /^[A-Z0-9_]{1,64}$/.test(code) ? code : 'UNKNOWN' }));
+    unwrap(value); throw new Error('Content unavailable.');
+  }
   return value;
 }
+
 function loadFeed(revision: string) {
   if (knownRevision !== revision) { details.clear(); knownRevision = revision; }
   if (cachedFeed?.revision !== revision) cachedFeed = null;
