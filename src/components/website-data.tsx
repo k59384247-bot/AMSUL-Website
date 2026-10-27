@@ -1,6 +1,7 @@
 'use client';
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
+import { ContentSkeleton } from './content-skeleton';
 import { fixtureFeed, fixtureDetail } from '@/lib/website/fixtures';
 import { validateFeed, unwrap, type Feed, type Detail } from '@/lib/website/contracts';
 const source = process.env.NEXT_PUBLIC_WEBSITE_DATA_SOURCE ?? 'local';
@@ -70,9 +71,9 @@ export function WebsiteDataProvider({ children }: { children: ReactNode }) {
   return <Context.Provider value={{ feed, loading, error, revision, retry }}>{children}</Context.Provider>;
 }
 export const useWebsiteData = () => useContext(Context);
-export function DataStatus() {
+export function DataStatus({ variant = 'cards', contained = true }: { variant?: 'cards' | 'events' | 'leadership'; contained?: boolean }) {
   const { loading, error, retry } = useWebsiteData();
-  return loading ? <p className="container data-status" role="status">Loading content…</p> : error ? <div className="container data-status" role="alert"><p>{error}</p><button className="button" onClick={retry}>Try again</button></div> : null;
+  return loading ? <ContentSkeleton variant={variant} contained={contained} /> : error ? <div className="container data-status" role="alert"><p>{error}</p><button className="button" onClick={retry}>Try again</button></div> : null;
 }
 export function useRecordDetail(kind: 'posts' | 'events' | 'programs', id: string | undefined) {
   const { revision } = useWebsiteData();

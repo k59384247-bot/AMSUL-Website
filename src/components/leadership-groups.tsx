@@ -5,7 +5,7 @@ import { useWebsiteData, DataStatus } from './website-data';
 import { LeadershipSection } from './leadership-section';
 export function LeadershipGroups() {
   const { feed, loading, error } = useWebsiteData();
-  if (loading || error) return <DataStatus />;
+  if (loading || error) return <DataStatus variant="leadership" />;
   return <>{(['executive', 'patron', 'committee'] as const).map((group, index) => {
     const key = (['executive', 'patrons', 'committees'] as const)[index];
     const members = leadershipGroup(feed, group);

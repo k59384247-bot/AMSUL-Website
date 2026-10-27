@@ -31,7 +31,7 @@ export function AboutPage() {
     </section>
     <section className="history-section about-history section container" data-node-id="192:1401"><SectionHeading {...about.history} centered /><HistoryTimeline milestones={about.history.milestones} twoSided /></section>
     <section className="about-activities section container" data-node-id="195:3720"><div className="activities-top"><SectionHeading eyebrow={about.activities.eyebrow} title={about.activities.title} description={about.activities.description} /><div className="activities-side">{about.activities.items.slice(0, 2).map(item => <BenefitCard key={item.id} {...item} />)}</div></div><div className="activities-bottom">{about.activities.items.slice(2).map(item => <BenefitCard key={item.id} {...item} />)}</div></section>
-    <section className="about-initiatives section container" data-node-id="192:1673"><SectionHeading {...about.initiatives} centered /><DataStatus />{initiatives[0] && <InitiativeCard {...initiatives[0]} featured />}<Carousel label="Flagship initiatives" controls arrowSrc={assets.imgPajamasArrowRight}>{initiatives.slice(1).map(item => <InitiativeCard key={item.id} {...item} />)}</Carousel></section>
+    <section className="about-initiatives section container" data-node-id="192:1673"><SectionHeading {...about.initiatives} centered /><DataStatus variant="events" contained={false} />{initiatives[0] && <InitiativeCard {...initiatives[0]} featured />}<Carousel label="Flagship initiatives" controls arrowSrc={assets.imgPajamasArrowRight}>{initiatives.slice(1).map(item => <InitiativeCard key={item.id} {...item} />)}</Carousel></section>
     <PartnershipCallout nodeId="210:1594" />
   </main>;
 }

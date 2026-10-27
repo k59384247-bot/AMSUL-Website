@@ -22,7 +22,7 @@ export function EventListing() {
   const [pageSize, setPageSize] = useState(15);
   const [page, setPage] = useState(1);
   const grid = useRef<HTMLDivElement>(null);
-  if (loading || (error && !feed.events.length)) return <DataStatus />;
+  if (loading || (error && !feed.events.length)) return <DataStatus variant="events" />;
   const filtered = content.events.filter(event => (eventType === "all" || event.isProgrammeEvent) && `${event.title} ${event.program || ""} ${event.category} ${event.location} ${event.date}`.toLowerCase().includes(query.toLowerCase()));
   const sorted = [...filtered].sort((a, b) => sort === "latest" ? b.startsAt.localeCompare(a.startsAt) : a.startsAt.localeCompare(b.startsAt));
   const pageCount = Math.ceil(sorted.length / pageSize);

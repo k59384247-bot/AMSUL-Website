@@ -77,3 +77,28 @@ test('long editorial copy keeps shared card slots fixed and the favicon matches 
   const logo = await page.locator('.brand img').first().getAttribute('src');
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', logo!);
 });
+
+
+test('shared skeletons replace loading copy on listings and details, including reduced motion', async ({ page }) => {
+  let releaseFeed!: () => void; const feedGate = new Promise<void>(resolve => { releaseFeed = resolve; });
+  await page.route('**/api/website/feed', async route => { await feedGate; await route.fulfill({ json: { success: true, data: feed } }); });
+  await page.goto('/programs-events');
+  const listing = page.locator('.content-skeleton.skeleton-events');
+  await expect(listing).toBeVisible();
+  await expect(listing).toHaveAttribute('aria-busy', 'true');
+  await expect(page.getByRole('status', { name: 'Loading content', exact: true })).toBeVisible();
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({ path: `test-results/skeleton-events-${width}.png`, fullPage: true });
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  expect(await listing.locator('.skeleton-block').first().evaluate(node => getComputedStyle(node).animationName)).toBe('none');
+  releaseFeed(); await expect(listing).toHaveCount(0);
+  let releaseBody!: () => void; const bodyGate = new Promise<void>(resolve => { releaseBody = resolve; });
+  await page.route('**/api/website/posts/api-story', async route => { await bodyGate; await route.fulfill({ json: { success: true, data: { record: post, body: { type: 'doc', content: [] }, media: [], sponsors: [] } } }); });
+  await page.goto('/blog/a-new-api-only-story');
+  await expect(page.locator('.skeleton-detail')).toBeVisible();
+  releaseBody(); await expect(page.locator('.skeleton-detail')).toHaveCount(0);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(post.title);
+});
