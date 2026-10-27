@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+import { createHmac } from 'node:crypto';
 import ts from 'typescript';
 import snapshot from '../src/fixtures/dashboard.json';
 
@@ -14,8 +15,9 @@ let registrationOpen = true;
 let firstPageOnly = false;
 let fixture: any;
 let revision = '0';
+let lastEvent = '';
 const ctx = { waitUntil: (promise: Promise<unknown>) => pending.push(promise) };
-const env = { AMSUL_API_BASE_URL: 'https://dashboard.test/api', AMSUL_TENANT_ID: 'amsul', AMSUL_MEDIA_SIGNING_SECRET: 'website-integration-test-secret-at-least-32-characters', AMSUL_MEDIA_ORIGINS: 'https://storage.test', ASSETS: { fetch: async () => new Response('<html><head><title>Detail</title><meta name="robots" content="noindex, nofollow"></head><body>App shell</body></html>', { headers: { 'Content-Type': 'text/html' } }) } };
+const env = { AMSUL_CACHE_WEBHOOK_SECRET: 'test-webhook-secret-with-at-least-32-characters', AMSUL_CACHE_DB: { prepare: (sql: string) => ({ bind: (...values: any[]) => ({ first: async () => { if (sql.startsWith('INSERT')) { if (lastEvent !== values[1]) revision = String(Number(revision) + 1); lastEvent = values[1]; } return { revision: Number(revision) }; } }) }) }, AMSUL_API_BASE_URL: 'https://dashboard.test/api', AMSUL_TENANT_ID: 'amsul', AMSUL_MEDIA_SIGNING_SECRET: 'website-integration-test-secret-at-least-32-characters', AMSUL_MEDIA_ORIGINS: 'https://storage.test', ASSETS: { fetch: async () => new Response('<html><head><title>Detail</title><meta name="robots" content="noindex, nofollow"></head><body>App shell</body></html>', { headers: { 'Content-Type': 'text/html' } }) } };
 const response = (data: unknown, meta?: unknown) => Response.json({ success: true, data, ...(meta ? { meta } : {}) });
 async function worker(source = 'api'): Promise<Worker> {
   const input = readFileSync('cloudflare/worker.ts', 'utf8').replace("'__WEBSITE_SOURCE__'", JSON.stringify(source));
@@ -23,6 +25,11 @@ async function worker(source = 'api'): Promise<Worker> {
   return import(`data:text/javascript;base64,${Buffer.from(code + `\n//${Math.random()}`).toString('base64')}`);
 }
 async function request(worker: Worker, path: string, method = 'GET') { return worker.default.fetch(new Request(`https://website.test${path}`, { method }), env, ctx); }
+async function webhook(app: Worker, payload: unknown, timestamp = new Date().toISOString(), valid = true) {
+  const body = JSON.stringify(payload);
+  const signature = createHmac('sha256', env.AMSUL_CACHE_WEBHOOK_SECRET).update(`${timestamp}.${body}`).digest('base64');
+  return app.default.fetch(new Request('https://website.test/api/website/invalidate', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-AMSUL-Webhook-Timestamp': timestamp, 'X-AMSUL-Webhook-Signature': `v1=${valid ? signature : 'A'.repeat(43) + '='}` }, body }), env, ctx);
+}
 function remote(value: any): any {
   if (Array.isArray(value)) return value.map(remote);
   if (!value || typeof value !== 'object') return value;
@@ -30,7 +37,7 @@ function remote(value: any): any {
 }
 test.beforeEach(() => {
   store = new Map(); pending = []; calls = []; fail = false; mediaRedirect = false; registrationOpen = true; firstPageOnly = false;
-  revision = '0'; fixture = remote(structuredClone(snapshot));
+  revision = '0'; lastEvent = ''; fixture = remote(structuredClone(snapshot));
   (globalThis as any).caches = { default: { match: async (key: Request) => store.get(key.url)?.clone(), put: async (key: Request, value: Response) => { store.set(key.url, value.clone()); } } };
   globalThis.fetch = async (input: any, init?: RequestInit) => {
     // Match workerd: Node accepts this mode, but Cloudflare rejects it before I/O.
@@ -43,7 +50,6 @@ test.beforeEach(() => {
     }
     if (fail) return Response.json({ success: false, error: { code: 'TEST_OUTAGE', message: 'Dashboard unavailable' } }, { status: 503 });
     const path = url.pathname.replace('/api/v1/', '');
-    if (path === 'website/version') return response({ revision });
     if (path === 'blog/posts') {
       if (firstPageOnly) return response(url.searchParams.get('cursor') ? fixture.feed.data.posts.slice(1) : fixture.feed.data.posts.slice(0, 1), { hasMore: !url.searchParams.get('cursor'), nextCursor: url.searchParams.get('cursor') ? null : 'cursor-2' });
       return response(fixture.feed.data.posts, { hasMore: false });
@@ -69,7 +75,7 @@ test('local mode never contacts the dashboard', async () => {
   const app = await worker('local'); const result = await request(app, '/api/website/feed');
   expect(result.status).toBe(409); expect(calls).toEqual([]);
 });
-test('feed follows dashboard cursor pagination and is reused from the one-hour cache', async () => {
+test('feed follows dashboard cursor pagination and is reused from the revision cache', async () => {
   firstPageOnly = true; const app = await worker();
   const first = await request(app, '/api/website/feed'); const body = await first.json();
   expect(body.success).toBe(true); expect(body.data.posts).toHaveLength(snapshot.feed.data.posts.length);
@@ -84,21 +90,22 @@ test('API errors preserve the error envelope, are not cached and never return lo
   expect(store.size).toBe(0); fail = false;
   expect((await request(app, '/api/website/feed')).status).toBe(200);
 });
-test('cache freshness lasts one hour, then returns stale content while refreshing', async () => {
+test('elapsed hours never refresh unchanged cached content', async () => {
   const app = await worker(); let loads = 0;
-  const load = async () => response({ version: ++loads }); const req = new Request('https://website.test/cache-fixture');
+  const req = new Request('https://website.test/immutable-fixture');
+  const load = async () => response({ version: ++loads });
   await app.cached(req, ctx, load, 1_000_000);
-  expect((await app.cached(req, ctx, load, 1_000_000 + 3599_000)).headers.get('X-Website-Cache')).toBe('HIT');
-  const stale = await app.cached(req, ctx, load, 1_000_000 + 3601_000);
-  expect(stale.headers.get('X-Website-Cache')).toBe('STALE'); expect((await stale.json()).data.version).toBe(1);
-  await Promise.all(pending); expect(loads).toBe(2);
+  const afterHours = await app.cached(req, ctx, load, 1_000_000 + 7200_000);
+  expect(afterHours.headers.get('X-Website-Cache')).toBe('HIT');
+  expect((await afterHours.json()).data.version).toBe(1); expect(loads).toBe(1); expect(pending).toHaveLength(0);
 });
-test('retains the last successful cache response when a stale refresh fails', async () => {
-  const app = await worker(); const req = new Request('https://website.test/stale-outage');
-  await app.cached(req, ctx, async () => response({ version: 1 }), 1_000_000);
-  const stale = await app.cached(req, ctx, async () => { throw new Error('outage'); }, 5_000_000);
-  expect(stale.status).toBe(200); await Promise.all(pending);
-  expect((await (await app.cached(req, ctx, async () => response({ version: 2 }), 5_000_000)).json()).data.version).toBe(1);
+test('cache hits do not contact Firebase, even when the dashboard is unavailable', async () => {
+  const app = await worker(); await request(app, '/api/website/feed');
+  const count = calls.length; fail = true;
+  for (const entry of store.values()) entry.headers.set('X-Website-Stored-At', '1');
+  expect((await request(app, '/api/website/feed')).status).toBe(200);
+  expect(calls).toHaveLength(count); expect(pending).toHaveLength(0);
+  expect(calls.some(url => url.includes('website/version'))).toBe(false);
 });
 test('all media fields become signed website URLs and repeated media reads use the cache', async () => {
   const app = await worker(); const feed = await (await request(app, '/api/website/feed')).json();
@@ -153,7 +160,7 @@ test('dashboard redirects are rejected without following the destination', async
   const result = await request(app, '/api/website/feed');
   expect(result.status).toBe(502);
   expect(await result.json()).toMatchObject({ success: false, error: { code: 'UPSTREAM_REDIRECT' } });
-  expect(modes).toEqual(['manual']);
+  expect(modes).toEqual(Array(5).fill('manual'));
   expect(store.size).toBe(0);
 });
 
@@ -165,11 +172,8 @@ test('a dashboard revision invalidates feed, details and unchanged media URLs ac
   await request(app, image);
   fixture.feed.data.posts[0].contentUrl = 'https://storage.test/body.json';
   await request(app, '/api/website/posts/post-1');
-  fixture.feed.data.posts[0].title = 'Updated from the dashboard'; revision = '1';
-  // Expire only the cheap version check; retain old feed/detail/asset cache entries.
-  for (const [key, response] of store) if (key.endsWith('/version')) {
-    response.headers.set('X-Website-Stored-At', String(Date.now() - 16_000));
-  }
+  fixture.feed.data.posts[0].title = 'Updated from the dashboard';
+  expect((await webhook(app, { tenantId: 'amsul', eventId: 'change-1' })).status).toBe(200);
   const next = await request(app, '/api/website/feed'); const after = await next.json();
   expect(next.headers.get('X-Website-Revision')).toBe('1');
   expect(after.data.posts[0].title).toBe('Updated from the dashboard');
@@ -179,4 +183,24 @@ test('a dashboard revision invalidates feed, details and unchanged media URLs ac
   await request(app, nextImage); expect(calls.filter(url => url.startsWith('https://storage.test'))).toHaveLength(count + 1);
   const detail = await (await request(app, '/api/website/posts/post-1')).json();
   expect(detail.data.record.title).toBe('Updated from the dashboard');
+});
+
+
+test('notifications require a valid signature, tenant and recent timestamp', async () => {
+  const app = await worker();
+  expect((await webhook(app, { tenantId: 'amsul', eventId: 'change-1' }, undefined, false)).status).toBe(401);
+  expect((await webhook(app, { tenantId: 'other', eventId: 'change-1' })).status).toBe(400);
+  expect((await webhook(app, { tenantId: 'amsul', eventId: 'change-1' }, new Date(Date.now() - 600_000).toISOString())).status).toBe(401);
+  expect(revision).toBe('0');
+  expect((await webhook(app, { tenantId: 'amsul', eventId: 'change-1' })).status).toBe(200);
+  expect((await webhook(app, { tenantId: 'amsul', eventId: 'change-1' })).status).toBe(200);
+  expect(revision).toBe('1'); expect(calls).toHaveLength(0);
+});
+
+
+test('oversized notifications and missing cache configuration cannot fall back to Firebase checks', async () => {
+  const app = await worker();
+  expect((await webhook(app, { tenantId: 'amsul', eventId: 'x'.repeat(9000) })).status).toBe(413);
+  const result = await app.default.fetch(new Request('https://website.test/api/website/feed'), { ...env, AMSUL_CACHE_DB: undefined }, ctx);
+  expect(result.status).toBe(503); expect(calls).toHaveLength(0);
 });

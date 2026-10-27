@@ -36,21 +36,25 @@ test('API failure shows a retry state without substituting fixture cards', async
 });
 
 
-test('dashboard changes refresh an open tab and its cached detail without an hourly wait', async ({ page }) => {
-  let revision = '0'; let reads = 0; let detailReads = 0;
-  await page.route('**/api/website/version', route => route.fulfill({ json: { success: true, data: { revision } } }));
+test('no timer or focus polling; dashboard invalidation is picked up on navigation', async ({ page }) => {
+  let revision = '0'; let reads = 0; let checks = 0;
+  await page.clock.install();
+  await page.route('**/api/website/version', route => { checks++; return route.fulfill({ json: { success: true, data: { revision } } }); });
   await page.route('**/api/website/feed', route => { reads++; return route.fulfill({ json: { success: true, data: { ...feed, posts: [{ ...post, title: revision === '0' ? post.title : 'Updated title from dashboard' }] } } }); });
-  await page.route('**/api/website/posts/api-story', route => { detailReads++; return route.fulfill({ json: { success: true, data: { record: { ...post, title: revision === '0' ? post.title : 'Updated title from dashboard' }, body: { type: 'doc', content: [{ type: 'paragraph', content: [{ type: 'text', text: revision === '0' ? 'Original body' : 'Updated body' }] }] }, media: [], sponsors: [] } } }); });
-  await page.goto('/blog/a-new-api-only-story');
-  await expect(page.locator('.rich-content')).toContainText('Original body');
-  expect(reads).toBe(1); expect(detailReads).toBe(1);
+  await page.goto('/');
+  await expect(page.locator('[data-story-id="api-story"]')).toHaveCount(1);
+  expect(reads).toBe(1); expect(checks).toBe(1);
+  await page.clock.fastForward(2 * 60 * 60 * 1000);
+  await page.evaluate(() => window.dispatchEvent(new Event('focus')));
+  await page.clock.runFor(100);
+  expect(reads).toBe(1); expect(checks).toBe(1);
   revision = '1';
-  await page.evaluate(() => window.dispatchEvent(new Event('focus')));
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Updated title from dashboard');
-  await expect(page.locator('.rich-content')).toContainText('Updated body');
-  expect(reads).toBe(2); expect(detailReads).toBe(2);
-  await page.evaluate(() => window.dispatchEvent(new Event('focus')));
-  await expect.poll(() => reads).toBe(2);
+  await page.getByRole('navigation', { name: 'Footer navigation', exact: true }).getByRole('link', { name: 'Blog & News', exact: true }).click();
+  await expect(page.locator('.blog-grid h3')).toHaveText('Updated title from dashboard');
+  expect(reads).toBe(2); expect(checks).toBe(2);
+  await page.getByRole('navigation', { name: 'Footer navigation', exact: true }).getByRole('link', { name: 'About AMSUL', exact: true }).click();
+  await expect(page).toHaveURL(/about/);
+  expect(reads).toBe(2);
 });
 
 test('long editorial copy keeps shared card slots fixed and the favicon matches the header logo', async ({ page }) => {

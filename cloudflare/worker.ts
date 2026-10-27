@@ -1,11 +1,11 @@
 // Pages Functions advanced mode. The build replaces the source sentinel in this file.
 import type { Feed, Envelope, Detail, RichNode, Post, Event, Program } from '../src/lib/website/contracts';
-type Env = { ASSETS: { fetch(request: Request): Promise<Response> }; AMSUL_API_BASE_URL?: string; AMSUL_TENANT_ID?: string; AMSUL_MEDIA_SIGNING_SECRET?: string; AMSUL_MEDIA_ORIGINS?: string; WEBSITE_REVISION?: string };
+type CacheDB = { prepare(sql: string): { bind(...values: unknown[]): { first<T>(): Promise<T | null> } } };
+type Env = { ASSETS: { fetch(request: Request): Promise<Response> }; AMSUL_API_BASE_URL?: string; AMSUL_TENANT_ID?: string; AMSUL_MEDIA_SIGNING_SECRET?: string; AMSUL_MEDIA_ORIGINS?: string; WEBSITE_REVISION?: string; AMSUL_CACHE_DB?: CacheDB; AMSUL_CACHE_WEBHOOK_SECRET?: string };
 type Context = { waitUntil(promise: Promise<unknown>): void };
 type EdgeCache = { match(request: Request): Promise<Response | undefined>; put(request: Request, response: Response): Promise<void> };
 const SOURCE: string = '__WEBSITE_SOURCE__';
-const FRESH = 3600;
-const RETAIN = 86400;
+const RETAIN = 31536000;
 const inFlight = new Map<string, Promise<Response>>();
 class GatewayError extends Error { constructor(public status: number, public code: string, message: string) { super(message); } }
 const json = (data: unknown, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
@@ -17,42 +17,35 @@ function config(env: Env) {
   return { base: base.href.replace(/\/$/, ''), tenant: env.AMSUL_TENANT_ID };
 }
 function cacheFor(): EdgeCache | undefined { return (globalThis as typeof globalThis & { caches?: { default?: EdgeCache } }).caches?.default; }
-// Cache API retention is separate from freshness; stale entries refresh in the background.
-export async function cached(request: Request, ctx: Context, load: () => Promise<Response>, now = Date.now(), freshFor = FRESH, allowStale = true): Promise<Response> {
+// Cache entries are immutable within a revision. Only a miss (including eviction)
+// loads the origin; elapsed time never starts a content refresh.
+export async function cached(request: Request, _ctx: Context, load: () => Promise<Response>, now = Date.now()): Promise<Response> {
   const cache = cacheFor();
   const key = new Request(request.url, { method: 'GET' });
   const hit = await cache?.match(key);
-  const age = hit ? Math.max(0, Math.floor((now - Number(hit.headers.get('X-Website-Stored-At') || 0)) / 1000)) : 0;
-  const expose = (response: Response, status: string, responseAge = 0) => {
+  const expose = (response: Response, status: string) => {
     const headers = new Headers(response.headers);
+    const storedAt = Number(headers.get('X-Website-Stored-At') || now);
     headers.delete('X-Website-Stored-At');
-    headers.set('Cache-Control', `public, max-age=${status === 'STALE' ? 0 : freshFor}`);
+    headers.set('Cache-Control', `public, max-age=${RETAIN}`);
     headers.set('X-Website-Cache', status);
-    headers.set('Age', String(responseAge));
+    headers.set('Age', String(Math.max(0, Math.floor((now - storedAt) / 1000))));
     return new Response(response.body, { status: response.status, headers });
   };
-  const refresh = () => {
-    if (!inFlight.has(key.url)) {
-      const pending = load().then(async response => {
-        if (!response.ok) throw new GatewayError(response.status, 'UPSTREAM_ERROR', 'Content could not be refreshed.');
-        const headers = new Headers(response.headers);
-        headers.set('Cache-Control', `public, max-age=${RETAIN}`);
-        headers.set('X-Website-Stored-At', String(now));
-        headers.delete('Set-Cookie');
-        const stored = new Response(response.body, { status: response.status, headers });
-        if (cache) await cache.put(key, stored.clone());
-        return stored;
-      }).finally(() => inFlight.delete(key.url));
-      inFlight.set(key.url, pending);
-    }
-    return inFlight.get(key.url)!.then(response => response.clone());
-  };
-  if (hit && age >= freshFor && !allowStale) return expose(await refresh(), 'MISS');
-  if (hit) {
-    if (age >= freshFor) ctx.waitUntil(refresh().then(() => {}).catch(() => console.error('Website cache refresh failed; retained last successful response.')));
-    return expose(hit, age < freshFor ? 'HIT' : 'STALE', age);
+  if (hit) return expose(hit, 'HIT');
+  if (!inFlight.has(key.url)) {
+    const pending = load().then(async response => {
+      if (!response.ok) throw new GatewayError(response.status, 'UPSTREAM_ERROR', 'Content could not be loaded.');
+      const headers = new Headers(response.headers);
+      headers.set('Cache-Control', `public, max-age=${RETAIN}`);
+      headers.set('X-Website-Stored-At', String(now)); headers.delete('Set-Cookie');
+      const stored = new Response(response.body, { status: response.status, headers });
+      if (cache) await cache.put(key, stored.clone());
+      return stored;
+    }).finally(() => inFlight.delete(key.url));
+    inFlight.set(key.url, pending);
   }
-  return expose(await refresh(), 'MISS');
+  return expose((await inFlight.get(key.url)!).clone(), 'MISS');
 }
 async function upstream<T>(path: string, env: Env, extra: Record<string, string> = {}): Promise<Envelope<T>> {
   const { base, tenant } = config(env);
@@ -83,16 +76,41 @@ async function all<T>(path: string, env: Env): Promise<T[]> {
   }
   throw new GatewayError(502, 'FEED_TOO_LARGE', 'Dashboard feed exceeded its configured pagination limit.');
 }
-// A short, shared revision check replaces purging individual caches in every edge location.
-async function websiteVersion(request: Request, env: Env, ctx: Context): Promise<string> {
-  const { base, tenant } = config(env);
-  const scope = hex(await crypto.subtle.digest('SHA-256', bytes(`${base}\n${tenant}`)));
-  const response = await cached(new Request(new URL(`/__website_cache/v2/${scope}/version`, request.url)), ctx, async () => {
-    const value = (await upstream<{ revision: string }>('website/version', env)).data;
-    if (!/^\d{1,32}$/.test(value.revision)) throw new GatewayError(502, 'INVALID_REVISION', 'Invalid dashboard content version.');
-    return success(value);
-  }, Date.now(), 15, false);
-  return ((await response.json()) as Envelope<{ revision: string }>).data.revision;
+function invalidationConfig(env: Env) {
+  if (!env.AMSUL_CACHE_DB || !env.AMSUL_CACHE_WEBHOOK_SECRET || env.AMSUL_CACHE_WEBHOOK_SECRET.length < 32) throw new GatewayError(503, 'INVALIDATION_CONFIGURATION_REQUIRED', 'Configure the AMSUL_CACHE_DB binding and cache webhook secret.');
+  return { db: env.AMSUL_CACHE_DB, secret: env.AMSUL_CACHE_WEBHOOK_SECRET };
+}
+// Read local Cloudflare state on actual requests, never a Firebase version endpoint.
+async function websiteVersion(_request: Request, env: Env, _ctx: Context): Promise<string> {
+  const { db } = invalidationConfig(env);
+  const row = await db.prepare('SELECT revision FROM website_cache_versions WHERE tenant_id = ?').bind(env.AMSUL_TENANT_ID).first<{ revision: number }>();
+  return String(row?.revision ?? 0);
+}
+async function invalidate(request: Request, env: Env): Promise<Response> {
+  if (request.method !== 'POST') throw new GatewayError(405, 'METHOD_NOT_ALLOWED', 'Invalidation requires POST.');
+  const { db, secret } = invalidationConfig(env);
+  const timestamp = request.headers.get('X-AMSUL-Webhook-Timestamp') ?? '';
+  const signature = request.headers.get('X-AMSUL-Webhook-Signature') ?? '';
+  if (!Number.isFinite(Date.parse(timestamp)) || Math.abs(Date.now() - Date.parse(timestamp)) > 300_000 || !/^v1=[A-Za-z0-9+/]{43}=$/.test(signature)) throw new GatewayError(401, 'INVALID_WEBHOOK', 'Invalid or expired webhook signature.');
+  const reader = request.body?.getReader(); const decoder = new TextDecoder(); let raw = ''; let size = 0;
+  if (!reader) throw new GatewayError(400, 'INVALID_WEBHOOK', 'Missing webhook body.');
+  while (true) {
+    const part = await reader.read(); if (part.done) break;
+    size += part.value.byteLength;
+    if (size > 8192) { await reader.cancel(); throw new GatewayError(413, 'WEBHOOK_TOO_LARGE', 'Webhook body exceeds its limit.'); }
+    raw += decoder.decode(part.value, { stream: true });
+  }
+  raw += decoder.decode();
+  const key = await crypto.subtle.importKey('raw', bytes(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['verify']);
+  const signed = Uint8Array.from(atob(signature.slice(3)), char => char.charCodeAt(0));
+  if (!await crypto.subtle.verify('HMAC', key, signed, bytes(`${timestamp}.${raw}`))) throw new GatewayError(401, 'INVALID_WEBHOOK', 'Invalid or expired webhook signature.');
+  let value: { tenantId?: string; eventId?: string };
+  try { value = JSON.parse(raw); } catch { throw new GatewayError(400, 'INVALID_WEBHOOK', 'Invalid webhook JSON.'); }
+  if (!value || value.tenantId !== env.AMSUL_TENANT_ID || typeof value.eventId !== 'string' || !value.eventId || value.eventId.length > 256) throw new GatewayError(400, 'INVALID_WEBHOOK', 'Invalid webhook tenant or event ID.');
+  const row = await db.prepare(`INSERT INTO website_cache_versions (tenant_id, revision, last_event_id) VALUES (?, 1, ?)
+    ON CONFLICT(tenant_id) DO UPDATE SET revision = CASE WHEN last_event_id = excluded.last_event_id THEN revision ELSE revision + 1 END, last_event_id = excluded.last_event_id
+    RETURNING revision`).bind(value.tenantId, value.eventId).first<{ revision: number }>();
+  return success({ revision: String(row!.revision) });
 }
 function withRevision(response: Response, revision: string) {
   const headers = new Headers(response.headers); headers.set('X-Website-Revision', revision);
@@ -150,7 +168,7 @@ async function rawBody(url: string | null | undefined, env: Env, origin: string,
   if (!url) return null;
   const proxy = await asset(url, env);
   const signature = new URL(proxy!, origin).searchParams.get('s')!;
-  const key = new Request(new URL(`/__website_cache/v1/asset/${env.AMSUL_TENANT_ID}/${signature}`, origin));
+  const key = new Request(new URL(`/__website_cache/v3/asset/${env.AMSUL_TENANT_ID}/${signature}`, origin));
   const response = await cached(key, ctx, () => fetchAsset(mediaURL(url, env), env));
   try { const body = await response.json() as RichNode; if (body.type !== 'doc' || !Array.isArray(body.content)) throw new Error(); return body; }
   catch { throw new GatewayError(502, 'INVALID_BODY', 'The editorial document is not valid rich text.'); }
@@ -160,7 +178,7 @@ async function feed(request: Request, env: Env, ctx: Context) {
   const revision = await websiteVersion(request, env, ctx);
   env = { ...env, WEBSITE_REVISION: revision };
   const scope = await crypto.subtle.digest('SHA-256', bytes(`${base}\n${tenant}\n${env.AMSUL_MEDIA_SIGNING_SECRET}`));
-  const key = new Request(new URL(`/__website_cache/v1/${hex(scope)}/${revision}/feed`, request.url));
+  const key = new Request(new URL(`/__website_cache/v3/${hex(scope)}/${revision}/feed`, request.url));
   return withRevision(await cached(key, ctx, async () => {
     const [posts, categories, events, programs, executives] = await Promise.all([all<Post>('blog/posts', env), all<Feed['categories'][number]>('blog/categories', env), all<Event>('events', env), all<Program>('programs', env), all<Feed['executives'][number]>('executives', env)]);
     return success(await mapMedia({ posts, categories, events, programs, executives }, env));
@@ -171,7 +189,7 @@ async function detail(kind: string, id: string, request: Request, env: Env, ctx:
   const revision = await websiteVersion(request, env, ctx);
   env = { ...env, WEBSITE_REVISION: revision };
   const scope = hex(await crypto.subtle.digest('SHA-256', bytes(`${base}\n${tenant}\n${env.AMSUL_MEDIA_SIGNING_SECRET}`)));
-  return cached(new Request(new URL(`/__website_cache/v1/${scope}/${revision}/${kind}/${id}`, request.url)), ctx, async () => {
+  return cached(new Request(new URL(`/__website_cache/v3/${scope}/${revision}/${kind}/${id}`, request.url)), ctx, async () => {
     const record = (await upstream<Post | Event | Program>(`${kind === 'posts' ? 'blog/posts' : kind}/${encodeURIComponent(id)}`, env)).data;
     let media: unknown[] = [], sponsors: unknown[] = [];
     if (kind !== 'posts') [media, sponsors] = await Promise.all([all(`${kind}/${encodeURIComponent(id)}/media`, env), all(`${kind}/${encodeURIComponent(id)}/sponsors`, env)]);
@@ -186,6 +204,10 @@ export default {
     const url = new URL(request.url);
     try {
       if (url.pathname.startsWith('/api/website/')) {
+        if (url.pathname === '/api/website/invalidate') {
+          if (SOURCE !== 'api') throw new GatewayError(409, 'LOCAL_MODE', 'Local fixtures are active.');
+          config(env); return await invalidate(request, env);
+        }
         if (request.method !== 'GET') return json({ success: false, error: { code: 'METHOD_NOT_ALLOWED', message: 'This website gateway only supports reads.' } }, 405);
         if (SOURCE !== 'api') return json({ success: false, error: { code: 'LOCAL_MODE', message: 'Local fixtures are active. No dashboard request was made.' } }, 409);
         config(env);
@@ -197,7 +219,7 @@ export default {
           const value = url.searchParams.get('u') ?? ''; const signature = url.searchParams.get('s') ?? '';
           if (!/^[a-f0-9]{64}$/.test(signature) || !await crypto.subtle.verify('HMAC', await signingKey(env), Uint8Array.from(signature.match(/../g)!, byte => parseInt(byte, 16)), bytes(`${env.AMSUL_TENANT_ID}\n${revision}\n${value}`))) throw new GatewayError(403, 'INVALID_ASSET_SIGNATURE', 'Invalid website asset URL.');
           const media = mediaURL(value, env);
-          return await cached(new Request(new URL(`/__website_cache/v1/asset/${env.AMSUL_TENANT_ID}/${signature}`, url)), ctx, () => fetchAsset(media, env));
+          return await cached(new Request(new URL(`/__website_cache/v3/asset/${env.AMSUL_TENANT_ID}/${signature}`, url)), ctx, () => fetchAsset(media, env));
         }
         const registration = url.pathname.match(/^\/api\/website\/events\/([a-zA-Z0-9_-]+)\/register$/);
         if (registration) {

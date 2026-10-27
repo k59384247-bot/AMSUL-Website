@@ -14,13 +14,14 @@ Use `api` instead of `local` to read the dashboard through the website gateway. 
 
 `.env.example` lists all settings. `.env.local` is ignored by Git. On Cloudflare Pages, set `NEXT_PUBLIC_WEBSITE_DATA_SOURCE=local` in the build environment for now. Local is also the fallback when the variable is absent. An invalid value fails the build; it never silently selects API mode.
 
-API mode additionally needs these **server-side** Pages variables:
+API mode additionally needs these **server-side** Pages variables (plus the cache binding/secret below):
 
 ```dotenv
 AMSUL_API_BASE_URL=https://us-central1-mt-cms-dashboard-staging.cloudfunctions.net/api
 AMSUL_TENANT_ID=amsul
 AMSUL_MEDIA_SIGNING_SECRET=<stable-random-secret-at-least-32-characters>
 AMSUL_MEDIA_ORIGINS=https://firebasestorage.googleapis.com,https://storage.googleapis.com
+AMSUL_CACHE_WEBHOOK_SECRET=<stable-random-secret-at-least-32-characters>
 ```
 
 Use the verified dashboard environment's base URL. Add an exact HTTPS storage origin if the dashboard uses another storage provider. Keep the signing secret stable between deployments; do not prefix it with `NEXT_PUBLIC_`, commit it, or put Firebase admin credentials in the website. API mode reports a configuration error if required settings are missing.
@@ -76,7 +77,9 @@ Home shows the latest four reports and five stories. Home/Events use future even
 
 The gateway reads dashboard `/v1` endpoints, follows the dashboard's cursor pagination, preserves its success/error envelope conventions and aggregates page-independent collections. It does not reshape dashboard endpoints to match a Figma page. API errors do not fall back to fixture content.
 
-Successful editorial feeds, details, body documents and assets are fresh for one hour **unless the dashboard content revision changes**. The dashboard exposes `GET /v1/website/version?tenantId=amsul`; seven Firestore triggers increment that tenant’s version when posts, categories, events, programmes, executives, event media or sponsors change (including deletes). Each website edge checks this small version value at most every 15 seconds. A new revision uses new feed/detail keys and new signed asset URLs, so even a replaced image at the same storage URL gets a fresh cache entry. Open tabs check the revision every 60 seconds and on focus, discard outdated feed/session/detail data, and refresh without a page reload. Normal propagation is roughly 60–75 seconds after the trigger completes; background-tab throttling, trigger delivery and outages can delay this. API reads bypass the browser HTTP cache while preserving the website edge cache. The edge retains responses for up to one day so a stale value can be returned while refreshing in the background or during an upstream outage. Failed initial responses are not cached. The browser respects the edge's reported age rather than starting another full hour of freshness. Cache entries are scoped to the dashboard base URL/tenant/secret where relevant.
+Editorial feeds, details, bodies and assets are cached by an explicit Cloudflare revision. A signed dashboard notification increments that tenant’s revision in the `AMSUL_CACHE_DB` D1 binding; the next actual request fills the new cache namespace. The website never requests Firebase’s version endpoint, uses no timers/focus polling, and never reloads content merely because an hour passed. Browser feed/session/detail caches are reused until the revision changes, with revision checks only on initial load, navigation and explicit retry. An open idle page updates on its next navigation/reload, not automatically.
+
+Cloudflare cache retention is one year, with no time-based source revalidation. Cache eviction and first requests in a new location still require a source read. Invalidating a revision does not eagerly download content: it is loaded on demand. Failed initial responses are not cached. Cache entries are scoped to the dashboard URL/tenant/signing secret. The version endpoint reads only Cloudflare; no Firestore version read or write is needed by the new flow. The shared webhook secret and D1 binding are required in API mode; missing setup produces an explicit configuration error rather than silently polling Firebase.
 
 Dashboard media URLs are rewritten to signed, same-origin `/api/website/asset` URLs. The server checks the signature, exact HTTPS storage origin and redirect targets before fetching. Only supported media/document types are served, with safe response headers. Browsers request the website cache endpoint, not storage. The first cache miss must fetch the original asset **on the server** to fill the cache; later requests reuse it. Cache entries are per Cloudflare location and are not a permanent asset archive or a promise of exactly one origin request worldwide.
 
@@ -111,4 +114,4 @@ Cloudflare references: [Pages Functions advanced mode](https://developers.cloudf
 
 ## Cache invalidation rollout
 
-Deploy the dashboard API and the seven invalidation triggers **before** deploying this website version. No new Cloudflare variables, KV namespace, webhook secret, or manual purge is required. See [cache-invalidation-rollout.md](cache-invalidation-rollout.md) for commands and checks. Local fixtures do not poll or contact this endpoint.
+This replaces the earlier polling implementation. Configure the Cloudflare D1 binding and matching webhook secrets, deploy the website, then the seven dashboard notification triggers. See [cache-invalidation-rollout.md](cache-invalidation-rollout.md) for exact settings, deployment order and local testing commands. API mode uses live public dashboard data locally with a local version database; fixtures remain available with `local`. No automatic tunnel or production deployment is performed.

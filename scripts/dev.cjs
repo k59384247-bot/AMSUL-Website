@@ -12,12 +12,35 @@ async function main() {
   execFileSync(process.execPath, ['scripts/build-worker.cjs', '--dev'], { stdio: 'inherit', env: process.env });
   const worker = (await import(pathToFileURL(path.resolve('.cloudflare/worker.mjs')).href)).default;
   const handler = next.getRequestHandler();
+  let cacheDatabase;
+  if (process.env.NEXT_PUBLIC_WEBSITE_DATA_SOURCE === 'api') {
+    const fs = require('node:fs'); const { randomBytes } = require('node:crypto');
+    const secretPath = '.cloudflare/local-secrets.json';
+    const secrets = fs.existsSync(secretPath) ? JSON.parse(fs.readFileSync(secretPath, 'utf8')) : { media: randomBytes(32).toString('hex'), webhook: randomBytes(32).toString('hex') };
+    if (!fs.existsSync(secretPath)) fs.writeFileSync(secretPath, JSON.stringify(secrets), { mode: 0o600 });
+    process.env.AMSUL_MEDIA_SIGNING_SECRET ||= secrets.media;
+    process.env.AMSUL_CACHE_WEBHOOK_SECRET ||= secrets.webhook;
+    process.env.AMSUL_API_BASE_URL ||= 'https://us-central1-mt-cms-dashboard-staging.cloudfunctions.net/api';
+    process.env.AMSUL_TENANT_ID ||= 'amsul';
+    const { DatabaseSync } = require('node:sqlite');
+    const sqlite = new DatabaseSync('.cloudflare/cache.sqlite');
+    sqlite.exec(fs.readFileSync('cloudflare/cache-schema.sql', 'utf8'));
+    cacheDatabase = { prepare: sql => ({ bind: (...values) => ({ first: async () => sqlite.prepare(sql).get(...values) || null }) }) };
+  }
   http.createServer(async (req, res) => {
     try {
       const url = new URL(req.url, `http://127.0.0.1:${port}`);
       if (url.pathname.startsWith('/api/website/')) {
-        const request = new Request(url, { method: req.method });
-        const response = await worker.fetch(request, { ...process.env }, { waitUntil: promise => promise.catch(console.error) });
+        const chunks = []; let size = 0;
+        for await (const chunk of req) {
+          size += chunk.length;
+          if (size > 8192) { res.writeHead(413); res.end('Request too large'); return; }
+          chunks.push(chunk);
+        }
+        const headers = new Headers();
+        for (const [key, value] of Object.entries(req.headers)) if (value !== undefined) headers.set(key, Array.isArray(value) ? value.join(', ') : value);
+        const request = new Request(url, { method: req.method, headers, ...(!['GET', 'HEAD'].includes(req.method) ? { body: Buffer.concat(chunks) } : {}) });
+        const response = await worker.fetch(request, { ...process.env, AMSUL_CACHE_DB: cacheDatabase }, { waitUntil: promise => promise.catch(console.error) });
         res.writeHead(response.status, Object.fromEntries(response.headers));
         if (response.body) { for await (const chunk of response.body) res.write(chunk); }
         res.end(); return;

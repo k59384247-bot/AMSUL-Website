@@ -1,19 +1,18 @@
 'use client';
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import { fixtureFeed, fixtureDetail } from '@/lib/website/fixtures';
 import { validateFeed, unwrap, type Feed, type Detail } from '@/lib/website/contracts';
 const source = process.env.NEXT_PUBLIC_WEBSITE_DATA_SOURCE ?? 'local';
-const HOUR = 60 * 60 * 1000;
 const empty: Feed = { posts: [], categories: [], events: [], programs: [], executives: [] };
-let cachedFeed: { data: Feed; at: number; revision: string } | null = null;
+let cachedFeed: { data: Feed; revision: string } | null = null;
 const feedRequests = new Map<string, Promise<Feed>>();
 let knownRevision: string | null = null;
-const details = new Map<string, { data: Detail; at: number }>();
+const details = new Map<string, { data: Detail }>();
 const detailRequests = new Map<string, Promise<Detail>>();
-async function read(url: string, onAge?: (age: number) => void) {
+async function read(url: string) {
   const response = await fetch(url, { credentials: 'omit', cache: 'no-store' });
   const value: unknown = await response.json();
-  onAge?.(Math.max(0, Number(response.headers.get("Age")) || 0));
   if (!response.ok) { unwrap(value); throw new Error('Content unavailable.'); }
   return value;
 }
@@ -22,18 +21,17 @@ function loadFeed(revision: string) {
   if (cachedFeed?.revision !== revision) cachedFeed = null;
   if (!cachedFeed && typeof window !== 'undefined') {
     try {
-      const stored = JSON.parse(sessionStorage.getItem('amsul:public-feed:v2') || 'null');
-      if (stored?.revision === revision && Date.now() - stored.at >= 0 && Date.now() - stored.at < HOUR) cachedFeed = { data: validateFeed({ success: true, data: stored.data }), at: stored.at, revision };
+      const stored = JSON.parse(sessionStorage.getItem('amsul:public-feed:v4') || 'null');
+      if (stored?.revision === revision) cachedFeed = { data: validateFeed({ success: true, data: stored.data }), revision };
     } catch { /* Browser storage is optional. */ }
   }
-  if (cachedFeed && Date.now() - cachedFeed.at < HOUR) return Promise.resolve(cachedFeed.data);
+  if (cachedFeed) return Promise.resolve(cachedFeed.data);
   if (!feedRequests.has(revision)) {
-    let age = 0;
-    const request = read('/api/website/feed', value => { age = value; }).then(value => {
+    const request = read('/api/website/feed').then(value => {
       const data = validateFeed(value);
       if (knownRevision === revision) {
-        cachedFeed = { data, at: Date.now() - age * 1000, revision };
-        try { sessionStorage.setItem('amsul:public-feed:v2', JSON.stringify(cachedFeed)); } catch { /* Optional public cache. */ }
+        cachedFeed = { data, revision };
+        try { sessionStorage.setItem('amsul:public-feed:v4', JSON.stringify(cachedFeed)); } catch { /* Optional public cache. */ }
       }
       return data;
     }).finally(() => { feedRequests.delete(revision); });
@@ -44,6 +42,7 @@ function loadFeed(revision: string) {
 const Context = createContext({ feed: empty, loading: true, error: '', revision: '', retry: () => {} });
 export function WebsiteDataProvider({ children }: { children: ReactNode }) {
   const local = source === 'local';
+  const pathname = usePathname();
   const [feed, setFeed] = useState<Feed>(local ? fixtureFeed : empty);
   const [loading, setLoading] = useState(!local);
   const [error, setError] = useState('');
@@ -65,11 +64,8 @@ export function WebsiteDataProvider({ children }: { children: ReactNode }) {
       finally { refreshing = false; if (active) setLoading(false); }
     };
     refresh();
-    const timer = window.setInterval(refresh, 60_000);
-    const focus = () => { void refresh(); };
-    window.addEventListener('focus', focus);
-    return () => { active = false; clearInterval(timer); window.removeEventListener('focus', focus); };
-  }, [local, attempt]);
+    return () => { active = false; };
+  }, [local, attempt, pathname]);
   const retry = () => { setLoading(true); setAttempt(value => value + 1); };
   return <Context.Provider value={{ feed, loading, error, revision, retry }}>{children}</Context.Provider>;
 }
@@ -91,10 +87,9 @@ export function useRecordDetail(kind: 'posts' | 'events' | 'programs', id: strin
     setError('');
     let active = true;
     const cached = details.get(key);
-    if (cached && Date.now() - cached.at < HOUR) { setResult({ key, data: cached.data }); return; }
+    if (cached) { setResult({ key, data: cached.data }); return; }
     if (!detailRequests.has(key)) {
-      let age = 0;
-      detailRequests.set(key, read(`/api/website/${path}`, value => { age = value; }).then(value => { const data = unwrap<Detail>(value); details.set(key, { data, at: Date.now() - age * 1000 }); return data; }).finally(() => { detailRequests.delete(key); }));
+      detailRequests.set(key, read(`/api/website/${path}`).then(value => { const data = unwrap<Detail>(value); details.set(key, { data }); return data; }).finally(() => { detailRequests.delete(key); }));
     }
     detailRequests.get(key)!.then(data => { if (active) { setResult({ key, data }); setError(''); } }).catch(() => { if (active) setError('This content could not be loaded.'); });
     return () => { active = false; };
