@@ -4,13 +4,21 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import assets from "@/data/assets.json";
-import { navigation } from "@/data/site";
+import { navigation, partnershipFormUrl } from "@/data/site";
 import { ButtonLink, Icon } from "./ui";
 
 export function SiteHeader({ hero = false, className = "" }: { hero?: boolean; className?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const root = useRef<HTMLElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 0);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [pathname]);
 
   useEffect(() => {
     function closeMenus(event: MouseEvent | KeyboardEvent) {
@@ -39,7 +47,7 @@ export function SiteHeader({ hero = false, className = "" }: { hero?: boolean; c
     root.current?.querySelectorAll("details[open]").forEach(node => node.removeAttribute("open"));
   }
 
-  return <header ref={root} className={`site-header ${hero ? "header-hero" : ""} ${className}`}>
+  return <><div className="site-header-space" aria-hidden="true" /><header ref={root} className={`site-header ${scrolled ? "is-scrolled" : ""} ${hero ? "header-hero" : ""} ${className}`}>
     <div className="header-inner container">
       <Link href="/" className="brand" aria-label="AMSUL home" onClick={closeOnNavigate}>
         <img src={assets["hero-imgAmsul60Logo4"]} alt="AMSUL at 60" width="104" height="80" />
@@ -54,9 +62,9 @@ export function SiteHeader({ hero = false, className = "" }: { hero?: boolean; c
             {group.links.map(link => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} onClick={closeOnNavigate}>{link.label}</Link>)}
           </div>
         </details>)}
-        <div className="mobile-partner" onClick={closeOnNavigate}><ButtonLink href="/partnerships/become-a-partner">Partner With AMSUL</ButtonLink></div>
+        <div className="mobile-partner" onClick={closeOnNavigate}><ButtonLink href={partnershipFormUrl}>Partner With AMSUL</ButtonLink></div>
       </nav>
-      <ButtonLink href="/partnerships/become-a-partner" className="header-partner">Partner With AMSUL</ButtonLink>
+      <ButtonLink href={partnershipFormUrl} className="header-partner">Partner With AMSUL</ButtonLink>
     </div>
-  </header>;
+  </header></>;
 }

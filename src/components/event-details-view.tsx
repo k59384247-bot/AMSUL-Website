@@ -7,6 +7,7 @@ import { ArticleContent } from "@/components/article-content";
 import { EventCard } from "@/components/content-cards";
 import { Sponsors } from "@/components/sponsors";
 import { EventRegistration } from "@/components/event-registration";
+import { PictureGallery } from "@/components/picture-gallery";
 import { Icon, Tag } from "@/components/ui";
 import "@/components/detail-content.css";
 
@@ -38,15 +39,15 @@ export function EventDetailsView({ slug: initialSlug }: { slug: string }) {
     <section className="event-detail-intro section container" aria-labelledby="event-title" data-node-id="269:6417">
       <div className="event-detail-heading"><Link className="button detail-back-link" href="/programs-events"><Icon src={assets.imgPajamasArrowRight} className="arrow-back" />Back to Programs &amp; Events</Link>
         <div className="event-detail-titles"><div className="event-detail-tags">{event.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div><h1 id="event-title">{event.title}</h1></div>
-        <div className="event-detail-meta"><span><Icon src={assets.imgLetsIconsDateTodayDuotone} />{event.date}</span><span><span className="event-detail-timer"><Icon src={assets.imgMaskGroup} /></span>{event.time}</span><a href={event.venueSearchUrl} target="_blank" rel="noopener noreferrer" aria-label={`Find ${event.location} on Google Maps (opens in a new tab)`}><span><Icon src={assets.imgDuoIconsLocation} />{event.location}</span><span className="event-venue-out-icon"><Icon src={assets.imgGroup1} /></span></a></div>
+        {(event.date || event.time || event.location) && <div className="event-detail-meta">{event.date && <span><Icon src={assets.imgLetsIconsDateTodayDuotone} />{event.date}</span>}{event.time && <span><span className="event-detail-timer"><Icon src={assets.imgMaskGroup} /></span>{event.time}</span>}{event.location && <a href={event.venueSearchUrl} target="_blank" rel="noopener noreferrer" aria-label={`Find ${event.location} on Google Maps (opens in a new tab)`}><span><Icon src={assets.imgDuoIconsLocation} />{event.location}</span><span className="event-venue-out-icon"><Icon src={assets.imgGroup1} /></span></a>}</div>}
       </div><div className="detail-cover"  data-node-id="269:6463" ><ContentCover src={event.coverImageUrl} priority /></div>
     </section>
     <section className="event-detail-body section container" aria-label="Event information" data-node-id="467:9013">
-      <div className="event-detail-information"><div className="event-description"><ArticleContent body={event.body} /><div className="event-body-meta"><span><Icon src={assets.imgDuoIconsLocation1} />{event.location}</span><span><Icon src={assets.imgLetsIconsDateTodayDuotone1} />{event.bodyDate}</span><span><span className="event-body-timer"><Icon src={assets.imgMaskGroup1} /></span>{event.bodyTime}</span></div></div>
+      <div className="event-detail-information"><div className="event-description"><ArticleContent body={event.body} /><PictureGallery pictures={event.pictures} />{(event.location || event.bodyDate || event.bodyTime) && <div className="event-body-meta">{event.location && <span><Icon src={assets.imgDuoIconsLocation1} />{event.location}</span>}{event.bodyDate && <span><Icon src={assets.imgLetsIconsDateTodayDuotone1} />{event.bodyDate}</span>}{event.bodyTime && <span><span className="event-body-timer"><Icon src={assets.imgMaskGroup1} /></span>{event.bodyTime}</span>}</div>}</div>
         <Sponsors sponsors={event.sponsors} />
       </div>
       <aside className="event-registration-options" aria-label="Event registration options">{event.registrationRecord && <EventRegistration content={event.registration} externalIcon={assets.imgGroup2} record={event.registrationRecord} />}</aside>
     </section>
-    <section className="event-related section container" aria-labelledby="event-related-title" data-node-id="269:6494"><h2 id="event-related-title">{event.relatedHeading}</h2><div className="event-related-grid">{event.related.map(item => <EventCard key={item.id} event={item} groupMetadata icons={{ date: assets.imgLetsIconsDateTodayDuotone2, location: assets.imgDuoIconsLocation2, timer: assets.imgMaskGroup2 }} />)}</div></section>
+    {event.related.length > 0 && <section className="event-related section container" aria-labelledby="event-related-title" data-node-id="269:6494"><h2 id="event-related-title">{event.relatedHeading}</h2><div className="event-related-grid">{event.related.map(item => <EventCard key={item.id} event={item} groupMetadata icons={{ date: assets.imgLetsIconsDateTodayDuotone2, location: assets.imgDuoIconsLocation2, timer: assets.imgMaskGroup2 }} />)}</div></section>}
   </main></div>;
 }

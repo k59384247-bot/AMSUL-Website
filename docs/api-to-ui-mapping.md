@@ -224,7 +224,7 @@ Renaming a category slug needs a migration/alias plan for existing post membersh
 | “Across N initiatives” | Distinct approved initiative assignments | If no real initiative relationship exists, revise/omit the initiative count rather than claim a fabricated number |
 | Pagination | Actual filtered report total | Existing 6/12/24 page sizes can remain local UI configuration |
 | Related/navigation destinations | Report ID/slug registry | `/impact-reports/{slug}` for the correct record |
-| Partnership callout | Shared local copy and link configuration | Leadership is implemented; partner action uses the Google Form when supplied |
+| Partnership callout | Shared local copy and link configuration | Leadership is implemented; partner action uses the supplied Google Form URL |
 
 ## 11. Impact Report details `/impact-reports/{slug}`
 

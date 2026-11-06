@@ -1,5 +1,7 @@
 export type SiteLink = { label: string; href: string; hidden?: boolean };
 
+export const partnershipFormUrl = "https://forms.gle/xVmA78Q5Hwos5DoJA";
+
 export const partnershipCallout = {
   eyebrow: "Partnership", title: "Building the Next Generation of Healthcare Leaders",
   description: "For sixty years, AMSUL has remained committed to empowering medical students to lead with compassion, excellence and purpose. As we celebrate our legacy, we look forward to building an even stronger future through innovation, collaboration and service.",
@@ -41,8 +43,7 @@ export const contact = {
 
 export const routes = [
   ...navigationGroups.flatMap(group => group.links),
-  { label: "Become A Partner", href: "/partnerships/become-a-partner" },
-  { label: "AMSUL Health Week 2025", href: "/impact-reports/amsul-health-week-2025" },
+  { label: "59th AMSUL Health Week Impact Report 2025", href: "/impact-reports/amsul-health-week-2025" },
   { label: "BUSINESS SUMMIT 2025", href: "/event-highlights/business-summit-2025" },
   { label: "MR & MISS AMSUL 2025", href: "/event-highlights/mr-miss-amsul-2025" },
   { label: "AMSUL HEALTHWEEK 2026", href: "/programs-events/amsul-healthweek-2026" },

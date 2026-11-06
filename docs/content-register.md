@@ -12,7 +12,7 @@ Scope: **all 13 implemented page types — Landing, About Us, Impact Report Hub,
 - Keep initial content in local structured data, ready to replace with normalized API results.
 - Preserve the two blank landing-page sections and the blank About Us section for future content.
 - Use clearly labelled temporary destinations for sample records whose matching content is not yet supplied.
-- Partner With AMSUL and Become A Partner will use the same external Google Form, to be supplied. No separate partner-application page or application API is needed for this agreed journey.
+- Partner With AMSUL and Become A Partner link to the same external Google Form: https://forms.gle/xVmA78Q5Hwos5DoJA. No separate partner-application page or application API is needed.
 - Keep Alumni Network, Constitution, Payments & Dues, Elections and Subsidiaries hidden in shared navigation.
 
 ## Landing content inventory
@@ -33,7 +33,7 @@ Scope: **all 13 implemented page types — Landing, About Us, Impact Report Hub,
 | Partnership | Legacy heading; two introductory paragraphs; two calls to action; three repeated Health Week benefit boxes | Approved partnership value proposition and three real benefits; application/contact journey |
 | Footer | @amsul_unilag, support@amsul.org, social icons, newsletter copy, StruktHQ credit and 2026 copyright | Confirm email, each individual social profile URL, credit destination and copyright policy |
 | Newsletter | Email field, native email validation, explicit unavailable-service feedback | Newsletter provider/public endpoint, opt-in wording, success/error behaviour and privacy-policy destination |
-| Navigation | About AMSUL, Leadership, Subsidiaries, Alumni Network, Constitution, Programs & Events, Impact Reports, Partnerships, Event Highlights, Blog & News, Contact Us, Payments & Dues, Elections | All supplied page types are built; five member-service links are hidden. Replace remaining sample destinations with matching real content; partnership actions await the shared Google Form URL |
+| Navigation | About AMSUL, Leadership, Subsidiaries, Alumni Network, Constitution, Programs & Events, Impact Reports, Partnerships, Event Highlights, Blog & News, Contact Us, Payments & Dues, Elections | All supplied page types are built; five member-service links are hidden. Replace remaining sample destinations with matching real content; partnership actions use the supplied Google Form URL |
 
 ## About Us content inventory
 
@@ -49,7 +49,7 @@ The About Us page is implemented at `/about` and linked through the shared heade
 | History | Eight repeated “Born From God / 1966” milestones in a two-sided timeline | Final milestone years, headings and descriptions; no destinations were invented for the underlined sample text |
 | What We Do | Five repeated Health Week cards; the design uses numbers 01, 02, 03, 03, 03 | Real activity titles, descriptions and numbering |
 | Flagship Initiatives | One featured Business Summit card and three repeated summary cards; placeholder programme/category labels | Real programme IDs, copy, cover images, category labels and destinations |
-| Partnership call to action | Future-leaders copy; Meet Our Leadership and Partner With AMSUL links | Approved copy; Leadership is implemented and partnership actions await the shared Google Form URL |
+| Partnership call to action | Future-leaders copy; Meet Our Leadership and Partner With AMSUL links | Approved copy; Leadership and the Google Form destination are implemented |
 
 The mission, vision, introductory copy and statistics currently remain local editorial content. No public About-page settings API has been established from the supplied dashboard contracts. The flagship cards can later use the documented Events/Programs projections once content mapping is agreed. The dashboard is unchanged.
 
@@ -65,7 +65,7 @@ The hub is implemented at `/impact-reports`. The desktop frame is 1440 × 4156; 
 | Report listing | 24 local sample records; 12 visible initially; repeated Health Week title/summary and wine cover slots; shared desktop hover reveal and persistent mobile details | Real report IDs, initiative assignments, titles, summaries, covers, publication dates, slugs, bodies/PDFs and accessible file labels |
 | Search and filters | Case-insensitive title/summary/initiative search, category filtering, derived result counts and a clearable empty state | Confirm final search fields and API query/pagination contract |
 | Pagination | Results-per-page choices 6, 12 and 24; only page numbers backed by the current results are shown | The approved correction shows two actual pages for 24 reports at 12 per page, replacing Figma’s unused slots. Confirm final totals and default page size |
-| Partnership | Shared call to action with About Us | Approved copy; Leadership is implemented and partnership actions await the shared Google Form URL |
+| Partnership | Shared call to action with About Us | Approved copy; Leadership and the Google Form destination are implemented |
 
 All 24 records intentionally repeat design sample copy. Their category assignments are demonstration data, not factual classifications. Report links now open the implemented Health Week detail page. Its body is the sample copy in the details design; no final report text or PDF was supplied. No new facts, report files or live integrations were invented. Confirmed 25 October 2026: Impact Reports are published Content records selected by their assigned Content category. The exact category slug and record assignments remain pending; the inspected staging taxonomy has no Impact Report(s) label. Private Finance reports must not be used. See `api-to-ui-mapping.md` for the complete mapping.
 
@@ -81,7 +81,7 @@ Implemented at `/impact-reports/amsul-health-week-2025`, using the shared `[slug
 | Body | Three copies of “The List That Started It All”, each with the same seven paragraphs about AMSUL Quill and Hostel Movement 2026; headings use the three supplied sizes | Actual report sections, results, participation metrics, outcomes, sources and approved publication metadata; confirm the sample text should be replaced |
 | Attachments | “AMSUL HealthWeek Proposal 2026” with PDF icon, and “HealthWeek Impact Report 2025” with Slides icon | Real files/URLs, exact names, formats, sizes and download permissions; neither file has been supplied |
 | Related reports | Three Health Week sample cards using the shared responsive report layout | Real related report IDs and selection rules; all current sample cards lead to the same implemented report |
-| Partnership | “Inspired by what you've seen?” copy, Become a Partner and Contact Us | Approved copy; Contact Us is implemented and Become a Partner awaits the shared Google Form URL |
+| Partnership | “Inspired by what you've seen?” copy, Become a Partner and Contact Us | Approved copy; Contact Us and the Google Form destination are implemented |
 
 No fake report or attachment was generated. Each missing-file button responds with an accessible message; when an approved URL is added, the shared attachment component exposes a normal download link. Dashboard integration and real file delivery remain untested in this local-content phase. Cross-origin file delivery may require its own download response headers when integrated.
 
@@ -243,7 +243,7 @@ Figma node `464:5496`; desktop reference 1440 × 5032. Implemented at `/partners
 | Area | Currently represented | Needed for final content |
 | --- | --- | --- |
 | Hero | PARTNERSHIPS; Building Partnerships That Create Lasting Impact.; supplied sixty-year collaboration introduction and shared outreach photo | Approved final introduction and photo credit |
-| Actions | Become a Partner / Become A Partner links in hero, benefits and final callout; Download Partnership Brochure | Shared Google Form URL for both Partner With AMSUL and Become A Partner. The existing `/partnerships/become-a-partner` destination remains temporary until that URL is supplied; no separate application page is needed. Approved brochure PDF/URL, version/date, accessibility and file size; the current button reports the missing file without starting a fake download |
+| Actions | Become a Partner / Become A Partner links in hero, benefits and final callout; Download Partnership Brochure | Both Partner With AMSUL and Become A Partner link to https://forms.gle/xVmA78Q5Hwos5DoJA; no separate application page is needed. Approved brochure PDF/URL, version/date, accessibility and file size; the current button reports the missing file without starting a fake download |
 | Impact tiles | 5000+ Alumni, 25+ Annual Events, 20+ Awards, 100+ Community Outreaches; the bottom row repeats Alumni and Awards exactly as shown | Verified counts, definitions, reporting period and whether repeated tiles are intentional. These use the shared ImpactStatistics component and retain all six coloured tiles |
 | Benefits introduction | What Partner With Us; Why Organizations Choose AMSUL; supplied sponsorship/healthcare introduction | Confirm the eyebrow wording, preserved verbatim from Figma |
 | Five benefit cards | Access to Healthcare Professionals; Strengthen Brand Visibility; Showcase your Product & Services; Build Long-Term Relationships; Demonstrate Social Impact; supplied descriptions and numbers 01, 02, 03, 03, 03 | Approved descriptions, punctuation/capitalisation and numbering; repeated 03 values remain as supplied |
@@ -251,10 +251,10 @@ Figma node `464:5496`; desktop reference 1440 × 5032. Implemented at `/partners
 | Testimonials heading | Testimonials; Hear from Clients we’ve helped tell their Stories | Approved AMSUL-specific heading if this is template copy |
 | Testimonial panels | Finding Story X, Public Speaking, Jali Advanced, Founder X; repeated Jali Africa quotations and continuations; Ajala Michael / Product Designer, ET on all four; exact supplied portrait and cropped light/dark Jali Africa marks | Real AMSUL partner endorsements, permission to publish, names/roles/organizations, portraits, logo credits and exact quote text. These are design samples, not verified AMSUL endorsements |
 | Testimonial interaction | Four independently controlled panels. Dots cycle through the four supplied source samples, starting with each panel's own Figma content. Keyboard selection and live content updates work | Confirm intended grouping/slide sets; no additional quotes or people were invented. Final data can replace the local sample list |
-| Callout | Shared Building the Next Generation of Healthcare Leaders copy with the single Become A Partner action shown in the frame | Confirm final campaign copy and application journey |
+| Callout | Shared Building the Next Generation of Healthcare Leaders copy with the single Become A Partner action shown in the frame | Confirm final campaign copy |
 | Navigation | Existing homepage View More Details, header Our Work → Partnerships and footer Partnerships open the real page | Confirm any later individual partnership/case-study paths |
 
-No dedicated public partnership-settings, partner-directory, testimonial or brochure contract is established by the inspected public website specs. Keep these structured local records until their intended source is agreed. Partnership applications will use the same external Google Form for both CTA labels; only its approved public URL is outstanding, rather than a new application page or submission API. No dashboard code, data or API configuration was changed.
+No dedicated public partnership-settings, partner-directory, testimonial or brochure contract is established by the inspected public website specs. Keep these structured local records until their intended source is agreed. Partnership applications use the same external Google Form for both CTA labels; no separate application page or submission API is needed. No dashboard code, data or API configuration was changed.
 
 ## Remaining content and integration gaps
 
@@ -281,7 +281,7 @@ Documents were read as reference contracts, not instructions to deploy or change
 | Media | `Media-Public-Website-Spec.md`: consume media URLs from their owning module. There is no public standalone Media Library browsing API. No direct Storage/Firestore browsing is assumed. |
 | Impact reports | Confirmed: published Content API records filtered by their Impact Reports category. Configure the exact stored category slug (the Content editor stores slugs), report assignments and primary-download selection. General Finance reports are private. |
 | Payments and dues | A later Payments page must follow `Payments-Public-Website-Spec.md`; Finance points to that dedicated contract. It is separate from the existing Event registration checkout. |
-| Partnership, brochure and testimonials | No established public partnership or testimonial content source. Keep `src/data/partnership.ts` local until the source, approved endorsements and brochure file are provided. Applications will use the approved shared Google Form journey; its URL is pending. |
+| Partnership, brochure and testimonials | No established public partnership or testimonial content source. Keep `src/data/partnership.ts` local until the source, approved endorsements and brochure file are provided. Applications link to the configured shared Google Form. |
 | Hero, partners, statistics, milestones and partnership benefits | No public homepage-settings contract has been established from the inspected specs. Retain local content until the intended source is confirmed. |
 
 The Content, Events and Media specs list verified staging values and unverified production values. Integration should verify production manifests and allowed origins when that phase starts. Use server-side public reads for an independent domain as the contracts require. No dashboard login, Firebase admin secret, or service account belongs in the public frontend.
@@ -302,7 +302,7 @@ The shared CategoryFilters control keeps chips on desktop and uses the existing 
 
 ## Approved navigation visibility
 
-Alumni Network, Constitution, Payments & Dues, Elections and Subsidiaries are hidden from the shared desktop/mobile navbar and footer while their pages are unfinished. Their registered placeholder routes remain available directly. Partner With AMSUL and Become A Partner are confirmed to use the same Google Form once its URL is supplied; the current temporary destination is not a request for another page design. All remaining footer page links lead to implemented pages.
+Alumni Network, Constitution, Payments & Dues, Elections and Subsidiaries are hidden from the shared desktop/mobile navbar and footer while their pages are unfinished. Their registered placeholder routes remain available directly. Partner With AMSUL and Become A Partner link to the supplied Google Form; no internal application page is used. All remaining footer page links lead to implemented pages.
 
 ## Verification record
 
@@ -313,7 +313,7 @@ Alumni Network, Constitution, Payments & Dues, Elections and Subsidiaries are hi
 - Mobile navigation, Escape handling, temporary routes and all internal link targets.
 - Event and featured-report carousel controls, slide indicators and impact anchor navigation.
 - Report search, category filtering, empty-state reset, result counts, pagination and page-size changes.
-- Partnership desktop section/card geometry, 320–1440px layouts, all four testimonial panel selectors, missing-brochure feedback, partner CTA/temporary destination and homepage/footer navigation; shared homepage impact/partner appearance.
+- Partnership desktop section/card geometry, 320–1440px layouts, all four testimonial panel selectors, missing-brochure feedback, partner CTA destinations and homepage/footer navigation; shared homepage impact/partner appearance.
 - Leadership desktop section/card geometry, responsive 320–1440px layouts, hidden executive/patron expansion and collapse, all-shown committee feedback, missing-biography toggles, and About/header/footer navigation.
 - Contact Us desktop section/card geometry; 320–1440px layouts; required/invalid/valid enquiry inputs including blank text and optional phone; no enquiry POST; retained form values and clear service feedback; keyboard/mouse FAQ toggles; contact route and mail/telephone/WhatsApp/map/social destinations; missing LinkedIn feedback.
 - Event Highlights Details desktop main-section geometry; approved shared header/footer; 320–1440px layouts; content-driven photo/sponsor counts including empty/single/odd/larger lists; real-image rendering; album missing-link feedback; listing/back/map/related/report navigation, temporary Business Summit 2025 and unknown-highlight 404s.

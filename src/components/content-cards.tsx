@@ -1,3 +1,4 @@
+import { landingImageSrcSet } from "@/lib/landing-image";
 import Link from "next/link";
 import assets from "@/data/assets.json";
 import { Icon, Tag } from "./ui";
@@ -9,6 +10,10 @@ export function BenefitCard({ number, title, description, additionalText, inline
   return <article className={`benefit ${inlineNumber ? "benefit-inline-number" : ""}`}>
     <span className="benefit-number">{number}</span><h3>{title}</h3><p>{description}{additionalText && <><br />{additionalText}</>}</p>
   </article>;
+}
+
+export function ActivityCard({ number, title, image }: { number: string; title: string; image: string }) {
+  return <article className="activity-card"><div className="activity-card-heading"><h3>{title}</h3><span>{number}</span></div><img src={image} srcSet={image.endsWith("academics.jpg") ? undefined : landingImageSrcSet(image)} sizes="(max-width:700px) 100vw, 600px" alt="" loading="lazy" /></article>;
 }
 
 export function InitiativeCard({ title, excerpt, additionalText, href, tags = [], featured = false, programme, coverImageUrl }: {
@@ -26,11 +31,10 @@ export function FeaturedContentCard({ item, tags, linkLabel, arrowSrc, starSrc, 
   item: { id?: string; title: string; excerpt: string; href: string; coverImageUrl?: string | null; featuredImageUrl?: string | null }; tags: string[];
   linkLabel: string; arrowSrc: string; starSrc: string; className?: string; kind: "report" | "article" | "event";
 }) {
-  return <article className={`content-card featured-content-card ${className}`} data-report-id={kind === "report" ? item.id : undefined} data-story-id={kind === "article" ? item.id : undefined} data-event-id={kind === "event" ? item.id : undefined}>
-    <Link className="featured-content-image" href={item.href} aria-label={`View ${kind}: ${item.title}`}><ContentCover src={item.featuredImageUrl ?? item.coverImageUrl} /></Link>
-    <div className="featured-content-copy"><h2><Link href={item.href}>{item.title}</Link></h2><p>{item.excerpt}</p><Link className="featured-content-link" href={item.href}>{linkLabel}<Icon src={arrowSrc} /></Link></div>
-    <div className="featured-content-tags"><Tag dot={false}><Icon src={starSrc} />Featured</Tag>{tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div>
-  </article>;
+  return <Link href={item.href} className={`content-card featured-content-card ${className}`} data-report-id={kind === "report" ? item.id : undefined} data-story-id={kind === "article" ? item.id : undefined} data-event-id={kind === "event" ? item.id : undefined}>
+    <div className="featured-content-image"><ContentCover src={item.featuredImageUrl ?? item.coverImageUrl} /><div className="featured-content-tags"><Tag dot={false}><Icon src={starSrc} />Featured</Tag>{tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div></div>
+    <div className="featured-content-copy"><h2>{item.title}</h2><p>{item.excerpt}</p><span className="featured-content-link">{linkLabel}<Icon src={arrowSrc} /></span></div>
+  </Link>;
 }
 
 export function ReportCard({ report, featured }: {
@@ -51,10 +55,11 @@ export function EventCard({ event, index = 0, icons, groupMetadata = false }: {
   const date = <span><Icon src={icons?.date || assets[index === 1 ? "80-2022-imgLetsIconsDateTodayDuotone1" : "80-2022-imgLetsIconsDateTodayDuotone"]} className="event-icon" />{event.date}</span>;
   const location = <span><Icon src={icons?.location || assets["80-2022-imgDuoIconsLocation"]} className="event-icon" />{event.location}</span>;
   const time = <span><Icon src={icons?.timer || assets[index === 1 ? "80-2022-imgMaskGroup1" : "80-2022-imgMaskGroup"]} className="timer-icon" />{event.time}</span>;
+  const hasMeta = !!(event.date || event.location || event.time);
   return <Link href={event.href} className="content-card event-card" data-event-id={event.id}>
     <div className="card-image event-image"><ContentCover src={event.coverImageUrl} /><div className="event-tags">{event.program && <Tag>{event.program}</Tag>}{event.category && <Tag dot={false}>{event.category}</Tag>}</div>
       <div className="event-card-content"><div className="event-title-row"><h3>{event.title}</h3>{event.priceLabel && <span className="event-price">{event.priceLabel}</span>}</div>
-        <div className="event-meta">{groupMetadata ? <div className="event-meta-details">{date}{location}</div> : <>{date}{location}</>}{time}</div>
+        {hasMeta && <div className="event-meta">{groupMetadata ? (event.date || event.location) && <div className="event-meta-details">{event.date && date}{event.location && location}</div> : <>{event.date && date}{event.location && location}</>}{event.time && time}</div>}
       </div>
     </div>
   </Link>;
@@ -69,7 +74,7 @@ export function StoryCard({ story, dateIconSrc = assets["80-2407-imgLetsIconsDat
     <div className="card-image story-image"><ContentCover src={story.coverImageUrl} />{!tagsBelowImage && <div className="story-tags">{story.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div>}</div>
     {tagsBelowImage && <div className="story-tags-below">{story.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}</div>}
     <div className="card-body"><h3>{story.title}</h3><p>{story.excerpt}</p>
-      <div className="story-meta"><span>{location ? <><Icon src={location.icon} /><span className="story-meta-label">{location.label}</span></> : <><span className="author-avatar" aria-hidden="true">{story.avatarUrl && <img src={story.avatarUrl} alt="" loading="lazy" />}</span><span className="story-meta-label">{story.author}</span></>}</span><span><Icon src={dateIconSrc} />{story.date}</span></div>
+      <div className="story-meta"><span>{location ? <><Icon src={location.icon} /><span className="story-meta-label">{location.label}</span></> : <><span className="author-avatar" aria-hidden="true">{story.avatarUrl && <img src={story.avatarUrl} alt="" loading="lazy" />}</span><span className="story-meta-label">{story.author}</span></>}</span>{story.date && <span><Icon src={dateIconSrc} />{story.date}</span>}</div>
     </div>
   </Link>;
 }

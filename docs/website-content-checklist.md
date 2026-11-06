@@ -13,7 +13,7 @@ The supplied page layouts and local interactions are built. The site still uses 
 - Standard report cards reveal summaries on desktop hover/keyboard focus and show summaries immediately on mobile/touch.
 - Use custom app-styled dropdowns, mobile Category below Search, and pagination calculated from actual results.
 - Keep Alumni Network, Constitution, Payments & Dues, Elections and Subsidiaries hidden in navbar/footer.
-- Both **Partner With AMSUL** and **Become A Partner** will open the **same Google Form**, to be supplied. No separate partnership application page or application API is needed for this agreed journey. The current temporary destination has not yet been replaced.
+- Both **Partner With AMSUL** and **Become A Partner** open the same Google Form: https://forms.gle/xVmA78Q5Hwos5DoJA. No separate partnership application page or application API is needed.
 - Highlight photos and sponsors grow/shrink with their records and hide when empty.
 - Two Home panels and one About panel are reserved for future content; what fills them is still undecided.
 
@@ -36,7 +36,7 @@ Supply one approved record per real item; repeated Figma cards do not require in
 | Event Highlights Details | Actual recap/outcomes; ordered photographs and captions/alt text; event cover; sponsor records; album URL; photo-specific album CTA copy; related record IDs. Supply whatever number of photos/sponsors exists. |
 | Contact Us | Confirmed contact channels/map/social links; final support/response hours; real FAQ questions/answers and introduction; final enquiry categories; required fields; recipient/routing and delivery method. |
 | Leadership | Current session/tenure; names, offices and ordering; featured executives; separate executive/patron/committee group assignments; correct committee names; approved portraits and biographies; section descriptions. |
-| Partnerships | Shared partnership Google Form URL; final partnership copy and benefits/numbering; brochure PDF; approved organisation names/logos/order; real testimonials with exact quotes, names/roles/organisations and portraits/logos; intended testimonial grouping. |
+| Partnerships | Final partnership copy and benefits/numbering; brochure PDF; approved organisation names/logos/order; real testimonials with exact quotes, names/roles/organisations and portraits/logos; intended testimonial grouping. |
 | Launch metadata | Production domain; approved page titles/descriptions; social-sharing image(s); privacy/consent wording and destination for collecting email/enquiries/registration details. Analytics details only if analytics is wanted. |
 
 For every photograph/logo: identify the record/section it belongs to, its desired order, any important crop/focal point, alt text or enough description to write it, and any required credit/publication permission. Existing Figma assets can be retained where approved; the missing covers, portraits and gallery slots need real assets or an explicit decision to leave them reserved.
@@ -65,7 +65,7 @@ These are current design samples, not verified AMSUL facts.
 
 ## 3. Functionality and destination decisions
 
-- [ ] **Partnership:** provide the shared Google Form URL. Confirm public visitors can open it without an unintended access restriction.
+- [ ] **Partnership:** confirm public visitors can open the configured Google Form without an unintended access restriction.
 - [ ] **Leadership profiles:** should View Profile show an inline biography, open a modal, or open a separate profile page? A separate page would need its intended design. Current controls only report missing biographies.
 - [ ] **Programme cards:** should a programme open its filtered event list, a programme detail page, or an external destination? HealthWeek's programme route is currently temporary.
 - [ ] **Event registration:** choose the appropriate mode per event: built-in, external, or none. The supplied detail design shows both built-in and external variants; those should not automatically represent two live registration paths for every event. Supply required fields, deadline/capacity and free/paid settings.
@@ -99,14 +99,14 @@ Live registration/payment requires separate acceptance checks. The Events contra
 
 ## 5. Suggested handover order
 
-1. **Decisions:** Google Form URL, official contacts, verified figures, reserved panels, profile/programme destinations and intended service providers.
+1. **Decisions:** official contacts, verified figures, reserved panels, profile/programme destinations and intended service providers.
 2. **Static copy:** one document with a section per page, marking each existing Figma paragraph “keep” or supplying its replacement. Include real history, FAQs, leadership introductions and partnership copy.
 3. **Records:** a spreadsheet or dashboard records for reports, posts, events/programmes, highlights, leadership, partners and testimonials. Give each item a stable ID and link its related records/assets by that ID.
 4. **Assets/files:** labelled folders for covers, portraits, logos, gallery pictures, PDFs and slides; include the brochure and album links.
 5. **Integration:** agree source mappings, connect verified services, then check real content, submissions, files and error states end to end.
 6. **Launch:** confirm domain/metadata and approve the final content after replacement. Current layout/local-interaction checks do not establish content accuracy or live-service readiness.
 
-You can supply these in batches. The most useful first batch is the shared Google Form URL, official contact details, verified statistics, and a decision on the three reserved panels. There is no need to supply passwords or administrative credentials in the content handover.
+You can supply these in batches. The most useful first batch is official contact details, verified statistics, and a decision on the three reserved panels. There is no need to supply passwords or administrative credentials in the content handover.
 
 ## Mapping clarification — 25 October 2026
 

@@ -1,5 +1,5 @@
-import { blogPosts } from "./blog";
 import { sampleEditorialParagraphs, type AttachmentFile, type ContentSection } from "./content";
+import { partnershipFormUrl } from "./site";
 
 // shortcut: preserve the Figma copy, including mismatched introduction, sample final section and attachments; replace with approved editorial content before launch.
 export const articleDetails = [{
@@ -29,14 +29,14 @@ export const articleDetails = [{
     { title: "AMSUL HealthWeek Proposal 2026", format: "pdf", url: null },
     { title: "HealthWeek Impact Report 2025", format: "slides", url: null },
   ] satisfies AttachmentFile[],
-  related: blogPosts.slice(0, 3).map(post => ({ ...post, tags: ["Publication", "Research", "Editorial Board"] })),
+  related: [],
   relatedHeading: "related reports",
   partnership: {
     eyebrow: "Partnership", title: "Inspired by what you've seen?",
     description: "Partner with AMSUL to support initiatives that improve communities, empower students, and shape the future of healthcare.",
   },
   partnershipActions: [
-    { label: "Become a Partner", href: "/partnerships/become-a-partner" },
+    { label: "Become a Partner", href: partnershipFormUrl },
     { label: "Contact Us", href: "/contact", secondary: true, arrow: true },
   ],
 }];

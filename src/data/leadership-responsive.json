@@ -1,0 +1,27 @@
+{
+  "/assets/leadership-2026/assistant.jpg": {
+    "src": "/assets/leadership-2026/assistant-mobile.webp",
+    "width": 800,
+    "fullWidth": 1123
+  },
+  "/assets/leadership-2026/create.jpg": {
+    "src": "/assets/leadership-2026/create-mobile.webp",
+    "width": 800,
+    "fullWidth": 1825
+  },
+  "/assets/leadership-2026/hero.jpg": {
+    "src": "/assets/leadership-2026/hero-mobile.webp",
+    "width": 1200,
+    "fullWidth": 2738
+  },
+  "/assets/leadership-2026/pro.jpg": {
+    "src": "/assets/leadership-2026/pro-mobile.webp",
+    "width": 800,
+    "fullWidth": 2048
+  },
+  "/assets/leadership-2026/welfare.jpg": {
+    "src": "/assets/leadership-2026/welfare-mobile.webp",
+    "width": 800,
+    "fullWidth": 2229
+  }
+}

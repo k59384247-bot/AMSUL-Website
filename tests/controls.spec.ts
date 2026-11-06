@@ -30,7 +30,7 @@ test("pagination shows only real pages and hides numbers when no records match",
 
 test("input focus follows rounded field boundaries without an inner rectangle", async ({ page }) => {
   await page.goto("/blog");
-  for (const selector of [".listing-search input", ".newsletter-form input"]) {
+  for (const selector of [".listing-search input"]) {
     const input = page.locator(selector);
     await input.click();
     expect(await input.evaluate(node => getComputedStyle(node).outlineStyle)).toBe("none");

@@ -156,7 +156,7 @@ The initial two executives, three grand patrons and six committee heads match Fi
 
 Desktop reference: 1440 × 5032. Open http://127.0.0.1:3001/partnerships. The page reuses Hero, BenefitCard, SectionHeading, PartnershipCallout, the shared header/footer and button styles. ImpactStatistics and PartnerGrid are extracted from the homepage and reused without changing its layout. Partnership adds the third impact row shown in this frame.
 
-Four TestimonialCard panels retain the exact supplied quotes, portrait, cropped marks, colours and initial arrangement. Each panel's dots cycle through the four provided source samples, without inventing other endorsements. Confirm this interaction/grouping when final testimonials are supplied. The unrelated Jali Africa copy, repeated organization marks, repeated statistics, What Partner With Us eyebrow and repeated 03 benefit numbers remain as shown and are recorded in the content register. The brochure action clearly reports its missing file; set the nullable local brochure URL when supplied. Become a Partner opens the existing explicit temporary destination, pending its own design. No application is submitted and no dashboard API is active.
+Four TestimonialCard panels retain the exact supplied quotes, portrait, cropped marks, colours and initial arrangement. Each panel's dots cycle through the four provided source samples, without inventing other endorsements. Confirm this interaction/grouping when final testimonials are supplied. The unrelated Jali Africa copy, repeated organization marks, repeated statistics, What Partner With Us eyebrow and repeated 03 benefit numbers remain as shown and are recorded in the content register. The brochure action clearly reports its missing file; set the nullable local brochure URL when supplied. Become A Partner and Partner With AMSUL link directly to the supplied Google Form. No application is submitted by the site and no dashboard API is active.
 
 
 ## Shared control behaviour
@@ -167,6 +167,10 @@ Pagination renders exactly the actual result page count, recalculates after sear
 
 ## Content handover
 
-The supplied 13 page types are built. See `docs/website-content-checklist.md` for the consolidated final content/assets checklist, unresolved sample-copy issues, service decisions and integration gaps. `docs/content-register.md` retains the section-by-section inventory. Both Partner With AMSUL and Become A Partner will use the same Google Form URL when supplied; a dedicated application page is not required.
+The supplied 13 page types are built. See `docs/website-content-checklist.md` for the consolidated final content/assets checklist, unresolved sample-copy issues, service decisions and integration gaps. `docs/content-register.md` retains the section-by-section inventory. Both Partner With AMSUL and Become A Partner link to the same Google Form; a dedicated application page is not required.
 
 The complete field-level integration specification is in `docs/api-to-ui-mapping.md` (25 October 2026). Impact Reports are mapped as a category-filtered view of the shared Content feed; Pages Functions and cache wiring are still implementation work.
+
+### Local static images
+
+Run `npm run images:optimize` after adding images under `public/assets`. It keeps a smaller file only when decoded pixels and relevant image metadata match, and leaves animated images untouched. PNG and WebP optimization uses the Sharp dependency installed with Next.js; lossless JPEG optimization also requires `jpegtran` (on macOS, available through `brew install jpeg-turbo`). The production build runs the same optimization on the exported assets; if `jpegtran` is unavailable it reports that JPEGs were skipped. Dashboard images are not changed by this process. Existing responsive variants remain in use; new responsive variants need to be added for new large images.

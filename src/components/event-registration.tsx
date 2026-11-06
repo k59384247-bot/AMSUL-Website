@@ -5,12 +5,14 @@ import { useId, useState, type FormEvent } from "react";
 import { Icon } from "./ui";
 import { FormField } from "./form-field";
 import { DetailActionCard } from "./detail-action-card";
+import { safeLink } from "@/lib/website/selectors";
 
 export function EventRegistration({ content, external = false, externalIcon, record }: {
   content: { title: string; description: string }; external?: boolean; externalIcon: string; record?: Event;
 }) {
   const id = useId();
   const local = process.env.NEXT_PUBLIC_WEBSITE_DATA_SOURCE !== 'api';
+  const externalUrl = safeLink(record?.externalRegistrationUrl);
   external = record?.useExternalRegistration ?? external;
   const [message, setMessage] = useState("");
   function register(event: FormEvent<HTMLFormElement>) {
@@ -20,6 +22,9 @@ export function EventRegistration({ content, external = false, externalIcon, rec
   if (record && !record.registrationRequired) return null;
   if (record && !local) return <DetailActionCard id={`${id}-title`} content={content} className="event-registration">
     {external ? <a className="button detail-action-button" href={`/api/website/events/${encodeURIComponent(record.id)}/register`}>Register<Icon src={externalIcon} /></a> : <p>Online registration is not available here yet. Please contact the event organizer.</p>}
+  </DetailActionCard>;
+  if (record && external && externalUrl) return <DetailActionCard id={`${id}-title`} content={content} className="event-registration">
+    <a className="button detail-action-button" href={externalUrl}>Register<Icon src={externalIcon} /></a>
   </DetailActionCard>;
   return <DetailActionCard id={`${id}-title`} content={content} className="event-registration" registration={external ? "external" : "form"}>
     <form onSubmit={register} onInput={() => setMessage("")}>

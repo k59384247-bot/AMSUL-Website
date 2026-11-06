@@ -1,16 +1,44 @@
 "use client";
 
-import { Children, useRef, useState, type ReactNode } from "react";
+import { Children, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import assets from "@/data/assets.json";
 import { Icon } from "./ui";
 
-export function Carousel({ children, label, controls = false, className = "", arrowSrc = assets["80-2022-imgPajamasArrowRight1"], dots = false }: {
-  children: ReactNode; label: string; controls?: boolean; className?: string; arrowSrc?: string; dots?: boolean;
+export function Carousel({ children, label, controls = false, className = "", arrowSrc = assets["80-2022-imgPajamasArrowRight1"], dots = false, initialIndex = 0, autoplay = false }: {
+  children: ReactNode; label: string; controls?: boolean; className?: string; arrowSrc?: string; dots?: boolean; initialIndex?: number; autoplay?: boolean;
 }) {
   const track = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(0);
   const [atEnd, setAtEnd] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+
+  useLayoutEffect(() => {
+    const node = track.current;
+    const item = node?.firstElementChild as HTMLElement | null;
+    if (initialIndex > 0 && node && item) node.scrollLeft = initialIndex * (item.getBoundingClientRect().width + 24);
+  }, [initialIndex]);
+
+  useEffect(() => {
+    if (!autoplay) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const schedule = () => {
+      clearTimeout(timer);
+      if (motion.matches) return;
+      timer = setTimeout(() => {
+        const node = track.current;
+        if (!node) return;
+        const slides = Array.from(node.children) as HTMLElement[];
+        const available = slides.map((slide, index) => slide.querySelector("img") ? index : -1).filter(index => index >= 0);
+        if (available.length < 2) return;
+        const next = available.find(index => index > activeSlide) ?? available[0];
+        node.scrollTo({ left: slides[next].offsetLeft - slides[0].offsetLeft, behavior: "smooth" });
+      }, 5000);
+    };
+    schedule();
+    motion.addEventListener("change", schedule);
+    return () => { clearTimeout(timer); motion.removeEventListener("change", schedule); };
+  }, [activeSlide, autoplay]);
 
   function goToSlide(index: number) {
     const node = track.current;
@@ -34,7 +62,7 @@ export function Carousel({ children, label, controls = false, className = "", ar
         const max = node.scrollWidth - node.clientWidth;
         setPosition(max > 0 ? node.scrollLeft / max : 0);
         setAtEnd(node.scrollLeft >= max - 2);
-        if (dots && node.firstElementChild) setActiveSlide(Math.round(node.scrollLeft / (node.firstElementChild.getBoundingClientRect().width + 24)));
+        if ((dots || autoplay) && node.firstElementChild) setActiveSlide(Math.round(node.scrollLeft / (node.firstElementChild.getBoundingClientRect().width + 24)));
       }}
       onKeyDown={event => {
         if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); }

@@ -48,10 +48,11 @@ test('highlight details bind the correct event, ordered gallery and sponsor reco
   await expect(page.getByRole('link', { name: 'View All Pictures' })).toHaveCount(0);
 });
 test('programme and event links open their own records, and related cards exclude the current event', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-10-25T12:00:00Z'));
   await page.goto('/programs-events');
   await expect(page.locator('.event-listing-grid .event-card')).toHaveCount(4);
   await page.locator('.programme-card').first().click();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('AMSUL HealthWeek 2026');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Health Week');
   await expect(page.locator('.event-related-grid .event-card')).toHaveCount(2);
   await page.goto('/programs-events/amsul-business-summit-2026');
   await expect(page.locator('.event-registration')).toHaveCount(1);
@@ -61,8 +62,8 @@ test('leadership assignments drive groups and featured/expanded records', async 
   await page.goto('/leadership');
   await expect(page.locator('.leadership-executive .leadership-featured-cards .profile-card')).toHaveCount(2);
   await page.locator('.leadership-executive').getByRole('button', { name: 'View All', exact: true }).click();
-  await expect(page.locator('.leadership-executive .leadership-additional .profile-card:visible')).toHaveCount(2);
-  await expect(page.locator('.leadership-committees .profile-card')).toHaveCount(3);
+  await expect(page.locator('.leadership-executive .leadership-additional .profile-card:visible')).toHaveCount(8);
+  await expect(page.locator('.leadership-committees .profile-card')).toHaveCount(4);
   await expect(page.locator('.leadership-committees').getByRole('button', { name: 'View All', exact: true })).toHaveCount(0);
 });
 test('all fixture-driven pages fit a 320px viewport without broken media', async ({ page }) => {

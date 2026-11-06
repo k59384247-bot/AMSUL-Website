@@ -11,27 +11,86 @@
 .leadership-patrons .leadership-featured{width:calc(100% - 160px);max-width:1280px}
 .leadership-patrons .leadership-featured-cards{gap:40px}
 .leadership-patrons .section-heading-row,.leadership-committees .section-heading-row{min-height:96px}
-.profile-card{width:294px;min-height:384px;padding:8px 8px 16px;background:var(--card);border-radius:36px;display:flex;flex-direction:column;gap:12px;align-items:center;flex-shrink:0;min-width:0}
-.profile-portrait{width:100%;height:256px;background:var(--card-wine);border-radius:28px;overflow:hidden;flex-shrink:0}
-.profile-portrait img{width:100%;height:100%;object-fit:cover}
-.profile-card-information{display:flex;flex-direction:column;align-items:center;gap:16px;padding-inline:12px;max-width:100%;text-align:center}
+.profile-card{position:relative;width:294px;min-height:0;padding:8px 8px 16px;background:var(--card);border-radius:36px;display:flex;flex-direction:column;gap:12px;align-items:center;flex-shrink:0;min-width:0}
+.profile-portrait{position:relative;width:100%;height:auto;aspect-ratio:278 / 256;background:var(--card-wine);border-radius:28px;overflow:hidden;flex-shrink:0}
+.profile-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.profile-portrait:not(:has(img)){aspect-ratio:1}
+.profile-card-information{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:100%;padding-inline:12px;text-align:center}
 .profile-card-information h3{font:400 20px/32px Thurkle,sans-serif;text-transform:lowercase;overflow-wrap:anywhere}
 .profile-card-information p{color:var(--body);overflow-wrap:anywhere}
-.profile-button{border:0;padding:0;border-radius:48px;background:transparent;color:var(--gold);font-size:14px;line-height:20px;font-weight:500}
-.profile-card-large{width:400px;min-height:480px;border-radius:68px}
-.profile-card-large .profile-portrait{height:360px;border-radius:64px}
-.profile-card-large .profile-card-information{gap:8px}
+.profile-card-trigger{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer}.profile-card-trigger:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.profile-card-large{width:400px;min-height:0;border-radius:68px}
+.profile-card-large .profile-portrait{border-radius:64px;aspect-ratio:384 / 360}
+.profile-card-large .profile-card-information{gap:8px;padding-inline:20px}
 .leadership-patrons .profile-card-large{min-height:452px}
-.leadership-patrons .profile-card:not(.profile-card-large) .profile-portrait{height:292px}
+
 .leadership-view-all{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:8px 24px;border:0;border-radius:48px;background:transparent;color:var(--gold);font-weight:500;letter-spacing:-.48px;line-height:24px}
-.leadership-view-all:hover,.profile-button:hover{background:rgba(244,201,93,.08)}
+.leadership-view-all:hover{background:rgba(244,201,93,.08)}
 .leadership-chevron{display:flex;align-items:center;justify-content:center;width:16px;height:16px}
 .leadership-chevron.expanded{transform:rotate(180deg)}
 .leadership-additional{max-width:1248px;width:calc(100% - var(--gutter)*2)}
 .leadership-additional[hidden]{display:none}
-.profile-bio{color:var(--body);font-size:14px;line-height:20px;padding:8px 12px;text-align:center;overflow-wrap:anywhere}
+.profile-dialog{width:var(--profile-width,min(960px,calc(100% - 48px)));height:var(--profile-height,auto);max-height:calc(100dvh - 64px);max-width:calc(100% - 48px);padding:28px;border:1px solid #6a542a;border-radius:28px;background:var(--surface);color:var(--text);overflow:hidden}
+.profile-dialog[open]{display:grid;grid-template-columns:minmax(0,var(--profile-portrait-width,40%)) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:36px}
+.profile-dialog::backdrop{background:#0009;backdrop-filter:blur(6px)}
+.profile-dialog-close{position:absolute;right:20px;top:20px;z-index:2;width:40px;height:40px;display:grid;place-items:center;border:1px solid #6a542a;border-radius:12px;background:var(--surface);color:var(--text);font-size:28px;line-height:1}
+.profile-dialog-close:hover{background:var(--button);color:var(--surface)}
+.profile-dialog-portrait{width:var(--profile-portrait-width,100%);align-self:start;min-height:0;overflow:hidden;border-radius:22px;background:var(--card-wine);display:flex;align-items:center;justify-content:center}
+.profile-dialog-portrait img{width:100%;height:auto}
+.profile-dialog-portrait:has(>span){aspect-ratio:1}
+.profile-dialog-portrait>span{font:400 80px/1 Thurkle,sans-serif;color:var(--button)}
+.profile-dialog-content{display:grid;grid-template-rows:auto minmax(0,1fr);gap:20px;min-width:0;min-height:0}
+.profile-dialog-heading{padding:8px 48px 0 0}
+.profile-dialog-heading h2{text-transform:none;overflow-wrap:anywhere;margin-top:8px;font-size:36px;line-height:44px}
+.profile-dialog-heading p{color:var(--body)}
+.profile-bio-scroll{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:16px;scrollbar-width:thin;scrollbar-color:#6a542a transparent}
+.profile-bio-scroll:focus-visible{outline-offset:-2px}
+.profile-bio{color:var(--body);white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}
+@media(max-width:700px){
+.profile-dialog{max-width:calc(100% - 32px);max-height:calc(100dvh - 32px);padding:20px;border-radius:24px}
+.profile-dialog[open]{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:20px}
+.profile-dialog-portrait{border-radius:16px;width:100%;justify-self:stretch}
+.profile-dialog-content{gap:16px}
+.profile-dialog-heading{padding:0}
+.profile-dialog-heading h2{font-size:28px;line-height:36px}
+.profile-dialog-close{top:28px;right:28px}
+.profile-bio-scroll{padding-right:12px}
+}
 .leadership-status{padding-inline:24px;text-align:center;color:var(--body)}
-@media(max-width:1399px){.leadership-executive .section-heading-row{width:30%}.leadership-executive .leadership-featured-cards{flex:1;min-width:0}.leadership-executive .profile-card-large{width:calc((100% - 24px)/2)}.leadership-patrons .leadership-featured{width:calc(100% - var(--gutter)*2)}.leadership-patrons .leadership-featured-cards{gap:24px}.leadership-patrons .profile-card-large{width:calc((100% - 48px)/3)}.leadership-patrons .profile-card-large .profile-portrait,.leadership-executive .profile-card-large .profile-portrait{height:auto;aspect-ratio:384/360}.leadership-executive .profile-card-large,.leadership-patrons .profile-card-large{min-height:0}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 72px)/4)}}
+@media(max-width:1399px){.leadership-executive .section-heading-row{width:30%}.leadership-executive .leadership-featured-cards{flex:1;min-width:0}.leadership-executive .profile-card-large{width:calc((100% - 24px)/2)}.leadership-patrons .leadership-featured{width:calc(100% - var(--gutter)*2)}.leadership-patrons .leadership-featured-cards{gap:24px}.leadership-patrons .profile-card-large{width:calc((100% - 48px)/3)}.leadership-executive .profile-card-large,.leadership-patrons .profile-card-large{min-height:0}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 72px)/4)}}
 @media(max-width:1000px){.leadership-executive .leadership-featured{flex-direction:column;gap:32px}.leadership-executive .section-heading-row{width:100%;justify-content:center;text-align:center}.leadership-executive .section-heading{align-items:center}.leadership-executive .leadership-featured-cards{width:100%;max-width:824px}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 48px)/3)}.leadership-patrons .profile-card-large{border-radius:36px}.leadership-patrons .profile-card-large .profile-portrait{border-radius:28px}.leadership-patrons .section-heading-row,.leadership-committees .section-heading-row{min-height:0}}
-@media(max-width:700px){.leadership-section{gap:32px}.leadership-featured{gap:32px}.leadership-executive .leadership-featured-cards,.leadership-patrons .leadership-featured-cards{flex-direction:column;align-items:center}.leadership-executive .profile-card-large,.leadership-patrons .profile-card-large{width:100%;max-width:400px;border-radius:68px}.leadership-executive .profile-card-large .profile-portrait,.leadership-patrons .profile-card-large .profile-portrait{border-radius:64px}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 24px)/2)}.profile-card:not(.profile-card-large){min-height:0}.profile-card:not(.profile-card-large) .profile-portrait,.leadership-patrons .profile-card:not(.profile-card-large) .profile-portrait{height:auto;aspect-ratio:278/256}.profile-card:not(.profile-card-large) .profile-card-information{padding-inline:0}.leadership-section .section-heading h2{font-size:28px;line-height:36px}.leadership-page .hero-inner{min-height:600px}.leadership-page .hero h1{font-size:34px;line-height:44px}}
+@media(max-width:700px){.leadership-section{gap:32px}.leadership-featured{gap:32px}.leadership-executive .leadership-featured-cards,.leadership-patrons .leadership-featured-cards{flex-direction:column;align-items:center}.leadership-executive .profile-card-large,.leadership-patrons .profile-card-large{width:100%;max-width:400px;border-radius:68px}.leadership-executive .profile-card-large .profile-portrait,.leadership-patrons .profile-card-large .profile-portrait{border-radius:64px;aspect-ratio:384 / 360}.leadership-committees .profile-card,.leadership-additional .profile-card{width:calc((100% - 24px)/2)}.profile-card:not(.profile-card-large){min-height:0}.leadership-section .section-heading h2{font-size:28px;line-height:36px}.leadership-page .hero-inner{min-height:600px}.leadership-page .hero h1{font-size:34px;line-height:44px}}
 @media(max-width:420px){.leadership-committees .profile-card,.leadership-additional .profile-card{width:100%;max-width:294px}.leadership-page .hero-inner{min-height:640px}.leadership-page .hero h1{font-size:30px;line-height:40px}}
+
+/* The leadership design uses a plain introduction and a separate group photograph. */
+.leadership-page .hero{height:432px;padding:0;background:var(--background)}
+.leadership-page .hero-centered .hero-heading{top:calc(50% + 56px);width:824px}
+.leadership-hero-photo{padding-block:32px}
+.leadership-hero-photo img{display:block;width:100%;height:536px;border-radius:24px;object-fit:cover;object-position:center 42%}
+@media(max-width:700px){.leadership-page .hero{height:auto;min-height:440px}.leadership-page .hero-inner{min-height:440px}.leadership-page .hero-centered .hero-heading{top:50%;width:100%}.leadership-hero-photo img{height:auto;aspect-ratio:1.6;object-fit:cover}}
+
+.leadership-committees .leadership-featured-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;align-items:stretch}
+.leadership-committees .leadership-featured-cards .profile-card{width:100%;height:100%;min-height:0;max-width:none}
+@media(max-width:1000px){.leadership-committees .leadership-featured-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.leadership-committees .leadership-featured-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.leadership-committees .leadership-featured-cards{grid-template-columns:minmax(0,294px)}}
+
+.profile-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.profile-action{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:36px;padding:8px 12px;border:0;border-radius:48px;background:rgba(244,201,93,.15);color:var(--gold);font:500 14px/20px "DM Sans",sans-serif;white-space:nowrap}
+.profile-action:not(:disabled):hover{background:rgba(244,201,93,.26)}
+
+.profile-social-action{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(244,201,93,.15);color:var(--gold);transition:background .2s ease,transform .2s ease}.profile-social-action:hover{background:rgba(244,201,93,.28);transform:translateY(-1px)}.profile-social-action:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.profile-social-icon{width:20px;height:20px;display:flex;align-items:center;justify-content:center}.profile-social-icon svg{width:18px;height:18px;display:block}.profile-social-icon img{width:15px;height:auto;display:block}
+
+
+/* Equalize the smaller Executive Council cards to the tallest card's natural height. */
+.leadership-executive .profile-card{height:auto}
+.leadership-executive .profile-card-information{flex:initial;justify-content:initial}
+.leadership-executive .leadership-additional{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;align-items:stretch}
+.leadership-executive .leadership-additional .profile-card{width:100%;height:100%;min-height:0;max-width:none}
+.leadership-executive .leadership-additional[hidden]{display:none}
+@media(max-width:1000px){.leadership-executive .leadership-additional{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.leadership-executive .leadership-additional{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.leadership-executive .leadership-additional{grid-template-columns:minmax(0,294px);justify-content:center}}
+.leadership-executive .leadership-additional .profile-card-information{flex:1;justify-content:space-between}
+
+.leadership-executive .leadership-additional .profile-card-information h3{white-space:nowrap;overflow-wrap:normal}

@@ -1,21 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
 import assets from "@/data/assets.json";
 import { contact, navigation } from "@/data/site";
 import { Icon } from "./ui";
 import { SocialLinks } from "./social-links";
 
 export function SiteFooter() {
-  const [message, setMessage] = useState("");
-
-  function subscribe(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    // shortcut: no subscription service is connected; never claim an email was subscribed.
-    setMessage("Newsletter signup will be available when the website launches. Your email has not been submitted.");
-  }
-
   return <footer className="site-footer">
     <div className="container">
       <div className="footer-main">
@@ -29,15 +20,6 @@ export function SiteFooter() {
             ]} />
             <span>{contact.socialLabel}</span>
             <a className="email-link" href={`mailto:${contact.email}`}><span className="email-icon"><Icon src={assets["footer-imgDashiconsEmailAlt"]} /></span>{contact.email}</a>
-          </div>
-          <div className="newsletter">
-            <p>{contact.newsletterText}</p>
-            <form onSubmit={subscribe} className="newsletter-form">
-              <label className="sr-only" htmlFor="newsletter-email">Email address</label>
-              <input id="newsletter-email" name="email" type="email" required autoComplete="email" placeholder="Enter your email" aria-describedby={message ? "newsletter-status" : undefined} />
-              <button className="button" type="submit">Subscribe</button>
-            </form>
-            <p id="newsletter-status" className="newsletter-status" role="status">{message}</p>
           </div>
         </div>
         <nav className="footer-links" aria-label="Footer navigation">

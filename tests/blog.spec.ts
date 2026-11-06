@@ -7,7 +7,7 @@ test('featured stories navigate to their own detail and exclude the current stor
   const carousel = page.getByRole('region', { name: 'Featured articles', exact: true });
   await carousel.getByRole('button', { name: 'Show featured articles slide 4' }).click();
   await expect(carousel.getByRole('button', { name: 'Show featured articles slide 4' })).toHaveAttribute('aria-pressed', 'true');
-  const card = carousel.locator('.featured-story').nth(3); const title = await card.locator('h2').innerText(); const href = await card.locator('.featured-content-link').getAttribute('href');
+  const card = carousel.locator('.featured-story').nth(3); const title = await card.locator('h2').innerText(); const href = await card.getAttribute('href');
   await card.locator('.featured-content-link').click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
   await expect(page.locator(`.related-article-grid a[href="${href}"]`)).toHaveCount(0);

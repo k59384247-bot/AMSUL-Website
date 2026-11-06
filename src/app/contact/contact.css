@@ -23,12 +23,12 @@
 .contact-faq>.section-heading-row{width:100%}
 .contact-faq .section-heading{width:824px;max-width:100%;color:var(--body)}
 .contact-faq .section-heading h2{text-transform:none}
-.contact-faq .section-description{width:100%;text-align:left}
+.contact-faq .section-description{width:100%;text-align:center}
 .faq-list{width:824px;max-width:100%}
 .faq-item{border-bottom:1px solid #333;padding:28px 24px 27px}
 .faq-item h3{font-weight:500}
 .faq-item button{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;padding:0;border:0;background:transparent;color:var(--text);text-align:left;font:inherit;line-height:24px}
-.faq-item button[aria-expanded="true"]{color:#c2130f}
+.faq-item button[aria-expanded="true"]{color:var(--gold)}
 .faq-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .faq-answer{margin-top:8px;color:var(--body)}
 .faq-answer p{line-height:24px}
@@ -36,3 +36,7 @@
 @media(max-width:1000px){.contact-content{grid-template-columns:1fr}.contact-information{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.contact-information-card{padding:24px 0;gap:24px}.contact-channels>a{font-size:16px;letter-spacing:0}.contact-social-row{gap:12px}.contact-information-heading h2{font-size:28px;line-height:36px}.contact-form-card{max-width:612px;justify-self:center}}
 @media(max-width:700px){.contact-page .hero-centered{height:auto;min-height:500px}.contact-page .hero-inner{min-height:492px}.contact-content{gap:32px}.contact-information{display:flex;gap:8px}.contact-information-card{padding-block:24px}.contact-email-phone{grid-template-columns:1fr;gap:16px}.contact-social-row{gap:16px}.contact-faq{gap:32px}.faq-item{padding-inline:8px}.faq-item button{gap:16px}.contact-faq .section-heading h2{font-size:28px;line-height:36px}}
 @media(max-width:360px){.contact-social-links{gap:8px}.contact-social-row>span{font-size:16px}}
+
+.contact-page .hero-centered .hero-image>img{top:-1.64%}
+.contact-page .hero-shade{background:rgba(41,8,8,.6)}
+@media(max-width:700px){.contact-page .hero-centered .hero-image>img{top:0}}

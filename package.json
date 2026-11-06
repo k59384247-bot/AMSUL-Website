@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "node scripts/dev.cjs",
     "cache:invalidate": "node scripts/invalidate-local.cjs",
-    "build": "next build --webpack && node scripts/build-worker.cjs",
+    "build": "next build --webpack && node scripts/optimize-images.cjs out/assets && node scripts/build-worker.cjs",
     "start": "next start --hostname 127.0.0.1 --port 3001",
     "typecheck": "tsc --noEmit",
-    "test": "playwright test"
+    "test": "playwright test",
+    "images:optimize": "node scripts/optimize-images.cjs"
   },
   "dependencies": {
     "next": "16.2.0",

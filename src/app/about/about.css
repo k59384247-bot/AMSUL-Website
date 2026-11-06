@@ -5,9 +5,10 @@
 .about-page h2{color:var(--body)}
 .about-introduction-columns{display:grid;grid-template-columns:506px minmax(0,1fr);gap:24px;color:var(--body)}
 .about-paragraphs{display:flex;flex-direction:column;gap:24px}
-.about-statistics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.about-statistics-track{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.about-stat-indicator{pointer-events:none;position:absolute;inset:0 auto 0 0;width:calc(100% / 3);border-block:1px solid var(--gold);transform:translateX(calc(var(--active-stat) * 100%));transition:transform .4s cubic-bezier(.22,1,.36,1)}
 .about-stat{height:268px;display:flex;flex-direction:column;align-items:center;gap:24px;border-block:.5px solid var(--text);padding-block:48px}
-.about-stat:last-child{border-color:var(--gold)}
+
 .about-stat-value{font:400 88px/84px Thurkle,sans-serif;letter-spacing:.88px;white-space:nowrap}
 .about-stat-value>span{font-size:64px}
 .about-stat-label{font:400 20px/32px Thurkle,sans-serif;text-transform:lowercase;color:var(--body);text-align:center}
@@ -57,7 +58,9 @@
 @media(max-width:700px){
   .about-introduction-columns{grid-template-columns:1fr;gap:24px}
   .about-introduction-columns h2{max-width:420px}
-  .about-statistics{grid-template-columns:1fr;padding-block:24px}
+  .about-statistics{padding-block:24px}
+  .about-statistics-track{grid-template-columns:1fr;grid-auto-rows:1fr}
+  .about-stat-indicator{width:100%;height:calc(100% / 3);transform:translateY(calc(var(--active-stat) * 100%))}
   .about-stat{height:auto;min-height:208px;padding-block:32px;gap:20px}
   .about-stat+.about-stat{border-top:0}
   .about-stat-value{font-size:72px;line-height:76px}.about-stat-value>span{font-size:52px}
@@ -77,3 +80,26 @@
   .about-activities .benefit{min-width:0}
   .about-initiatives{gap:32px}
 }
+
+@media(prefers-reduced-motion:reduce){.about-stat-indicator{transition:none}}
+
+/* About page content and imagery from the current design. */
+.about-page .hero-image>img{left:-1.327%;top:2.273%;width:101.327%;height:122.096%}
+.about-stat.is-active .about-stat-value,.about-stat.is-active .about-stat-label,.about-stat.is-active .student-label{color:var(--gold)}
+.about-class-section{padding-block:32px}
+.about-class-carousel .carousel-track{margin-right:0;padding-right:0}
+.about-class-slide{position:relative;width:100%;height:536px;overflow:hidden;border-radius:24px;background:var(--surface)}
+.about-class-slide img{position:absolute;max-width:none;object-fit:cover}
+.about-class-genezens img{width:102.324%;height:209.142%;left:-1.522%;top:-48.321%}
+.about-class-elixir img{inset:0;width:100%;height:100%;object-position:center 65%}
+.about-class-class-x img{width:107.051%;height:186.94%;left:-3.526%;bottom:-2.425%}
+.about-class-slide span{position:absolute;right:24px;top:24px;border:1px solid #e0e0e0;border-radius:100px;background:var(--wine);padding:8px 16px;font:400 20px/32px Thurkle,sans-serif;text-transform:lowercase}
+.about-class-carousel .carousel-controls{margin-top:32px}
+.about-history .timeline-track{height:555px}.about-history .timeline-ticks{top:531px}.about-history .milestone{height:500px}.about-history .milestone h3{font-size:20px;line-height:32px}
+.about-activities{gap:24px}.activities-side{width:294px}.activities-bottom{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.activity-card{min-width:0;padding:12px 12px 20px;border-radius:16px;background:var(--surface)}
+.activity-card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}.activity-card-heading h3{font:600 18px/24px "DM Sans",sans-serif}.activity-card-heading span{color:var(--body);font-weight:500}
+.activity-card img{display:block;width:100%;height:180px;border-radius:12px;object-fit:cover}.activities-side .activity-card img{object-position:center bottom}
+@media(max-width:1000px){.activities-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}.activities-side{width:40%}}
+@media(max-width:700px){.about-page .hero-image>img{width:100%;height:100%;left:0;top:0;object-position:center}.about-class-section{padding-block:24px}.about-class-slide{height:auto;aspect-ratio:1.6;border-radius:20px}.about-class-slide span{right:12px;top:12px;padding:4px 10px;font-size:15px;line-height:24px}.about-class-carousel .carousel-controls{margin-top:24px}.activities-side{width:100%}.activities-bottom{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.activity-card img{height:auto;aspect-ratio:1.5}.activity-card-heading h3{font-size:16px;line-height:22px}}
+@media(max-width:400px){.activities-bottom{grid-template-columns:1fr}}

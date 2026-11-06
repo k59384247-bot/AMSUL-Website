@@ -95,7 +95,7 @@ Detail bodies load in the client. This is not full server-rendered article conte
 
 The existing Figma layout, site navigation, section headings, institutional copy/history/statistics, Contact page/FAQs, global partner directory, Partnership benefits/testimonials and shared footer copy remain in their existing local files. Those items do not have an approved complete public dashboard source. They are not fabricated from unrelated API records. The intentionally reserved sections stay empty.
 
-Contact enquiry, newsletter, native event registration, payment checkout, and the pending partnership Google Form are separate submission/integration tasks. This work connects the content reads, not those writes.
+Contact enquiry, newsletter, native event registration and payment checkout are separate submission/integration tasks. Partner CTAs link directly to the supplied Google Form. This work connects the content reads, not those writes.
 
 ## Verify
 
