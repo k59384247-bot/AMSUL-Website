@@ -4,11 +4,12 @@ import assets from "@/data/assets.json";
 import { Icon, Tag } from "./ui";
 import { ContentCover } from "./content-cover";
 
-export function BenefitCard({ number, title, description, additionalText, inlineNumber = false }: {
-  number: string; title: string; description: string; additionalText?: string; inlineNumber?: boolean;
+export function BenefitCard({ number, title, description, additionalText }: {
+  number: string; title: string; description: string; additionalText?: string;
 }) {
-  return <article className={`benefit ${inlineNumber ? "benefit-inline-number" : ""}`}>
-    <span className="benefit-number">{number}</span><h3>{title}</h3><p>{description}{additionalText && <><br />{additionalText}</>}</p>
+  return <article className="benefit">
+    <div className="benefit-heading"><span className="benefit-number">{number}</span><h3>{title}</h3></div>
+    <p>{description}{additionalText && <><br />{additionalText}</>}</p>
   </article>;
 }
 

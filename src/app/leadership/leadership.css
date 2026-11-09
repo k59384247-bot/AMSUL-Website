@@ -18,7 +18,6 @@
 .profile-card-information{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:100%;padding-inline:12px;text-align:center}
 .profile-card-information h3{font:400 20px/32px Thurkle,sans-serif;text-transform:lowercase;overflow-wrap:anywhere}
 .profile-card-information p{color:var(--body);overflow-wrap:anywhere}
-.profile-card-trigger{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;cursor:pointer}.profile-card-trigger:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .profile-card-large{width:400px;min-height:0;border-radius:68px}
 .profile-card-large .profile-portrait{border-radius:64px;aspect-ratio:384 / 360}
 .profile-card-large .profile-card-information{gap:8px;padding-inline:20px}
@@ -71,6 +70,11 @@
 
 .leadership-committees .leadership-featured-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;align-items:stretch}
 .leadership-committees .leadership-featured-cards .profile-card{width:100%;height:100%;min-height:0;max-width:none}
+@media(min-width:1001px){
+  .leadership-committees .leadership-featured-cards{grid-template-columns:repeat(8,minmax(0,1fr))}
+  .leadership-committees .leadership-featured-cards .profile-card{grid-column:span 2}
+  .leadership-committees .leadership-featured-cards .profile-card:last-child:nth-child(4n+1){grid-column:4 / span 2}
+}
 @media(max-width:1000px){.leadership-committees .leadership-featured-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){.leadership-committees .leadership-featured-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.leadership-committees .leadership-featured-cards{grid-template-columns:minmax(0,294px)}}
@@ -94,3 +98,17 @@
 .leadership-executive .leadership-additional .profile-card-information{flex:1;justify-content:space-between}
 
 .leadership-executive .leadership-additional .profile-card-information h3{white-space:nowrap;overflow-wrap:normal}
+
+/* Portrait framing from the Leadership design, applied only to these local assets. */
+.profile-portrait img[src$="/osadare-gideon.png"]{width:105.76%;height:172.27%;left:-3.24%;top:-5.86%;object-position:center}
+.profile-portrait img[src$="/yomi-finnih.png"]{width:136.98%;height:106.39%;left:-18.49%;top:-3.33%;object-position:center}
+.profile-portrait img[src$="/durosinmi-etti.png"]{width:104.69%;height:148.89%;left:-2.34%;top:-6.94%;object-position:center}
+.profile-portrait img[src$="/giwa-osagie.png"]{width:103.13%;height:110.00%;left:-1.56%;top:-5.00%;object-position:center}
+.profile-portrait img[src$="/ogunsola.png"]{width:104.32%;height:144.14%;left:-2.16%;top:-5.08%;object-position:center}
+.profile-portrait img[src$="/lesi.png"]{width:107.91%;height:125.78%;left:-5.40%;top:-3.13%;object-position:center}
+.profile-portrait img[src$="/ibiloye.png"]{width:108.63%;height:176.95%;left:-4.32%;top:-9.77%;object-position:center}
+.profile-portrait img[src$="/ajuluchukwu.png"]{width:112.23%;height:162.50%;left:-5.40%;top:-10.16%;object-position:center}
+.profile-portrait img[src$="/seyi-roberts.png"]{width:105.04%;height:102.34%;left:-2.52%;top:-1.17%;object-position:center}
+.profile-portrait img[src$="/elebute-odunsi.png"]{width:110.07%;height:152.34%;left:-5.40%;top:-1.95%;object-position:center}
+.profile-portrait img[src$="/olayemi-dawodu.png"]{width:113.31%;height:123.05%;left:-5.40%;top:-3.13%;object-position:center}
+.profile-portrait img[src$="/adeyeye.png"]{width:103.60%;height:111.33%;left:-2.16%;top:-1.17%;object-position:center}

@@ -6,7 +6,7 @@ export const articleDetails = [{
   slug: "dear-future-doctor-it-is-okay-to-be-undecided",
   title: "DEAR FUTURE DOCTOR: IT IS OKAY TO BE UNDECIDED",
   description: "As part of World Hypertension Day, AMSUL joined healthcare professionals and students in raising awareness about prevention, early detection and healthier lifestyles.",
-  tags: ["Category - HealthWeek", "Content Type - Academic"],
+  tags: ["Content Type - Academic"],
   author: "Ajala Michael", date: "July 1st, 2026", readingTime: "5 mins. read",
   sections: [
     { title: "Choosing a specialty isn’t a race.", size: 24, paragraphs: [

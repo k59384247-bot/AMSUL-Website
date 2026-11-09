@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { reportDetails } from "@/data/report-details";
+import { primaryReportPdf, reportDetails } from "@/data/report-details";
 import assets from "@/data/report-detail-assets.json";
 import { SiteHeader } from "@/components/site-header";
 import { HeroBadge } from "@/components/hero";
@@ -34,14 +34,16 @@ export function ReportDetailsView({ slug: initialSlug }: { slug: string }) {
   if (detail.error) return <DetailState error={detail.error} retry={detail.retry} />;
   if (!detail.data) return <DetailState />;
   const report = { ...reportDetails[0], ...contentDetail(record, feed, detail.data, 'reports') };
+  const pdf = primaryReportPdf(slug, report.attachments);
+  const additionalAttachments = report.attachments.filter(file => file.url !== pdf?.url);
   return <div className="report-details-page" data-node-id="236:1787"><SiteHeader className="detail-header report-details-header" />
     <main id="main-content">
       <section className="report-detail-intro section container" aria-labelledby="report-title" data-node-id="236:1945">
         <div className="report-detail-heading"><Link className="button detail-back-link" href="/impact-reports"><Icon src={assets.imgPajamasArrowRight} className="arrow-back" />Back to Reports</Link><div className="report-detail-titles"><HeroBadge>{report.badge}</HeroBadge><h1 id="report-title">{report.title}</h1><p>{report.description}</p></div><Tag>{report.category}</Tag></div>
         <div className="detail-cover report-cover"  data-node-id="236:2870" ><ContentCover src={report.coverImageUrl} priority /></div>
-        {report.file && <AttachmentDownload file={report.file} primary />}
+        {pdf && <AttachmentDownload file={pdf} primary />}
       </section>
-      <section className="report-article-section section container" aria-label="Report content" data-node-id="236:2788"><ArticleContent body={report.body} attachments={report.attachments} /></section>
+      <section className="report-article-section section container" aria-label="Report content" data-node-id="236:2788"><ArticleContent body={report.body} attachments={additionalAttachments} /></section>
       <section className="related-reports section container" aria-labelledby="related-reports-title" data-node-id="243:3086"><h2 id="related-reports-title">related reports</h2><div className="related-report-grid">{report.related.map(item => <ReportCard key={item.id} report={item} />)}</div></section>
       <PartnershipCallout nodeId="243:3146" content={report.partnership} actions={report.partnershipActions} />
     </main>

@@ -1,10 +1,23 @@
 import { test, expect } from '@playwright/test';
 import { responsivePage } from './responsive-page';
 const route = '/impact-reports/amsul-health-week-2025';
-test('report detail remains responsive with its own body and downloadable fixture', async ({ page }) => { await responsivePage(page, route, 'Health Week Impact Report 2025', 'report-details'); });
-test('the supplied report attachment downloads a real fictional PDF', async ({ page }) => {
-  await page.goto(route); const download = page.waitForEvent('download'); await page.locator('.primary-download a').click(); const file = await download;
-  expect(file.suggestedFilename()).toBe('Demonstration impact report 1.pdf'); expect(await file.failure()).toBeNull();
+test('report detail remains responsive with its own body', async ({ page }) => { await responsivePage(page, route, 'Health Week Impact Report 2025', 'report-details'); });
+test('each report offers a PDF download directly below its cover', async ({ page }) => {
+  for (const [slug, filename] of [
+    ['amsul-health-week-2025', '59th-amsul-health-week-impact-report.pdf'],
+    ['amsul-iwd-2026-impact-report', 'amsul-iwd-2026-impact-report.pdf'],
+  ]) {
+    await page.goto(`/impact-reports/${slug}`);
+    const download = page.locator('.report-cover + .primary-download .download-button');
+    await expect(download).toHaveText('Download PDF');
+    const href = await download.getAttribute('href');
+    if (href) {
+      expect(href.endsWith(`/${filename}`)).toBe(true);
+    } else {
+      await download.click();
+      await expect(page.locator('.primary-download [role="status"]')).toContainText('is not available yet');
+    }
+  }
 });
 test('related reports exclude the current record and unknown reports return 404', async ({ page }) => {
   await page.goto(route); await expect(page.locator(`.related-report-grid a[href="${route}"]`)).toHaveCount(0);

@@ -1,10 +1,20 @@
 import { test, expect } from '@playwright/test';
 
 for (const [route, width] of [['/about', 1440], ['/', 390]] as const) {
-  test(`history keeps scrolling on ${route} at ${width}px`, async ({ page }) => {
+  test(`history advances on ${route} at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.clock.install();
     await page.goto(route);
+    if (width === 390) {
+      const timeline = page.getByRole('region', { name: 'AMSUL history timeline', exact: true });
+      await timeline.scrollIntoViewIfNeeded();
+      const year = timeline.locator('.is-current .milestone-year');
+      const firstYear = await year.innerText();
+      await page.clock.runFor(6000);
+      await expect(year).not.toHaveText(firstYear);
+      await expect(timeline.locator('.is-current')).toHaveCount(1);
+      return;
+    }
     const timeline = page.getByRole('region', { name: 'AMSUL history timeline. Scroll horizontally for more milestones.', exact: true });
     await timeline.scrollIntoViewIfNeeded();
     await page.mouse.move(0, 0);
@@ -37,8 +47,8 @@ test('history repeats without a visible jump at the loop boundary', async ({ pag
   await timeline.screenshot({ path: '/private/tmp/amsul-history-loop-desktop.png' });
 });
 
-test('history pauses for reading and reduced motion while retaining keyboard scrolling', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 900 });
+test('desktop history pauses for reading and reduced motion while retaining keyboard scrolling', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.clock.install();
   await page.goto('/about');
   const timeline = page.locator('.timeline-window');
@@ -68,5 +78,5 @@ test('history pauses for reading and reduced motion while retaining keyboard scr
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.clock.runFor(2000);
   expect(await position()).toBeGreaterThan(reduced + 40);
-  await timeline.screenshot({ path: '/private/tmp/amsul-history-loop-mobile.png' });
+  await timeline.screenshot({ path: '/private/tmp/amsul-history-keyboard-desktop.png' });
 });

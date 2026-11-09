@@ -1,6 +1,23 @@
 import { partnershipFormUrl } from "./site";
 
 import type { AttachmentFile } from "./content";
+import { safeLink } from "@/lib/website/selectors";
+
+const reportPdfNames = new Map([
+  ["amsul-health-week-2025", "59th-amsul-health-week-impact-report.pdf"],
+  ["amsul-iwd-2026-impact-report", "amsul-iwd-2026-impact-report.pdf"],
+]);
+
+export function primaryReportPdf(slug: string, attachments: AttachmentFile[]): AttachmentFile | null {
+  const filename = reportPdfNames.get(slug);
+  const attachment = attachments.find(file => file.format === "pdf" && file.url);
+  if (!filename) return attachment ?? null;
+
+  const base = process.env.NEXT_PUBLIC_REPORT_PDF_BASE_URL?.trim().replace(/\/+$/, "");
+  const hostedUrl = base?.startsWith("https://") ? safeLink(`${base}/${filename}`) : null;
+  return hostedUrl ? { title: filename, format: "pdf", url: hostedUrl }
+    : attachment ?? { title: filename, format: "pdf", url: null };
+}
 
 export const reportDetails = [{
   slug: "amsul-health-week-2025",

@@ -18,7 +18,6 @@ const navigationGroups: { label: string; footerLabel: string; links: SiteLink[] 
   { label: "Our Work", footerLabel: "Our Work", links: [
     { label: "Programs & Events", href: "/programs-events" },
     { label: "Impact Reports", href: "/impact-reports" },
-    { label: "Partnerships", href: "/partnerships" },
     { label: "Event Highlights", href: "/event-highlights" },
   ] },
   { label: "Resources", footerLabel: "Resources", links: [
@@ -26,6 +25,7 @@ const navigationGroups: { label: string; footerLabel: string; links: SiteLink[] 
   ] },
   { label: "Get Involved", footerLabel: "Get Involved", links: [
     { label: "Contact Us", href: "/contact" },
+    { label: "Partnerships", href: "/partnerships" },
     { label: "Payments & Dues", href: "/payments", hidden: true },
     { label: "Elections", href: "/elections", hidden: true },
   ] },

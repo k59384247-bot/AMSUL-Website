@@ -17,9 +17,18 @@ const partnerHref = partnershipFormUrl;
 
 export default function PartnershipsPage() {
   return <main id="main-content" className="partnerships-page">
-    <Hero badge={partnershipPage.hero.badge} title={partnershipPage.hero.title} backgroundImage={partnershipPage.hero.backgroundImage} responsiveBackground={false} nodeId="921:23749" introduction={<><p>{partnershipPage.hero.introduction}</p><div className="button-row"><ButtonLink href={partnerHref}>Become a Partner</ButtonLink><BrochureDownload file={partnershipPage.brochure} arrowSrc={assets.imgPajamasArrowRight} /></div></>} />
+    <Hero badge={partnershipPage.hero.badge} title={partnershipPage.hero.title} plain nodeId="1055:5837" introduction={<><p>{partnershipPage.hero.introduction}</p><div className="button-row"><ButtonLink href={partnerHref}>Become a Partner</ButtonLink><BrochureDownload file={partnershipPage.brochure} arrowSrc={assets.imgPajamasArrowRight} /></div></>} />
+    <div className="partnership-photo container" data-node-id="1053:5815">
+      <img src={partnershipPage.photo} alt="AMSUL members and partners meeting around a conference table" width={1080} height={720} />
+    </div>
     <ImpactStatistics statistics={partnershipPage.statistics} layout="row" eyebrow="Our Reach" title="A Network of Opportunity" description="Connecting partners to students, healthcare professionals, alumni and institutions." nodeId="921:23768" />
-    <section className="partnership-benefits section container" data-node-id="949:20335"><div className="partnership-benefits-top"><div className="partnership-benefits-copy"><SectionHeading {...partnershipPage.benefits} /><ButtonLink href={partnerHref}>Become A Partner</ButtonLink></div><div className="partnership-benefits-side">{partnershipPage.benefits.items.slice(0,2).map(item => <BenefitCard key={item.id} {...item} />)}</div></div><div className="partnership-benefits-bottom">{partnershipPage.benefits.items.slice(2).map(item => <BenefitCard key={item.id} {...item} />)}</div></section>
+    <section className="partnership-benefits section container" data-node-id="949:20335">
+      <div className="partnership-benefits-copy">
+        <SectionHeading {...partnershipPage.benefits} />
+        <ButtonLink href={partnerHref}>Become A Partner</ButtonLink>
+      </div>
+      {partnershipPage.benefits.items.map(item => <BenefitCard key={item.id} {...item} />)}
+    </section>
     <section id="partners" className="partners-section section container partnership-partners-section" data-node-id="921:23826"><SectionHeading {...partnershipPage.partners} /><PartnerGrid className="partnership-partner-grid" partners={partnershipPage.partners.items} /></section>
     <section hidden className="partnership-testimonials" aria-label="Testimonials" data-node-id="464:7922"><SectionHeading {...partnershipPage.testimonials} centered /><div className="testimonial-grid">{partnershipPage.testimonials.items.map((item, index) => <TestimonialCard key={item.id} testimonials={partnershipPage.testimonials.items} initialIndex={index} />)}</div></section>
     <PartnershipCallout nodeId="921:23958" content={partnershipPage.callout} backgroundImage={partnershipPage.calloutImage} actions={[{label:"Become A Partner",href:partnerHref}]} />

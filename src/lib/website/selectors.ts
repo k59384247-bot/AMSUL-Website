@@ -23,19 +23,26 @@ export function dateRangeLabel(start: string | null, end: string | null, timezon
 }
 const ordered = <T extends { id: string; publishedAt?: string | null }>(items: T[]) => [...items].sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '') || a.id.localeCompare(b.id));
 export const postsOf = (feed: Feed, kind: 'blog' | 'reports' | 'highlights') => ordered(feed.posts.filter(post => kind === 'reports' ? post.categories.includes('impact-reports') : kind === 'highlights' ? post.categories.includes('event-highlights') && feed.events.some(event => event.id === post.eventId) : !post.categories.some(category => ['impact-reports', 'event-highlights'].includes(category)) && (!post.hub || post.hub === 'blog')));
+const isHealthWeekTitle = (title: string) => /^(?:the\s+)?(?:\d+(?:st|nd|rd|th)\s+)?(?:amsul\s+)?health[\s_-]*week\b/i.test(title.trim());
+const isHealthWeekLabel = (label: string) => /^(?:amsul[\s_-]+)?health[\s_-]*week(?:[\s_-]*[’']?\d{2,4})?$/i.test(label.trim());
+
 export function postCard(post: Post, feed: Feed, kind: 'blog' | 'reports' | 'highlights' = 'blog') {
-  const categoryIds = post.categories.filter(slug => !['impact-reports', 'event-highlights'].includes(slug));
+  const showLabel = (label: string) => isHealthWeekTitle(post.title) || !isHealthWeekLabel(label);
+  const categoryIds = post.categories.filter(slug => !['impact-reports', 'event-highlights'].includes(slug) && showLabel(slug));
   const categoryNames = categoryIds.map(slug => feed.categories.find(category => category.slug === slug)?.name ?? slug.replaceAll('-', ' '));
   const event = feed.events.find(event => event.id === post.eventId);
   const program = feed.programs.find(program => program.id === event?.programId);
-  const labels = [post.contentType?.name, ...categoryNames, ...(post.tags ?? []), kind === 'highlights' ? program?.title : post.contentUnit?.name].filter((value): value is string => !!value);
+  const labels = [post.contentType?.name, ...categoryNames, ...(post.tags ?? []), kind === 'highlights' ? program?.title : post.contentUnit?.name].filter((value): value is string => !!value && showLabel(value));
   const normalized = (value: string) => value.toLowerCase().replaceAll('-', ' ').replaceAll('_', ' ').trim();
   const tags = labels.filter((value, index) => labels.findIndex(item => normalized(item) === normalized(value)) === index);
   return { id: post.id, slug: slugOf(post), title: post.title, excerpt: post.excerpt ?? post.subtitle ?? '', author: post.author?.name ?? '', avatarUrl: safeLink(post.author?.avatarUrl), date: kind === 'highlights' && event ? dateRangeLabel(event.startDate, event.endDate, event.timezone || 'Africa/Lagos') : dateLabel(post.publishedAt), publishedAt: post.publishedAt ?? (kind === 'highlights' ? event?.endDate ?? event?.startDate : null) ?? '', tags, categoryId: categoryIds[0] ?? '', categoryIds, initiativeId: categoryIds[0] ?? '', initiative: categoryNames[0] ?? '', contentType: post.contentType?.name ?? '', location: event?.location ?? '', coverImageUrl: safeLink(post.coverImageUrl), featuredImageUrl: safeLink(post.featuredImageUrl) ?? safeLink(post.coverImageUrl), href: `/${kind === 'reports' ? 'impact-reports' : kind === 'highlights' ? 'event-highlights' : 'blog'}/${slugOf(post)}` };
 }
 export function eventCard(event: Event, feed: Feed) {
-  const program = feed.programs.find(program => program.id === event.programId);
-  return { id: event.id, slug: slugOf(event), title: event.title, excerpt: '', program: program?.title, category: event.category ?? '', date: dateRangeLabel(event.startDate, event.endDate, event.timezone || 'Africa/Lagos'), startsAt: event.startDate ?? '', location: event.location ?? '', time: [event.startTime, event.endTime].filter(Boolean).join(' – '), priceLabel: event.registrationType === 'free' ? 'Free' : event.registrationType === 'invite_only' ? 'Invite only' : null, isProgrammeEvent: event.eventType === 'program_event', tags: [event.category, program?.title].filter((value): value is string => !!value), coverImageUrl: safeLink(event.bannerImageUrl) ?? safeLink(event.posterImageUrl), href: `/programs-events/${slugOf(event)}` };
+  const showLabel = (label: string) => isHealthWeekTitle(event.title) || !isHealthWeekLabel(label);
+  const programTitle = feed.programs.find(program => program.id === event.programId)?.title;
+  const program = programTitle && showLabel(programTitle) ? programTitle : undefined;
+  const category = event.category && showLabel(event.category) ? event.category : '';
+  return { id: event.id, slug: slugOf(event), title: event.title, excerpt: '', program, category, date: dateRangeLabel(event.startDate, event.endDate, event.timezone || 'Africa/Lagos'), startsAt: event.startDate ?? '', location: event.location ?? '', time: [event.startTime, event.endTime].filter(Boolean).join(' – '), priceLabel: event.registrationType === 'free' ? 'Free' : event.registrationType === 'invite_only' ? 'Invite only' : null, isProgrammeEvent: event.eventType === 'program_event', tags: [category, program].filter((value): value is string => !!value), coverImageUrl: safeLink(event.bannerImageUrl) ?? safeLink(event.posterImageUrl), href: `/programs-events/${slugOf(event)}` };
 }
 export function programCard(program: Program) {
   return { id: program.id, title: program.title, excerpt: program.description ?? '', count: `${program.eventCount} EVENTS`, date: [dateLabel(program.startDate), dateLabel(program.endDate)].filter(Boolean).join(' – '), coverImageUrl: safeLink(program.bannerImageUrl), href: `/programs-events/${slugOf(program)}` };

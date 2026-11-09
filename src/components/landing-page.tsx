@@ -49,7 +49,7 @@ export function LandingPage() {
     </section>
     <section className="partnership-section section container" data-node-id="80:2518">
       <div className="partnership-copy"><SectionHeading eyebrow={landing.partnership.eyebrow} title={landing.partnership.title} /><div className="partnership-paragraphs">{landing.partnership.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div><div className="button-row"><ButtonLink href={partnershipFormUrl}>Become A Partner</ButtonLink><ButtonLink href="/partnerships" secondary arrow arrowSrc={assets["80-2518-imgPajamasArrowRight"]}>View More Details</ButtonLink></div></div>
-      <div className="benefits">{landing.partnership.benefits.map(benefit => <BenefitCard key={benefit.number} {...benefit} inlineNumber={benefit.number === "02"} />)}</div>
+      <div className="benefits">{landing.partnership.benefits.map(benefit => <BenefitCard key={benefit.number} {...benefit} />)}</div>
     </section>
   </>;
 }

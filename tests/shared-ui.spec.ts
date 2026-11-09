@@ -28,20 +28,18 @@ test('glass navigation stays at the viewport top on listing and detail routes', 
   }
 });
 
-test('About statistic lines slide from 10k to hovered and focused statistics', async ({ page }) => {
+test('About statistic lines start on the association rank and follow hovered and focused statistics', async ({ page }) => {
   await page.goto('/about');
   const stats=page.locator('.about-stat');
   const indicator=page.locator('.about-stat-indicator');
   await stats.last().scrollIntoViewIfNeeded();
   const left = async () => (await indicator.boundingBox())!.x;
   const initial = await left();
-  await stats.first().hover();
-  await expect.poll(left).toBeCloseTo((await stats.first().boundingBox())!.x,0);
-  expect(await left()).toBeLessThan(initial);
+  expect(initial).toBeCloseTo((await stats.first().boundingBox())!.x, 0);
   await stats.nth(1).hover();
-  await expect.poll(left).toBeCloseTo((await stats.nth(1).boundingBox())!.x,0);
+  await expect.poll(left).toBeCloseTo((await stats.nth(1).boundingBox())!.x, 0);
   await stats.last().focus();
-  await expect.poll(left).toBeCloseTo(initial,0);
+  await expect.poll(left).toBeCloseTo((await stats.last().boundingBox())!.x, 0);
   await page.emulateMedia({reducedMotion:'reduce'});
   expect(await indicator.evaluate(node => getComputedStyle(node).transitionDuration)).toBe('0s');
 });

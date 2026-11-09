@@ -26,7 +26,6 @@
 .purpose-vision{padding:24px;background:#8a0401;color:var(--text);width:calc(100% + 48px);border-radius:16px;outline:1px dashed var(--button);outline-offset:-1px}
 .about-history .section-description{margin-top:24px}
 .timeline-two-sided .timeline-track{height:787px;width:calc(1617px + var(--gutter)*2);display:block}
-.timeline-two-sided .timeline-ticks{top:388px}
 .timeline-two-sided .milestone{position:absolute;text-decoration:underline;color:var(--body)}
 .timeline-two-sided .milestone h3{color:var(--body);text-transform:none}
 .timeline-two-sided .milestone-stem{background:white}
@@ -90,12 +89,14 @@
 .about-class-carousel .carousel-track{margin-right:0;padding-right:0}
 .about-class-slide{position:relative;width:100%;height:536px;overflow:hidden;border-radius:24px;background:var(--surface)}
 .about-class-slide img{position:absolute;max-width:none;object-fit:cover}
+.about-class-ad-astra img{left:0;top:-15.86%;width:100%;height:155.22%}
+.about-class-nexus img{left:-15.87%;top:-41.98%;width:118.43%;height:206.9%}
 .about-class-genezens img{width:102.324%;height:209.142%;left:-1.522%;top:-48.321%}
 .about-class-elixir img{inset:0;width:100%;height:100%;object-position:center 65%}
 .about-class-class-x img{width:107.051%;height:186.94%;left:-3.526%;bottom:-2.425%}
 .about-class-slide span{position:absolute;right:24px;top:24px;border:1px solid #e0e0e0;border-radius:100px;background:var(--wine);padding:8px 16px;font:400 20px/32px Thurkle,sans-serif;text-transform:lowercase}
 .about-class-carousel .carousel-controls{margin-top:32px}
-.about-history .timeline-track{height:555px}.about-history .timeline-ticks{top:531px}.about-history .milestone{height:500px}.about-history .milestone h3{font-size:20px;line-height:32px}
+.about-history .timeline-track{height:555px}.about-history .milestone{height:500px}.about-history .milestone h3{font-size:20px;line-height:32px}
 .about-activities{gap:24px}.activities-side{width:294px}.activities-bottom{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .activity-card{min-width:0;padding:12px 12px 20px;border-radius:16px;background:var(--surface)}
 .activity-card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px}.activity-card-heading h3{font:600 18px/24px "DM Sans",sans-serif}.activity-card-heading span{color:var(--body);font-weight:500}
@@ -103,3 +104,5 @@
 @media(max-width:1000px){.activities-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}.activities-side{width:40%}}
 @media(max-width:700px){.about-page .hero-image>img{width:100%;height:100%;left:0;top:0;object-position:center}.about-class-section{padding-block:24px}.about-class-slide{height:auto;aspect-ratio:1.6;border-radius:20px}.about-class-slide span{right:12px;top:12px;padding:4px 10px;font-size:15px;line-height:24px}.about-class-carousel .carousel-controls{margin-top:24px}.activities-side{width:100%}.activities-bottom{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.activity-card img{height:auto;aspect-ratio:1.5}.activity-card-heading h3{font-size:16px;line-height:22px}}
 @media(max-width:400px){.activities-bottom{grid-template-columns:1fr}}
+
+@media(max-width:700px){.about-class-ad-astra img,.about-class-nexus img{inset:0;width:100%;height:100%}}

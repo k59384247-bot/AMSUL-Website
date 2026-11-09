@@ -11,10 +11,10 @@ export const about = {
   statistics: { students: "5,000+", studentLabel: "Medical Students", rank: "2", rankUnit: "nd", rankLabels: ["Medical Student Association", "in Nigeria"], alumni: "10", alumniUnit: "k", alumniLabel: "Alumni" },
   calloutImage: "/assets/about-2026/callout.jpg",
   classes: [
-    { id: "ad-astra", label: "Ad Astra", image: null, width: 0 },
+    { id: "ad-astra", label: "Ad Astra", image: "/assets/about-2026/ad-astra.png", width: 2560 },
     { id: "genezens", label: "Genezens", image: "/assets/about-2026/genezens.jpg", width: 1440 },
     { id: "class-x", label: "Class X", image: "/assets/about-2026/class-x.jpg", width: 2560 },
-    { id: "nexus", label: "Nexus", image: null, width: 0 },
+    { id: "nexus", label: "Nexus", image: "/assets/about-2026/nexus.png", width: 2560 },
     { id: "elixir", label: "Elixir", image: "/assets/about-2026/elixir.jpg", width: 1280 },
   ],
   purpose: {

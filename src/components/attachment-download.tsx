@@ -7,7 +7,7 @@ import { Icon } from "./ui";
 
 export function AttachmentDownload({ file, primary = false }: { file: AttachmentFile; primary?: boolean }) {
   const [unavailable, setUnavailable] = useState(false);
-  const label = primary ? "Download Report" : "Download";
+  const label = primary ? "Download PDF" : "Download";
   const content = <><Icon src={assets.imgMaterialSymbolsDownloadRounded} /><span>{label}</span></>;
   return <div className={`attachment-download ${primary ? "primary-download" : ""}`}>
     <div className="attachment-row"><div className="attachment-name"><span className="file-icon"><Icon src={file.format === "pdf" ? assets.imgMaterialIconThemePdf : assets.imgSelfhstGoogleSlides} /></span>{!primary && <span>{file.title}</span>}</div>

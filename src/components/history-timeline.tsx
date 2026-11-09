@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 type Milestone = { id: string; year: string; title: string; description: string };
 
@@ -8,6 +8,88 @@ const twoSidedLayout = [
   { left: 0, height: 354 }, { left: 441, height: 284 }, { left: 735, height: 354 }, { left: 1176, height: 354 },
   { left: 147, height: 411 }, { left: 588, height: 354 }, { left: 1029, height: 354 }, { left: 1323, height: 354 },
 ];
+
+function MobileTimeline({ milestones }: { milestones: Milestone[] }) {
+  const region = useRef<HTMLDivElement>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const [slide, setSlide] = useState({ current: 0, previous: -1, direction: 1 });
+  const [paused, setPaused] = useState(false);
+  const count = milestones.length;
+
+  function move(direction: number) {
+    setSlide(({ current }) => ({
+      current: (current + direction + count) % count,
+      previous: current,
+      direction,
+    }));
+  }
+
+  useEffect(() => {
+    if (paused || count < 2 || !region.current) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    let timer: number | undefined;
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (!visible || document.hidden || motion.matches) return;
+      timer = window.setTimeout(() => {
+        setSlide(({ current }) => ({ current: (current + 1) % count, previous: current, direction: 1 }));
+      }, 5000);
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      schedule();
+    }, { threshold: 0.25 });
+    observer.observe(region.current);
+    motion.addEventListener("change", schedule);
+    document.addEventListener("visibilitychange", schedule);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timer);
+      motion.removeEventListener("change", schedule);
+      document.removeEventListener("visibilitychange", schedule);
+    };
+  }, [count, paused, slide]);
+
+  return <div ref={region} className="timeline-mobile" role="region" aria-roledescription="carousel" aria-label="AMSUL history timeline">
+    <div className={`timeline-mobile-slides${slide.previous >= 0 ? " has-transition" : ""}`} tabIndex={count > 1 ? 0 : undefined}
+      aria-label="Milestones. Use the left and right arrow keys to navigate."
+      aria-live={paused ? "polite" : "off"}
+      onFocus={event => setPaused(event.currentTarget.matches(":focus-visible"))}
+      onBlur={() => setPaused(false)}
+      onKeyDown={event => {
+        if (count < 2 || (event.key !== "ArrowLeft" && event.key !== "ArrowRight")) return;
+        event.preventDefault();
+        setPaused(true);
+        move(event.key === "ArrowRight" ? 1 : -1);
+      }}
+      style={{ "--slide-direction": slide.direction } as CSSProperties}
+      onTouchStart={event => {
+        const touch = event.touches[0];
+        touchStart.current = event.touches.length === 1 ? { x: touch.clientX, y: touch.clientY } : null;
+      }}
+      onTouchEnd={event => {
+        const start = touchStart.current;
+        touchStart.current = null;
+        if (!start || count < 2) return;
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - start.x;
+        const dy = touch.clientY - start.y;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+      }}
+      onTouchCancel={() => { touchStart.current = null; }}>
+      <div className="timeline-ticks" aria-hidden="true" />
+      {milestones.map((milestone, index) => {
+        const active = index === slide.current;
+        const outgoing = index === slide.previous;
+        return <article key={milestone.id} className={`timeline-mobile-slide ${active ? "is-current" : outgoing ? "is-outgoing" : ""}`} aria-hidden={!active}>
+          <div className="milestone-copy"><h3>{milestone.title}</h3><p>{milestone.description}</p></div>
+          <p className="milestone-year">{milestone.year}<span aria-hidden="true" /></p>
+        </article>;
+      })}
+    </div>
+  </div>;
+}
 
 export function HistoryTimeline({ milestones, twoSided = false }: { milestones: Milestone[]; twoSided?: boolean }) {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -87,17 +169,22 @@ export function HistoryTimeline({ milestones, twoSided = false }: { milestones: 
     };
   }, [milestones.length]);
 
-  return <div ref={timelineRef} className={`timeline-window ${twoSided ? "timeline-two-sided" : ""}`} tabIndex={0} role="region" aria-roledescription="carousel" aria-label="AMSUL history timeline. Scroll horizontally for more milestones.">
-    <div className="timeline-loop">{[false, true].map(duplicate => <div className="timeline-track" ref={duplicate ? undefined : sequenceRef} key={String(duplicate)} aria-hidden={duplicate || undefined}>
-      <div className="timeline-ticks" aria-hidden="true">{Array.from({ length: 270 }, (_, index) => <i key={index} />)}</div>
-      {milestones.map((milestone, index) => {
-        const layout = twoSided ? twoSidedLayout[index] : undefined;
-        const below = twoSided && index >= 4;
-        const style: CSSProperties | undefined = layout ? { left: `calc(var(--gutter) + ${layout.left}px)`, height: layout.height, top: below ? 376 : 411 - layout.height } : undefined;
-        return <article className={`milestone milestone-${index} ${below ? "milestone-below" : ""}`} style={style} key={milestone.id}>
-          <div className="milestone-copy"><h3>{milestone.title}</h3><p>{milestone.description}</p></div><div className="milestone-stem" aria-hidden="true" /><p className="milestone-year">{milestone.year}<span aria-hidden="true" /></p>
-        </article>;
-      })}
-    </div>)}</div>
-  </div>;
+  return <>
+    <MobileTimeline milestones={milestones} />
+    <div ref={timelineRef} className={`timeline-window ${twoSided ? "timeline-two-sided" : ""}`} tabIndex={0} role="region" aria-roledescription="carousel" aria-label="AMSUL history timeline. Scroll horizontally for more milestones.">
+      <div className="timeline-loop">
+        <div className="timeline-ticks" aria-hidden="true" />
+        {[false, true].map(duplicate => <div className="timeline-track" ref={duplicate ? undefined : sequenceRef} key={String(duplicate)} aria-hidden={duplicate || undefined}>
+          {milestones.map((milestone, index) => {
+            const layout = twoSided ? twoSidedLayout[index] : undefined;
+            const below = twoSided && index >= 4;
+            const style: CSSProperties | undefined = layout ? { left: `calc(var(--gutter) + ${layout.left}px)`, height: layout.height, top: below ? 376 : 411 - layout.height } : undefined;
+            return <article className={`milestone milestone-${index} ${below ? "milestone-below" : ""}`} style={style} key={milestone.id}>
+              <div className="milestone-copy"><h3>{milestone.title}</h3><p>{milestone.description}</p></div><div className="milestone-stem" aria-hidden="true" /><p className="milestone-year">{milestone.year}<span aria-hidden="true" /></p>
+            </article>;
+          })}
+        </div>)}
+      </div>
+    </div>
+  </>;
 }

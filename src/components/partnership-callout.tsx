@@ -1,3 +1,4 @@
+import { about } from "@/data/about";
 import { landingImageSrcSet } from "@/lib/landing-image";
 import { partnershipCallout, partnershipFormUrl } from "@/data/site";
 import { ButtonLink, SectionHeading } from "./ui";
@@ -7,7 +8,7 @@ const defaultActions = [
   { label: "Partner With AMSUL", href: partnershipFormUrl, secondary: true, arrow: true },
 ];
 
-export function PartnershipCallout({ nodeId, content = partnershipCallout, actions = defaultActions, backgroundImage }: {
+export function PartnershipCallout({ nodeId, content = partnershipCallout, actions = defaultActions, backgroundImage = about.calloutImage }: {
   nodeId: string; content?: typeof partnershipCallout; backgroundImage?: string;
   actions?: { label: string; href: string; secondary?: boolean; arrow?: boolean }[];
 }) {

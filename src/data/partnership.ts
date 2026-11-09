@@ -7,12 +7,13 @@ const continuation = "Before Jali Africa, I had the product but no voice. Now I 
 
 // Testimonials stay hidden until AMSUL-approved quotes and attribution are supplied.
 export const partnershipPage = {
-  hero: { badge: "PARTNERSHIPS", title: "Building Partnerships That Create Lasting Impact.", introduction: "For over sixty years, AMSUL has collaborated with organizations, institutions and alumni to advance medical education, improve community health and empower future healthcare professionals. Together, we create initiatives that leave lasting impact far beyond the classroom.", backgroundImage: "/assets/partnership-2026/hero.jpg" },
+  hero: { badge: "PARTNERSHIPS", title: "Building Partnerships That Create Lasting Impact.", introduction: "For over sixty years, AMSUL has collaborated with organizations, institutions and alumni to advance medical education, improve community health and empower future healthcare professionals. Together, we create initiatives that leave lasting impact far beyond the classroom." },
+  photo: "/assets/partnership-2026/hero.jpg",
   brochure: { title: "Partnership Brochure", format: "pdf", url: null } as AttachmentFile,
   statistics: [ { value: "20k+", label: "UNILAG Students", tone: "wine" }, { value: "300+", label: "Healthcare Professionals", tone: "gold" }, { value: "15k+", label: "Medical Doctor Alumni", tone: "wine" }, { value: "10k+", label: "Social Media Followers", tone: "gold" } ],
   benefits: { eyebrow: "What Partner With Us", title: "Why Organizations Choose AMSUL", description: "Partnering with AMSUL goes beyond sponsorship. It creates opportunities to engage with one of Nigeria's most respected medical student communities while supporting initiatives that improve healthcare, education and leadership development.", items: [
     { id: "professionals", number: "01", title: "Access to Healthcare Professionals", description: "Engage directly with Nigeria’s most vibrant medical student communities and healthcare personnel." },
-    { id: "visibility", number: "03", title: "Strengthen Brand Visibility", description: "Associate your brand with innovation, leadership, and youth empowerment in healthcare" },
+    { id: "visibility", number: "02", title: "Strengthen Brand Visibility", description: "Associate your brand with innovation, leadership, and youth empowerment in healthcare" },
     { id: "showcase", number: "03", title: "Showcase your Product & Services", description: "Through exhibitions, branding opportunities & sponsored session" },
     { id: "relationships", number: "04", title: "Build Long-Term Relationships", description: "Create meaningful partnerships that extend beyond a single event." },
     { id: "impact", number: "05", title: "Demonstrate Social Impact", description: "Support initiatives that improve community health contributing to your yearly CSR" },
