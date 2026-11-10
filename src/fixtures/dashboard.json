@@ -1117,6 +1117,30 @@
           "order": 11,
           "group": "patron",
           "featured": false
+        },
+        {
+          "id": "dapo-majekodunmi",
+          "name": "Dr Dapo Majekodunmi",
+          "position": "Patron",
+          "imageUrl": "/assets/leadership-2026/dapo-majekodunmi.png",
+          "bio": null,
+          "tenureStart": null,
+          "tenureEnd": null,
+          "order": 12,
+          "group": "patron",
+          "featured": false
+        },
+        {
+          "id": "siju-iluyomade",
+          "name": "Pastor (Dr) Siju Iluyomade",
+          "position": "Patron",
+          "imageUrl": "/assets/leadership-2026/siju-iluyomade.png",
+          "bio": null,
+          "tenureStart": null,
+          "tenureEnd": null,
+          "order": 13,
+          "group": "patron",
+          "featured": false
         }
       ]
     }
