@@ -25,6 +25,7 @@
 .purpose-mission h3{color:#2b2b2b}
 .purpose-vision{padding:24px;background:#8a0401;color:var(--text);width:calc(100% + 48px);border-radius:16px;outline:1px dashed var(--button);outline-offset:-1px}
 .about-history .section-description{margin-top:24px}
+@media(max-width:700px){.about-history.history-section{gap:64px}}
 .timeline-two-sided .timeline-track{height:787px;width:calc(1617px + var(--gutter)*2);display:block}
 .timeline-two-sided .milestone{position:absolute;text-decoration:underline;color:var(--body)}
 .timeline-two-sided .milestone h3{color:var(--body);text-transform:none}

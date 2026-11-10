@@ -12,7 +12,7 @@ export function HeroBadge({ children }: { children: ReactNode }) {
 export function Hero({ badge, title, introduction, description, centered = false, nodeId, images, backgroundImage, responsiveBackground = true, plain = false }: {
   badge: string; title: ReactNode; introduction?: ReactNode; description?: string; centered?: boolean; nodeId: string; images?: string[]; backgroundImage?: string; responsiveBackground?: boolean; plain?: boolean;
 }) {
-  return <section className={`hero ${centered ? "hero-centered" : ""} ${description ? "hero-with-description" : ""}`} aria-labelledby="hero-title" data-node-id={nodeId}>
+  return <section className={`hero ${centered ? "hero-centered" : ""} ${description ? "hero-with-description" : ""} ${centered && plain ? "hero-centered-plain" : ""}`} aria-labelledby="hero-title" data-node-id={nodeId}>
     <div className="hero-inner">
       {images?.length ? <HeroSlideshow images={images} /> : !plain && <div className="hero-image" aria-hidden="true"><img src={backgroundImage || assets["hero-imgHb13571"]} srcSet={backgroundImage ? (responsiveBackground ? landingImageSrcSet(backgroundImage) : undefined) : `/assets/site-hero-mobile.webp 1200w, ${assets["hero-imgHb13571"]} 2738w`} sizes="100vw" alt="" fetchPriority="high" /><div className="hero-shade" /></div>}
       <SiteHeader hero />

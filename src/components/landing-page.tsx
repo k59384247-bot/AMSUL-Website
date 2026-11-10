@@ -28,7 +28,7 @@ export function LandingPage() {
     </section>
     <ImpactStatistics statistics={landing.statistics} nodeId="80:3601" />
     <section className="landing-photo container"><img src={landing.photos[0]} srcSet={landingImageSrcSet(landing.photos[0])} sizes="(max-width: 700px) 100vw, 1248px" alt="" loading="lazy" /></section>
-    <section className="history-section landing-history section container" data-node-id="80:1697">
+    <section id="history" className="history-section landing-history section container" data-node-id="80:1697">
       <SectionHeading {...landing.history} centered />
       <HistoryTimeline milestones={landing.history.milestones} />
     </section>

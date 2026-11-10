@@ -12,7 +12,6 @@
 @media(max-width:1150px){.blog-search-row{flex-wrap:wrap;gap:16px 24px}.blog-search-row .listing-search{flex-basis:100%;max-width:500px}}
 @media(max-width:1000px){.blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){
-  .blog-page .hero-centered{min-height:560px}.blog-page .hero-centered .hero-inner{min-height:552px}
   .blog-listing-content{gap:32px}.blog-grid{grid-template-columns:1fr;gap:20px}
   .blog-search-row .listing-search{width:100%;max-width:100%;flex-shrink:1}
   .blog-grid>.story-card{height:470px}

@@ -14,6 +14,7 @@ function MobileTimeline({ milestones }: { milestones: Milestone[] }) {
   const touchStart = useRef<{ x: number; y: number } | null>(null);
   const [slide, setSlide] = useState({ current: 0, previous: -1, direction: 1 });
   const [paused, setPaused] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
   const count = milestones.length;
 
   function move(direction: number) {
@@ -25,19 +26,20 @@ function MobileTimeline({ milestones }: { milestones: Milestone[] }) {
   }
 
   useEffect(() => {
-    if (paused || count < 2 || !region.current) return;
+    if (!region.current) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
     let timer: number | undefined;
     const schedule = () => {
       window.clearTimeout(timer);
-      if (!visible || document.hidden || motion.matches) return;
+      if (!visible || paused || count < 2 || document.hidden || motion.matches) return;
       timer = window.setTimeout(() => {
         setSlide(({ current }) => ({ current: (current + 1) % count, previous: current, direction: 1 }));
       }, 5000);
     };
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
+      if (visible) setHasEntered(true);
       schedule();
     }, { threshold: 0.25 });
     observer.observe(region.current);
@@ -52,7 +54,7 @@ function MobileTimeline({ milestones }: { milestones: Milestone[] }) {
   }, [count, paused, slide]);
 
   return <div ref={region} className="timeline-mobile" role="region" aria-roledescription="carousel" aria-label="AMSUL history timeline">
-    <div className={`timeline-mobile-slides${slide.previous >= 0 ? " has-transition" : ""}`} tabIndex={count > 1 ? 0 : undefined}
+    <div className={`timeline-mobile-slides${slide.previous >= 0 ? " has-transition" : ""}`} data-entered={hasEntered} tabIndex={count > 1 ? 0 : undefined}
       aria-label="Milestones. Use the left and right arrow keys to navigate."
       aria-live={paused ? "polite" : "off"}
       onFocus={event => setPaused(event.currentTarget.matches(":focus-visible"))}

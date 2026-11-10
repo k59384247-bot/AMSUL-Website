@@ -8,5 +8,5 @@ import "./blog.css";
 export const metadata: Metadata = { title: "Blog & News", description: blog.hero.description };
 
 export default function BlogPage() {
-  return <main id="main-content" className="blog-page"><Hero {...blog.hero} centered nodeId="246:3186" /><BlogListing /></main>;
+  return <main id="main-content" className="blog-page"><Hero {...blog.hero} centered plain nodeId="992:27859" /><BlogListing /></main>;
 }

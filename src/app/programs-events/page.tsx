@@ -7,5 +7,5 @@ import "./events.css";
 
 export const metadata: Metadata = { title: "Programs & Events", description: eventsPage.hero.description };
 export default function EventsPage() {
-  return <main id="main-content" className="programs-events-page"><Hero {...eventsPage.hero} centered nodeId="265:2080" /><EventListing /></main>;
+  return <main id="main-content" className="programs-events-page"><Hero {...eventsPage.hero} centered plain nodeId="992:27967" /><EventListing /></main>;
 }

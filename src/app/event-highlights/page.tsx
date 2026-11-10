@@ -8,5 +8,5 @@ import "./highlights.css";
 export const metadata: Metadata = { title: "Event Highlights", description: highlightsPage.hero.description };
 
 export default function EventHighlightsPage() {
-  return <main id="main-content" className="highlights-page"><Hero {...highlightsPage.hero} centered nodeId="269:5686" /><HighlightsListing /></main>;
+  return <main id="main-content" className="highlights-page"><Hero {...highlightsPage.hero} centered plain nodeId="992:28075" /><HighlightsListing /></main>;
 }
