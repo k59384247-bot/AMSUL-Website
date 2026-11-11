@@ -431,7 +431,7 @@ If all groups are to be API-controlled, the dashboard must expose group/featured
 | Hero badge/title/description | Contact Hero | Local approved page copy |
 | Reach Out heading/description | Contact information card | Local; confirm support availability statement |
 | Address text and map URL | Address channel text/link | Shared approved contact settings; no public contact-settings projection |
-| Email label/address | Email channel / `mailto:` | Shared settings; reconcile contactsupport@amsul.org with footer support@amsul.org |
+| Email label/address | Email channel / `mailto:` | Shared settings use amsul_cmul@yahoo.com for Contact Us and the footer |
 | WhatsApp display/international number | WhatsApp channel / `wa.me` | Shared settings; normalize URL number without altering displayed copy |
 | Telephone display/international number | Phone channel / `tel:` | Shared settings; confirm official number |
 | Social heading/description/handle | Social information card | Local copy/shared settings |

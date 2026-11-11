@@ -36,7 +36,7 @@ export const navigation = navigationGroups.map(group => ({
 }));
 
 export const contact = {
-  email: "support@amsul.org",
+  email: "amsul_cmul@yahoo.com",
   socialLabel: "@amsul_unilag",
   newsletterText: "Subscribe to our newsletter for the latest AMSUL news, upcoming events, and stories of impact.",
 };

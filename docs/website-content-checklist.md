@@ -59,7 +59,7 @@ These are current design samples, not verified AMSUL facts.
 | Taxonomy | AMSUL Games appears twice; labels such as Category, Program Name and Content Type are placeholders; named highlight filters lack assignments. | Unique category IDs/labels and real record assignments. |
 | Reused copy | Event/highlight bodies, Contact FAQs, Leadership descriptions and some excerpts concern other subjects. | Approved copy for each section. |
 | Testimonials and profiles | Jali Africa/product-designer endorsements and repeated Michael Ajala/President records are design samples. | Real endorsements, identities, roles, portraits and bios. |
-| Contact details/promises | Contact page uses contactsupport@amsul.org; footer uses support@amsul.org. Copy promises 24/7 support and a 24–48-hour reply. | Which addresses are valid, official phone/WhatsApp, actual support hours/response promise. |
+| Contact details/promises | Contact page and footer use amsul_cmul@yahoo.com. Copy promises 24/7 support and a 24–48-hour reply. | Official phone/WhatsApp, actual support hours/response promise. |
 | Labels/related cards | Blog search says Search Report; article related heading says related reports; gallery description asks visitors to register; some related cards include the current item. | Correct labels and related-content selection. |
 | Repeated numbering | About activities and partnership benefits repeat 03. Partnership eyebrow says “What Partner With Us”. | Confirm intentional wording/numbering or provide corrections. |
 

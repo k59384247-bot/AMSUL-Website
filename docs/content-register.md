@@ -31,7 +31,7 @@ Scope: **all 13 implemented page types — Landing, About Us, Impact Report Hub,
 | Second reserved area | Empty panel after events | Content type, media or copy, and interaction if applicable |
 | Stories | Five repeated neonatal-mortality titles and excerpts; three taxonomy tags per card; Ajala Michael; July 1st, 2026; blank avatar | Actual posts, bodies, cover images, taxonomy, author/avatar, publication dates and canonical slugs/IDs |
 | Partnership | Legacy heading; two introductory paragraphs; two calls to action; three repeated Health Week benefit boxes | Approved partnership value proposition and three real benefits; application/contact journey |
-| Footer | @amsul_unilag, support@amsul.org, social icons, newsletter copy, StruktHQ credit and 2026 copyright | Confirm email, each individual social profile URL, credit destination and copyright policy |
+| Footer | @amsul_unilag, amsul_cmul@yahoo.com, social icons, newsletter copy, StruktHQ credit and 2026 copyright | Confirm email, each individual social profile URL, credit destination and copyright policy |
 | Newsletter | Email field, native email validation, explicit unavailable-service feedback | Newsletter provider/public endpoint, opt-in wording, success/error behaviour and privacy-policy destination |
 | Navigation | About AMSUL, Leadership, Subsidiaries, Alumni Network, Constitution, Programs & Events, Impact Reports, Partnerships, Event Highlights, Blog & News, Contact Us, Payments & Dues, Elections | All supplied page types are built; five member-service links are hidden. Replace remaining sample destinations with matching real content; partnership actions use the supplied Google Form URL |
 
@@ -205,7 +205,7 @@ Figma node `451:4922`; desktop reference 1440 × 2584. Implemented at `/contact`
 | Hero | CONTACT US; Let’s Start a Conversation; supplied audience description; shared outreach photo | Confirm approved introduction and image credit |
 | Reach out introduction | Supplied burning-question/assistance copy and 24/7 availability statement | Confirm whether support is actually available around the clock |
 | Address | College of Medicine, University of Lagos, Idiaraba, Lagos State; Google Maps search using that exact text | Approved full address and canonical map destination; no coordinates or additional address details were guessed |
-| Email | contactsupport@amsul.org in Contact Us; support@amsul.org in the shared footer | Confirm which addresses are valid and whether both should remain |
+| Email | amsul_cmul@yahoo.com in Contact Us and the shared footer | Confirm official phone/WhatsApp and support hours |
 | WhatsApp | +234-810-079-5517, linked to the corresponding WhatsApp number | Confirm account ownership, public use and availability |
 | Telephone | +234-810-011-2345, linked to a telephone action | Confirm the public phone number and operating hours |
 | Social profiles | @amsul_unilag; Instagram and X use the existing handle-based destinations; LinkedIn reports its missing URL | Approved profile URLs, especially LinkedIn. No LinkedIn destination was invented |
