@@ -27,7 +27,7 @@ const navigationGroups: { label: string; footerLabel: string; links: SiteLink[] 
     { label: "Contact Us", href: "/contact" },
     { label: "Partnerships", href: "/partnerships" },
     { label: "Payments & Dues", href: "/payments", hidden: true },
-    { label: "Elections", href: "/elections", hidden: true },
+    { label: "Elections", href: "https://elections.strukthq.com/amsul" },
   ] },
 ];
 
