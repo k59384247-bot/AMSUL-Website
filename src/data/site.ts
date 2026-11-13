@@ -42,7 +42,7 @@ export const contact = {
 };
 
 export const routes = [
-  ...navigationGroups.flatMap(group => group.links),
+  ...navigationGroups.flatMap(group => group.links).filter(link => link.href.startsWith('/') && !link.href.startsWith('//')),
   { label: "59th AMSUL Health Week Impact Report 2025", href: "/impact-reports/amsul-health-week-2025" },
   { label: "BUSINESS SUMMIT 2025", href: "/event-highlights/business-summit-2025" },
   { label: "MR & MISS AMSUL 2025", href: "/event-highlights/mr-miss-amsul-2025" },
